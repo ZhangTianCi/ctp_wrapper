@@ -3,11 +3,25 @@
 #pragma once
 
 using namespace System;
+#include "ThostFtdcMdApi.h"
 
 namespace CTPWrapper {
 
-	public ref class Class1
+	public ref class CThostFtdcMdApiWrapper
 	{
-		// TODO: Add your methods for this class here.
+	public:
+		static System::String^ GetApiVersion()
+		{
+			return gcnew System::String(CThostFtdcMdApi::GetApiVersion());
+		}
+
+	public:
+		CThostFtdcMdApiWrapper()
+		{
+
+		}
+
+	private:
+		CThostFtdcMdApi *impl_;
 	};
 }
