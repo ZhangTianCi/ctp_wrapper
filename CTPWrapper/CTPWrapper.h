@@ -5,8 +5,11 @@
 
 using namespace System;
 #include "ThostFtdcMdApi.h"
+#include "MyCppMDSpi.h"
 
 namespace CTPWrapper {
+
+	class MyMarkDataController;
 
 	public ref class CThostFtdcMdApiWrapper
 	{
@@ -19,7 +22,8 @@ namespace CTPWrapper {
 	public:
 		CThostFtdcMdApiWrapper(String^ flowPath, bool bIsUsingUdp, bool bIsMulticast)
 		{
-			impl_ = CThostFtdcMdApi::CreateFtdcMdApi(
+			spi_ = NULL;
+			api_ = CThostFtdcMdApi::CreateFtdcMdApi(
 				(char*)Runtime::InteropServices::Marshal::StringToHGlobalAnsi(flowPath).ToPointer(),
 				bIsUsingUdp,
 				bIsMulticast);
@@ -31,25 +35,40 @@ namespace CTPWrapper {
 
 		void Release()
 		{
-			impl_->Release();
+			api_->Release();
 		}
 
 		void Init()
 		{
-			impl_->Init();
+			api_->Init();
 		}
 
 		void Join()
 		{
-			impl_->Join();
+			api_->Join();
 		}
 
 		String^ GetTradingDay()
 		{
-			return gcnew String(impl_->GetTradingDay());
+			return gcnew String(api_->GetTradingDay());
+		}
+
+		void RegisterSpi(CThostFtdcMdSpiWrapper^ spiCSharp)
+		{
+			spi_ = new MyCppMDSpi(spiCSharp);
+			api_->RegisterSpi(spi_);
+		}
+
+		void RegisterFront(String^ frontAddr)
+		{
+			char *addr = (char*) Runtime::InteropServices::Marshal::StringToHGlobalAnsi(frontAddr).ToPointer();
+			api_->RegisterFront(addr);
 		}
 
 	private:
-		CThostFtdcMdApi *impl_;
+		MyCppMDSpi *spi_;
+		CThostFtdcMdApi *api_;
 	};
+
+
 }
