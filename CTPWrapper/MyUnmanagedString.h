@@ -14,6 +14,9 @@ namespace CTPWrapper {
 		strcpy(dst, cpps.c_str()); \
 	}
 
+#define COPY_UNMANAGED_STRING(dst, s) \
+	dst = MyUnmanagedString::ToManaged(s);
+
 	class MyUnmanagedString
 	{
 	public:

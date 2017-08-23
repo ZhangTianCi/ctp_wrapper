@@ -109,7 +109,6 @@ namespace CTPWrapper {
 			api_->RegisterSpi(spi_);
 		}
 
-		/*
 		int SubscribeMarketData(cli::array<String^>^ instrumentIDs)
 		{
 			std::vector<char*> cppInstrumentIDs;
@@ -117,9 +116,28 @@ namespace CTPWrapper {
 			{
 				cppInstrumentIDs.push_back((char*)Marshal::StringToHGlobalAnsi(instrumentIDs[i]).ToPointer());
 			}
-			api_->SubscribeMarketData(&cppInstrumentIDs[0], 
+			int n = api_->SubscribeMarketData(&cppInstrumentIDs[0], cppInstrumentIDs.size());
+			for (size_t i = 0; i < cppInstrumentIDs.size(); ++i)
+			{
+				Marshal::FreeHGlobal((IntPtr)(char*)cppInstrumentIDs[i]);
+			}
+			return n;
 		}
-		*/
+
+		int UnSubscribeMarketData(cli::array<String^>^ instrumentIDs)
+		{
+			std::vector<char*> cppInstrumentIDs;
+			for (int i = 0; i < instrumentIDs->Length; ++i)
+			{
+				cppInstrumentIDs.push_back((char*)Marshal::StringToHGlobalAnsi(instrumentIDs[i]).ToPointer());
+			}
+			int n = api_->UnSubscribeMarketData(&cppInstrumentIDs[0], cppInstrumentIDs.size());
+			for (size_t i = 0; i < cppInstrumentIDs.size(); ++i)
+			{
+				Marshal::FreeHGlobal((IntPtr)(char*)cppInstrumentIDs[i]);
+			}
+			return n;
+		}
 
 		int ReqUserLogin(CThostFtdcReqUserLoginFieldWrapper^ pReqUserLoginField, int nRequestID)
 		{

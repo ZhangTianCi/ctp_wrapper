@@ -34,7 +34,7 @@ namespace CTPTest
 
         public override void OnRspUserLogin(CThostFtdcRspUserLoginFieldWrapper pRspUserLogin, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
         {
-            Console.WriteLine("OnRspUserLogin: {0}", pRspUserLogin.TradingDay);
+            Console.WriteLine("OnRspUserLogin: {0}, {1}", pRspUserLogin.TradingDay, bIsLast);
         }
     }
 
