@@ -88,7 +88,7 @@ copy /Y $(SolutionDir)ctpapi\lib_$(PlatformShortName)\thosttraderapi.dll $(OutDi
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CThostFtdcReqUserLoginFieldWrapper.h" />
+    <ClInclude Include="CThostFtdcMdApiWrapper.h" />
     <ClInclude Include="CThostFtdcMdSpiWrapper.h" />
     <ClInclude Include="MyCppMDSpi.h" />
     <ClInclude Include="MyUnmanagedString.h" />
@@ -97,7 +97,7 @@ copy /Y $(SolutionDir)ctpapi\lib_$(PlatformShortName)\thosttraderapi.dll $(OutDi
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="CThostFtdcReqUserLoginFieldWrapper.cpp" />
+    <ClCompile Include="CThostFtdcMdApiWrapper.cpp" />
     <ClCompile Include="CThostFtdcMdSpiWrapper.cpp" />
     <ClCompile Include="MyCppMDSpi.cpp" />
     <ClCompile Include="MyUnmanagedString.cpp" />

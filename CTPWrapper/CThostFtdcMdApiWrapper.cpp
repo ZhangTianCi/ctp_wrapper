@@ -2,5 +2,5 @@
 
 #include "stdafx.h"
 
-#include "CThostFtdcReqUserLoginFieldWrapper.h"
+#include "CThostFtdcMdApiWrapper.h"
 

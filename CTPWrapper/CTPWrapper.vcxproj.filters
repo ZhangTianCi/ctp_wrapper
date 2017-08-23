@@ -27,10 +27,10 @@
     <ClInclude Include="MyCppMDSpi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CThostFtdcReqUserLoginFieldWrapper.h">
+    <ClInclude Include="MyUnmanagedString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyUnmanagedString.h">
+    <ClInclude Include="CThostFtdcMdApiWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,10 +47,10 @@
     <ClCompile Include="MyCppMDSpi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CThostFtdcReqUserLoginFieldWrapper.cpp">
+    <ClCompile Include="MyUnmanagedString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MyUnmanagedString.cpp">
+    <ClCompile Include="CThostFtdcMdApiWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
