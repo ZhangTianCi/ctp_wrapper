@@ -27,6 +27,11 @@ namespace CTPWrapper {
 		String^ ErrorMsg;
 	};
 
+	public ref struct CThostFtdcSpecificInstrumentFieldWrapper
+	{
+		String^ InstrumentID;
+	};
+
 	public ref class CThostFtdcMdSpiWrapper
 	{
 	public:
@@ -35,5 +40,7 @@ namespace CTPWrapper {
 		virtual void OnHeartBeatWarning(int nTimeLapse) {}
 
 		virtual void OnRspUserLogin(CThostFtdcRspUserLoginFieldWrapper^ pRspUserLogin, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
+
+		virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentFieldWrapper^ pSpecificInstrument, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 	};
 }

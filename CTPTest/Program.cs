@@ -34,7 +34,14 @@ namespace CTPTest
 
         public override void OnRspUserLogin(CThostFtdcRspUserLoginFieldWrapper pRspUserLogin, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
         {
-            Console.WriteLine("OnRspUserLogin: {0}, {1}", pRspUserLogin.TradingDay, bIsLast);
+            Console.WriteLine("OnRspUserLogin: {0}, nRequestID: {1}, last: {2}, error: {3}", pRspUserLogin.TradingDay, nRequestID, bIsLast, pRspInfo.ErrorID);
+            int n = api_.SubscribeMarketData(new String[] { "ni1701", "rb1701" });
+            Console.WriteLine("OnRspUserLogin: sub: {0}", n);
+        }
+
+        public override void OnRspSubMarketData(CThostFtdcSpecificInstrumentFieldWrapper pSpecificInstrument, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
+        {
+            Console.WriteLine("OnRspSubMarketData: {0}, nRequestID: {1}, last: {2}", pSpecificInstrument.InstrumentID, nRequestID, bIsLast);
         }
     }
 
