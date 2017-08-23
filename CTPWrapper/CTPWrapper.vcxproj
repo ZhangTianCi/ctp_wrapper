@@ -91,6 +91,7 @@ copy /Y $(SolutionDir)ctpapi\lib_$(PlatformShortName)\thosttraderapi.dll $(OutDi
     <ClInclude Include="CThostFtdcReqUserLoginFieldWrapper.h" />
     <ClInclude Include="CThostFtdcMdSpiWrapper.h" />
     <ClInclude Include="MyCppMDSpi.h" />
+    <ClInclude Include="MyUnmanagedString.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>
@@ -99,6 +100,7 @@ copy /Y $(SolutionDir)ctpapi\lib_$(PlatformShortName)\thosttraderapi.dll $(OutDi
     <ClCompile Include="CThostFtdcReqUserLoginFieldWrapper.cpp" />
     <ClCompile Include="CThostFtdcMdSpiWrapper.cpp" />
     <ClCompile Include="MyCppMDSpi.cpp" />
+    <ClCompile Include="MyUnmanagedString.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

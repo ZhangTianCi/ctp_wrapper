@@ -4,10 +4,10 @@
 #pragma once
 
 using namespace System;
-using namespace System::Runtime::InteropServices;
 
 #include "ThostFtdcMdApi.h"
 #include "MyCppMDSpi.h"
+#include "MyUnmanagedString.h"
 #include <vector>
 #include <string>
 
@@ -46,9 +46,11 @@ namespace CTPWrapper {
 	public:
 		CThostFtdcMdApiWrapper(String^ flowPath, bool bIsUsingUdp, bool bIsMulticast)
 		{
+			MyUnmanagedString cppFlowPath(flowPath);
+
 			spi_ = NULL;
 			api_ = CThostFtdcMdApi::CreateFtdcMdApi(
-				(char*)Marshal::StringToHGlobalAnsi(flowPath).ToPointer(),
+				cppFlowPath.c_str(),
 				bIsUsingUdp,
 				bIsMulticast);
 		}
@@ -74,19 +76,19 @@ namespace CTPWrapper {
 
 		String^ GetTradingDay()
 		{
-			return gcnew String(api_->GetTradingDay());
+			return MyUnmanagedString::ToManaged(api_->GetTradingDay());
 		}
 
 		void RegisterFront(String^ frontAddr)
 		{
-			char *addr = (char*)Marshal::StringToHGlobalAnsi(frontAddr).ToPointer();
-			api_->RegisterFront(addr);
+			MyUnmanagedString addr(frontAddr);
+			api_->RegisterFront(addr.c_str());
 		}
 
 		void RegisterNameServer(String^ nameServerAddr)
 		{
-			char *addr = (char*)Marshal::StringToHGlobalAnsi(nameServerAddr).ToPointer();
-			api_->RegisterNameServer(addr);
+			MyUnmanagedString addr(nameServerAddr);
+			api_->RegisterNameServer(addr.c_str());
 		}
 
 		void RegisterFensUserInfo(CThostFtdcFensUserInfoFieldWrapper^ pFensUserInfo)
@@ -94,8 +96,8 @@ namespace CTPWrapper {
 			CThostFtdcFensUserInfoField req;
 			memset(&req, 0, sizeof(req));
 
-			if (pFensUserInfo->BrokerID) strcpy(req.BrokerID, (char*)Marshal::StringToHGlobalAnsi(pFensUserInfo->BrokerID).ToPointer());
-			if (pFensUserInfo->UserID) strcpy(req.BrokerID, (char*)Marshal::StringToHGlobalAnsi(pFensUserInfo->UserID).ToPointer());
+			COPY_MANAGED_STRING(req.BrokerID, pFensUserInfo->BrokerID);
+			COPY_MANAGED_STRING(req.UserID, pFensUserInfo->UserID);
 			req.LoginMode = pFensUserInfo->LoginMode;
 
 			api_->RegisterFensUserInfo(&req);
@@ -110,7 +112,7 @@ namespace CTPWrapper {
 		/*
 		int SubscribeMarketData(cli::array<String^>^ instrumentIDs)
 		{
-			std::vector<std::string> cppInstrumentIDs;
+			std::vector<char*> cppInstrumentIDs;
 			for (int i = 0; i < instrumentIDs->Length; ++i)
 			{
 				cppInstrumentIDs.push_back((char*)Marshal::StringToHGlobalAnsi(instrumentIDs[i]).ToPointer());
@@ -124,17 +126,18 @@ namespace CTPWrapper {
 			CThostFtdcReqUserLoginField req;
 			memset(&req, 0, sizeof(req));
 
-			if (pReqUserLoginField->TradingDay) strcpy(req.TradingDay, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->TradingDay).ToPointer());
-			if (pReqUserLoginField->BrokerID) strcpy(req.BrokerID, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->BrokerID).ToPointer());
-			if (pReqUserLoginField->UserID) strcpy(req.UserID, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->UserID).ToPointer());
-			if (pReqUserLoginField->Password) strcpy(req.Password, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->Password).ToPointer());
-			if (pReqUserLoginField->UserProductInfo) strcpy(req.UserProductInfo, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->UserProductInfo).ToPointer());
-			if (pReqUserLoginField->InterfaceProductInfo) strcpy(req.InterfaceProductInfo, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->InterfaceProductInfo).ToPointer());
-			if (pReqUserLoginField->ProtocolInfo) strcpy(req.ProtocolInfo, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->ProtocolInfo).ToPointer());
-			if (pReqUserLoginField->MacAddress) strcpy(req.MacAddress, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->MacAddress).ToPointer());
-			if (pReqUserLoginField->OneTimePassword) strcpy(req.OneTimePassword, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->OneTimePassword).ToPointer());
-			if (pReqUserLoginField->ClientIPAddress) strcpy(req.ClientIPAddress, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->ClientIPAddress).ToPointer());
-			if (pReqUserLoginField->LoginRemark) strcpy(req.LoginRemark, (char*)Marshal::StringToHGlobalAnsi(pReqUserLoginField->LoginRemark).ToPointer());
+			COPY_MANAGED_STRING(req.TradingDay, pReqUserLoginField->TradingDay);
+			COPY_MANAGED_STRING(req.BrokerID, pReqUserLoginField->BrokerID);
+			COPY_MANAGED_STRING(req.UserID, pReqUserLoginField->UserID);
+			COPY_MANAGED_STRING(req.Password, pReqUserLoginField->Password);
+			COPY_MANAGED_STRING(req.UserProductInfo, pReqUserLoginField->UserProductInfo);
+			COPY_MANAGED_STRING(req.InterfaceProductInfo, pReqUserLoginField->InterfaceProductInfo);
+			COPY_MANAGED_STRING(req.ProtocolInfo, pReqUserLoginField->ProtocolInfo);
+			COPY_MANAGED_STRING(req.MacAddress, pReqUserLoginField->MacAddress);
+			COPY_MANAGED_STRING(req.OneTimePassword, pReqUserLoginField->OneTimePassword);
+			COPY_MANAGED_STRING(req.ClientIPAddress, pReqUserLoginField->ClientIPAddress);
+			COPY_MANAGED_STRING(req.LoginRemark, pReqUserLoginField->LoginRemark);
+
 			return api_->ReqUserLogin(&req, nRequestID);
 		}
 
