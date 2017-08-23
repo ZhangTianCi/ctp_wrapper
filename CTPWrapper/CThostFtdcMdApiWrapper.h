@@ -8,32 +8,10 @@ using namespace System;
 #include "ThostFtdcMdApi.h"
 #include "MyCppMDSpi.h"
 #include "MyUnmanagedString.h"
+#include "CThostFtdcMdStructWrapper.h"
 #include <vector>
-#include <string>
 
 namespace CTPWrapper {
-
-	public ref struct CThostFtdcFensUserInfoFieldWrapper
-	{
-		String^ BrokerID;             //经纪公司代码
-		String^ UserID;               //用户代码
-		char LoginMode;               //登录模式
-	};
-
-	public ref struct CThostFtdcReqUserLoginFieldWrapper
-	{
-		String^ TradingDay;           // 交易日
-		String^ BrokerID;             // 经纪公司代码
-		String^ UserID;               // 用户代码
-		String^ Password;             // 密码
-		String^ UserProductInfo;      // 用户端产品信息
-		String^ InterfaceProductInfo; // 接口端产品信息
-		String^ ProtocolInfo;         // 协议信息
-		String^ MacAddress;           // Mac地址
-		String^ OneTimePassword;      // 动态密码
-		String^ ClientIPAddress;      // 终端IP地址
-		String^ LoginRemark;          // 登录备注
-	};
 
 	public ref class CThostFtdcMdApiWrapper
 	{
@@ -139,6 +117,36 @@ namespace CTPWrapper {
 			return n;
 		}
 
+		int SubscribeForQuoteRsp(cli::array<String^>^ instrumentIDs)
+		{
+			std::vector<char*> cppInstrumentIDs;
+			for (int i = 0; i < instrumentIDs->Length; ++i)
+			{
+				cppInstrumentIDs.push_back((char*)Marshal::StringToHGlobalAnsi(instrumentIDs[i]).ToPointer());
+			}
+			int n = api_->SubscribeForQuoteRsp(&cppInstrumentIDs[0], cppInstrumentIDs.size());
+			for (size_t i = 0; i < cppInstrumentIDs.size(); ++i)
+			{
+				Marshal::FreeHGlobal((IntPtr)(char*)cppInstrumentIDs[i]);
+			}
+			return n;
+		}
+
+		int UnSubscribeForQuoteRsp(cli::array<String^>^ instrumentIDs)
+		{
+			std::vector<char*> cppInstrumentIDs;
+			for (int i = 0; i < instrumentIDs->Length; ++i)
+			{
+				cppInstrumentIDs.push_back((char*)Marshal::StringToHGlobalAnsi(instrumentIDs[i]).ToPointer());
+			}
+			int n = api_->UnSubscribeForQuoteRsp(&cppInstrumentIDs[0], cppInstrumentIDs.size());
+			for (size_t i = 0; i < cppInstrumentIDs.size(); ++i)
+			{
+				Marshal::FreeHGlobal((IntPtr)(char*)cppInstrumentIDs[i]);
+			}
+			return n;
+		}
+
 		int ReqUserLogin(CThostFtdcReqUserLoginFieldWrapper^ pReqUserLoginField, int nRequestID)
 		{
 			CThostFtdcReqUserLoginField req;
@@ -157,6 +165,17 @@ namespace CTPWrapper {
 			COPY_MANAGED_STRING(req.LoginRemark, pReqUserLoginField->LoginRemark);
 
 			return api_->ReqUserLogin(&req, nRequestID);
+		}
+
+		int ReqUserLogout(CThostFtdcUserLogoutFieldWrapper^ pUserLogout, int nRequestID)
+		{
+			CThostFtdcUserLogoutField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, pUserLogout->BrokerID);
+			COPY_MANAGED_STRING(req.UserID, pUserLogout->UserID);
+
+			return api_->ReqUserLogout(&req, nRequestID);
 		}
 
 	private:

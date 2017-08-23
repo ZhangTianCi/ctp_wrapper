@@ -14,22 +14,22 @@ namespace CTPWrapper {
 		{
 		}
 
-		virtual void OnFrontConnected()
+		virtual void OnFrontConnected() override
 		{
 			wrapper_->OnFrontConnected();
 		}
 
-		virtual void OnFrontDisconnected(int nReason)
+		virtual void OnFrontDisconnected(int nReason) override
 		{
 			wrapper_->OnFrontDisconnected(nReason);
 		}
 
-		virtual void OnHeartBeatWarning(int nTimeLapse)
+		virtual void OnHeartBeatWarning(int nTimeLapse) override
 		{
 			wrapper_->OnHeartBeatWarning(nTimeLapse);
 		}
 
-		virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+		virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcRspUserLoginFieldWrapper^ rspUserLogin = gcnew CThostFtdcRspUserLoginFieldWrapper();
 			
@@ -52,6 +52,19 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
 
 			wrapper_->OnRspUserLogin(rspUserLogin, rspInfo, nRequestID, bIsLast);
+		}
+
+		virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcUserLogoutFieldWrapper^ csharpUserLogout = gcnew CThostFtdcUserLogoutFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpUserLogout->BrokerID, pUserLogout->BrokerID);
+			COPY_UNMANAGED_STRING(csharpUserLogout->UserID, pUserLogout->UserID);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = pRspInfo->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, pRspInfo->ErrorMsg);
+
+			wrapper_->OnRspUserLogout(csharpUserLogout, csharpError, nRequestID, bIsLast);
 		}
 
 		virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
