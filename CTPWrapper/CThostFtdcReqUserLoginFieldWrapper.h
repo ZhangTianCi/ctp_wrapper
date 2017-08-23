@@ -8,8 +8,17 @@ using namespace System::Runtime::InteropServices;
 
 #include "ThostFtdcMdApi.h"
 #include "MyCppMDSpi.h"
+#include <vector>
+#include <string>
 
 namespace CTPWrapper {
+
+	public ref struct CThostFtdcFensUserInfoFieldWrapper
+	{
+		String^ BrokerID;             //经纪公司代码
+		String^ UserID;               //用户代码
+		char LoginMode;               //登录模式
+	};
 
 	public ref struct CThostFtdcReqUserLoginFieldWrapper
 	{
@@ -68,17 +77,47 @@ namespace CTPWrapper {
 			return gcnew String(api_->GetTradingDay());
 		}
 
+		void RegisterFront(String^ frontAddr)
+		{
+			char *addr = (char*)Marshal::StringToHGlobalAnsi(frontAddr).ToPointer();
+			api_->RegisterFront(addr);
+		}
+
+		void RegisterNameServer(String^ nameServerAddr)
+		{
+			char *addr = (char*)Marshal::StringToHGlobalAnsi(nameServerAddr).ToPointer();
+			api_->RegisterNameServer(addr);
+		}
+
+		void RegisterFensUserInfo(CThostFtdcFensUserInfoFieldWrapper^ pFensUserInfo)
+		{
+			CThostFtdcFensUserInfoField req;
+			memset(&req, 0, sizeof(req));
+
+			if (pFensUserInfo->BrokerID) strcpy(req.BrokerID, (char*)Marshal::StringToHGlobalAnsi(pFensUserInfo->BrokerID).ToPointer());
+			if (pFensUserInfo->UserID) strcpy(req.BrokerID, (char*)Marshal::StringToHGlobalAnsi(pFensUserInfo->UserID).ToPointer());
+			req.LoginMode = pFensUserInfo->LoginMode;
+
+			api_->RegisterFensUserInfo(&req);
+		}
+
 		void RegisterSpi(CThostFtdcMdSpiWrapper^ spiCSharp)
 		{
 			spi_ = new MyCppMDSpi(spiCSharp);
 			api_->RegisterSpi(spi_);
 		}
 
-		void RegisterFront(String^ frontAddr)
+		/*
+		int SubscribeMarketData(cli::array<String^>^ instrumentIDs)
 		{
-			char *addr = (char*)Marshal::StringToHGlobalAnsi(frontAddr).ToPointer();
-			api_->RegisterFront(addr);
+			std::vector<std::string> cppInstrumentIDs;
+			for (int i = 0; i < instrumentIDs->Length; ++i)
+			{
+				cppInstrumentIDs.push_back((char*)Marshal::StringToHGlobalAnsi(instrumentIDs[i]).ToPointer());
+			}
+			api_->SubscribeMarketData(&cppInstrumentIDs[0], 
 		}
+		*/
 
 		int ReqUserLogin(CThostFtdcReqUserLoginFieldWrapper^ pReqUserLoginField, int nRequestID)
 		{
