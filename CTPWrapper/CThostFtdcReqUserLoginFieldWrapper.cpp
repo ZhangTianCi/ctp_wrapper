@@ -2,5 +2,5 @@
 
 #include "stdafx.h"
 
-#include "CTPWrapper.h"
+#include "CThostFtdcReqUserLoginFieldWrapper.h"
 
