@@ -81,6 +81,36 @@ namespace CTPWrapper {
 			wrapper_->OnRspUserLogout(csharpUserLogout, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *cppPassword, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcUserPasswordUpdateFieldWrapper^ csharpPassword = gcnew CThostFtdcUserPasswordUpdateFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpPassword->BrokerID, cppPassword->BrokerID);
+			COPY_UNMANAGED_STRING(csharpPassword->UserID, cppPassword->UserID);
+			COPY_UNMANAGED_STRING(csharpPassword->OldPassword, cppPassword->OldPassword);
+			COPY_UNMANAGED_STRING(csharpPassword->NewPassword, cppPassword->NewPassword);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspUserPasswordUpdate(csharpPassword, csharpError, nRequestID, bIsLast);
+		}
+
+		virtual void OnRspTradingAccountPasswordUpdate(CThostFtdcTradingAccountPasswordUpdateField *cppPassword, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcTradingAccountPasswordUpdateFieldWrapper^ csharpPassword = gcnew CThostFtdcTradingAccountPasswordUpdateFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpPassword->BrokerID, cppPassword->BrokerID);
+			COPY_UNMANAGED_STRING(csharpPassword->AccountID, cppPassword->AccountID);
+			COPY_UNMANAGED_STRING(csharpPassword->OldPassword, cppPassword->OldPassword);
+			COPY_UNMANAGED_STRING(csharpPassword->NewPassword, cppPassword->NewPassword);
+			COPY_UNMANAGED_STRING(csharpPassword->CurrencyID, cppPassword->CurrencyID);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspTradingAccountPasswordUpdate(csharpPassword, csharpError, nRequestID, bIsLast);
+		}
 
 
 

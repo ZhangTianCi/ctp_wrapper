@@ -125,4 +125,21 @@ namespace CTPWrapper {
 		String^ UserProductInfo;
 	};
 
+	public ref struct CThostFtdcUserPasswordUpdateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ UserID;
+		String^ OldPassword;
+		String^ NewPassword;
+	};
+
+	public ref struct CThostFtdcTradingAccountPasswordUpdateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ AccountID;
+		String^ OldPassword;
+		String^ NewPassword;
+		String^ CurrencyID;
+	};
+
 }
