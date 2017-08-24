@@ -24,5 +24,6 @@ namespace CTPWrapper {
 		virtual void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentFieldWrapper^ pSpecificInstrument, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 
 		virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataFieldWrapper^ pDepthMarketData) {}
+		virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspFieldWrapper^ pForQuoteRsp) {}
 	};
 }

@@ -108,4 +108,13 @@ namespace CTPWrapper {
 		String^ ActionDay;           //业务日期
 	};
 
+	public ref struct CThostFtdcForQuoteRspFieldWrapper
+	{
+		String^ TradingDay;
+		String^ InstrumentID;
+		String^ ForQuoteSysID;
+		String^ ForQuoteTime;
+		String^ ActionDay;
+		String^ ExchangeID;
+	};
 }

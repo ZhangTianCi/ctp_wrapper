@@ -74,6 +74,11 @@ namespace CTPTest
         {
             Console.WriteLine("[OnRtnDepthMarketData] {0}, 最新价：{1}", pDepthMarketData.InstrumentID, pDepthMarketData.LastPrice);
         }
+
+        public override void OnRtnForQuoteRsp(CThostFtdcForQuoteRspFieldWrapper pForQuoteRsp)
+        {
+            Console.WriteLine("[OnRtnDepthMarketData] {0}", pForQuoteRsp.InstrumentID);
+        }
     }
 
     class Program

@@ -181,6 +181,19 @@ namespace CTPWrapper {
 			wrapper_->OnRtnDepthMarketData(csharpData);
 		}
 
+		virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp)
+		{
+			CThostFtdcForQuoteRspFieldWrapper^ csharpData = gcnew CThostFtdcForQuoteRspFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, pForQuoteRsp->TradingDay);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, pForQuoteRsp->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ForQuoteSysID, pForQuoteRsp->ForQuoteSysID);
+			COPY_UNMANAGED_STRING(csharpData->ForQuoteTime, pForQuoteRsp->ForQuoteTime);
+			COPY_UNMANAGED_STRING(csharpData->ActionDay, pForQuoteRsp->ActionDay);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, pForQuoteRsp->ExchangeID);
+
+			wrapper_->OnRtnForQuoteRsp(csharpData);
+		}
+
 	private:
 		msclr::auto_gcroot<CThostFtdcMdSpiWrapper^> wrapper_;
 	};
