@@ -150,6 +150,20 @@ namespace CTPWrapper {
 			return api_->ReqUserPasswordUpdate(&req, nRequestID);
 		}
 
+		int ReqTradingAccountPasswordUpdate(CThostFtdcTradingAccountPasswordUpdateFieldWrapper^ pTradingAccountPasswordUpdate, int nRequestID)
+		{
+			CThostFtdcTradingAccountPasswordUpdateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, pTradingAccountPasswordUpdate->BrokerID);
+			COPY_MANAGED_STRING(req.AccountID, pTradingAccountPasswordUpdate->AccountID);
+			COPY_MANAGED_STRING(req.OldPassword, pTradingAccountPasswordUpdate->OldPassword);
+			COPY_MANAGED_STRING(req.NewPassword, pTradingAccountPasswordUpdate->NewPassword);
+			COPY_MANAGED_STRING(req.CurrencyID, pTradingAccountPasswordUpdate->CurrencyID);
+
+			return api_->ReqTradingAccountPasswordUpdate(&req, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;
