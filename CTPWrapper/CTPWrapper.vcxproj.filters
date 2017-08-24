@@ -30,9 +30,6 @@
     <ClInclude Include="MarketSpiWrapper.h">
       <Filter>Market</Filter>
     </ClInclude>
-    <ClInclude Include="MarketStructWrapper.h">
-      <Filter>Market</Filter>
-    </ClInclude>
     <ClInclude Include="Stdafx.h">
       <Filter>Misc</Filter>
     </ClInclude>
@@ -43,6 +40,15 @@
       <Filter>Trade</Filter>
     </ClInclude>
     <ClInclude Include="MyUnmanagedString.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeSpi.h">
+      <Filter>Trade</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeSpiWrapper.h">
+      <Filter>Trade</Filter>
+    </ClInclude>
+    <ClInclude Include="MarketStructWrapper.h">
       <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,9 +62,6 @@
     <ClCompile Include="MarketSpiWrapper.cpp">
       <Filter>Market</Filter>
     </ClCompile>
-    <ClCompile Include="MarketStructWrapper.cpp">
-      <Filter>Market</Filter>
-    </ClCompile>
     <ClCompile Include="MarketSpi.cpp">
       <Filter>Market</Filter>
     </ClCompile>
@@ -69,6 +72,15 @@
       <Filter>Misc</Filter>
     </ClCompile>
     <ClCompile Include="MyUnmanagedString.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="TradeSpi.cpp">
+      <Filter>Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="TradeSpiWrapper.cpp">
+      <Filter>Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="MarketStructWrapper.cpp">
       <Filter>Util</Filter>
     </ClCompile>
   </ItemGroup>
