@@ -117,4 +117,12 @@ namespace CTPWrapper {
 		String^ ActionDay;
 		String^ ExchangeID;
 	};
+
+	public ref struct CThostFtdcRspAuthenticateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ UserID;
+		String^ UserProductInfo;
+	};
+
 }

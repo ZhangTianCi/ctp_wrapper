@@ -12,6 +12,8 @@ namespace CTPWrapper {
 		virtual void OnFrontConnected() {}
 		virtual void OnFrontDisconnected(int nReason) {}
 		virtual void OnHeartBeatWarning(int nTimeLapse) {}
+
+		virtual void OnRspAuthenticate(CThostFtdcRspAuthenticateFieldWrapper^ pRspAuthenticateField, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 	};
 
 }
