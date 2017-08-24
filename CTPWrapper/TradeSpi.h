@@ -199,6 +199,39 @@ namespace CTPWrapper {
 			wrapper_->OnRspParkedOrderInsert(csharpOrder, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *cppAction, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast)
+		{
+			CThostFtdcParkedOrderActionFieldWrapper^ csharpAction = gcnew CThostFtdcParkedOrderActionFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpAction->BrokerID, cppAction->BrokerID);
+			COPY_UNMANAGED_STRING(csharpAction->InvestorID, cppAction->InvestorID);
+			csharpAction->OrderActionRef = cppAction->OrderActionRef;
+			COPY_UNMANAGED_STRING(csharpAction->OrderRef, cppAction->OrderRef);
+			csharpAction->RequestID = cppAction->RequestID;
+			csharpAction->FrontID = cppAction->FrontID;
+			csharpAction->SessionID = cppAction->SessionID;
+			COPY_UNMANAGED_STRING(csharpAction->ExchangeID, cppAction->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpAction->OrderSysID, cppAction->OrderSysID);
+			csharpAction->ActionFlag = cppAction->ActionFlag;
+			csharpAction->LimitPrice = cppAction->LimitPrice;
+			csharpAction->VolumeChange = cppAction->VolumeChange;
+			COPY_UNMANAGED_STRING(csharpAction->UserID, cppAction->UserID);
+			COPY_UNMANAGED_STRING(csharpAction->InstrumentID, cppAction->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpAction->ParkedOrderActionID, cppAction->ParkedOrderActionID);
+			csharpAction->UserType = cppAction->UserType;
+			csharpAction->Status = cppAction->Status;
+			csharpAction->ErrorID = cppAction->ErrorID;
+			COPY_UNMANAGED_STRING(csharpAction->ErrorMsg, cppAction->ErrorMsg);
+			COPY_UNMANAGED_STRING(csharpAction->InvestUnitID, cppAction->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpAction->IPAddress, cppAction->IPAddress);
+			COPY_UNMANAGED_STRING(csharpAction->MacAddress, cppAction->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspParkedOrderAction(csharpAction, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

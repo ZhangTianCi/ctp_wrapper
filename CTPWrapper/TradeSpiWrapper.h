@@ -23,7 +23,8 @@ namespace CTPWrapper {
 
 		virtual void OnRspOrderInsert(CThostFtdcInputOrderFieldWrapper^ pInputOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 		virtual void OnRspParkedOrderInsert(CThostFtdcParkedOrderFieldWrapper^ pParkedOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
-		
+		virtual void OnRspParkedOrderAction(CThostFtdcParkedOrderActionFieldWrapper^ pParkedOrderAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
+
 
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 	};
