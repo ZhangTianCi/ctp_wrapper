@@ -21,19 +21,19 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CThostFtdcMdSpiWrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyCppMDSpi.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MyUnmanagedString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CThostFtdcMdApiWrapper.h">
+    <ClInclude Include="MarketStructWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CThostFtdcMdStructWrapper.h">
+    <ClInclude Include="MarketSpiWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MarketApiWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MarketSpi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,19 +44,19 @@
     <ClCompile Include="Stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CThostFtdcMdSpiWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyCppMDSpi.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MyUnmanagedString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CThostFtdcMdApiWrapper.cpp">
+    <ClCompile Include="MarketStructWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CThostFtdcMdStructWrapper.cpp">
+    <ClCompile Include="MarketSpiWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MarketApiWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MarketSpi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

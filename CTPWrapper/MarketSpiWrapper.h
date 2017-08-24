@@ -1,12 +1,12 @@
 #pragma once
 
-#include "CThostFtdcMdStructWrapper.h"
+#include "MarketStructWrapper.h"
 
 using namespace System;
 
 namespace CTPWrapper {
 
-	public ref class CThostFtdcMdSpiWrapper
+	public ref class MarketSpiWrapper
 	{
 	public:
 		virtual void OnFrontConnected() {}

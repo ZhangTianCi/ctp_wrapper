@@ -3,12 +3,12 @@ using CTPWrapper;
 
 namespace CTPTest
 {
-    class MyDataController : CThostFtdcMdSpiWrapper
+    class MyMarketSpi : MarketSpiWrapper
     {
-        private CThostFtdcMdApiWrapper api_ = null;
+        private MarketApiWrapper api_ = null;
         private int requestId_ = 0;
 
-        public MyDataController(CThostFtdcMdApiWrapper api)
+        public MyMarketSpi(MarketApiWrapper api)
         {
             api_ = api;
         }
@@ -83,18 +83,23 @@ namespace CTPTest
 
     class Program
     {
-        const string FRONT_ADDR = "tcp://180.168.146.187:10010";
+        const string MARKET_FRONT_ADDR = "tcp://180.168.146.187:10010";
 
-        static void Main(string[] args)
+        static void MarketApiTest()
         {
-            Console.WriteLine("version: {0}", CThostFtdcMdApiWrapper.GetApiVersion());
+            Console.WriteLine("market api version: {0}", MarketApiWrapper.GetApiVersion());
 
-            CThostFtdcMdApiWrapper mdapi = new CThostFtdcMdApiWrapper("", false, false);
-            mdapi.RegisterSpi(new MyDataController(mdapi));
-            mdapi.RegisterFront(FRONT_ADDR);
+            MarketApiWrapper mdapi = new MarketApiWrapper("", false, false);
+            mdapi.RegisterSpi(new MyMarketSpi(mdapi));
+            mdapi.RegisterFront(MARKET_FRONT_ADDR);
 
             mdapi.Init();
             mdapi.Join();
+        }
+
+        static void Main(string[] args)
+        {
+            MarketApiTest();
         }
     }
 }

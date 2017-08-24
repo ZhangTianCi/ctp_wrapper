@@ -2,5 +2,5 @@
 
 #include "stdafx.h"
 
-#include "CThostFtdcMdApiWrapper.h"
+#include "MarketApiWrapper.h"
 

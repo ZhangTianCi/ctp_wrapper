@@ -6,14 +6,14 @@
 using namespace System;
 
 #include "ThostFtdcMdApi.h"
-#include "MyCppMDSpi.h"
+#include "MarketSpi.h"
 #include "MyUnmanagedString.h"
-#include "CThostFtdcMdStructWrapper.h"
+#include "MarketSpiWrapper.h"
 #include <vector>
 
 namespace CTPWrapper {
 
-	public ref class CThostFtdcMdApiWrapper
+	public ref class MarketApiWrapper
 	{
 	public:
 		static String^ GetApiVersion()
@@ -22,7 +22,7 @@ namespace CTPWrapper {
 		}
 
 	public:
-		CThostFtdcMdApiWrapper(String^ flowPath, bool bIsUsingUdp, bool bIsMulticast)
+		MarketApiWrapper(String^ flowPath, bool bIsUsingUdp, bool bIsMulticast)
 		{
 			MyUnmanagedString cppFlowPath(flowPath);
 
@@ -33,7 +33,7 @@ namespace CTPWrapper {
 				bIsMulticast);
 		}
 
-		~CThostFtdcMdApiWrapper()
+		~MarketApiWrapper()
 		{
 		}
 
@@ -81,9 +81,9 @@ namespace CTPWrapper {
 			api_->RegisterFensUserInfo(&req);
 		}
 
-		void RegisterSpi(CThostFtdcMdSpiWrapper^ spiCSharp)
+		void RegisterSpi(MarketSpiWrapper^ spiCSharp)
 		{
-			spi_ = new MyCppMDSpi(spiCSharp);
+			spi_ = new MarketSpi(spiCSharp);
 			api_->RegisterSpi(spi_);
 		}
 
@@ -179,7 +179,7 @@ namespace CTPWrapper {
 		}
 
 	private:
-		MyCppMDSpi *spi_;
+		MarketSpi *spi_;
 		CThostFtdcMdApi *api_;
 	};
 

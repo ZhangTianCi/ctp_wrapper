@@ -88,20 +88,20 @@ copy /Y $(SolutionDir)ctpapi\lib_$(PlatformShortName)\thosttraderapi.dll $(OutDi
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CThostFtdcMdApiWrapper.h" />
-    <ClInclude Include="CThostFtdcMdSpiWrapper.h" />
-    <ClInclude Include="CThostFtdcMdStructWrapper.h" />
-    <ClInclude Include="MyCppMDSpi.h" />
+    <ClInclude Include="MarketApiWrapper.h" />
+    <ClInclude Include="MarketSpiWrapper.h" />
+    <ClInclude Include="MarketStructWrapper.h" />
+    <ClInclude Include="MarketSpi.h" />
     <ClInclude Include="MyUnmanagedString.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="CThostFtdcMdApiWrapper.cpp" />
-    <ClCompile Include="CThostFtdcMdSpiWrapper.cpp" />
-    <ClCompile Include="CThostFtdcMdStructWrapper.cpp" />
-    <ClCompile Include="MyCppMDSpi.cpp" />
+    <ClCompile Include="MarketApiWrapper.cpp" />
+    <ClCompile Include="MarketSpiWrapper.cpp" />
+    <ClCompile Include="MarketStructWrapper.cpp" />
+    <ClCompile Include="MarketSpi.cpp" />
     <ClCompile Include="MyUnmanagedString.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

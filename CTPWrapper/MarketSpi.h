@@ -2,15 +2,15 @@
 
 #include <msclr\auto_gcroot.h>
 #include "ThostFtdcMdApi.h"
-#include "CThostFtdcMdSpiWrapper.h"
+#include "MarketSpiWrapper.h"
 #include "MyUnmanagedString.h"
 
 namespace CTPWrapper {
 
-	class MyCppMDSpi : public CThostFtdcMdSpi
+	class MarketSpi : public CThostFtdcMdSpi
 	{
 	public:
-		MyCppMDSpi(CThostFtdcMdSpiWrapper^ wrapper) : wrapper_(wrapper)
+		MarketSpi(MarketSpiWrapper^ wrapper) : wrapper_(wrapper)
 		{
 		}
 
@@ -195,6 +195,6 @@ namespace CTPWrapper {
 		}
 
 	private:
-		msclr::auto_gcroot<CThostFtdcMdSpiWrapper^> wrapper_;
+		msclr::auto_gcroot<MarketSpiWrapper^> wrapper_;
 	};
 }
