@@ -164,6 +164,45 @@ namespace CTPWrapper {
 			return api_->ReqTradingAccountPasswordUpdate(&req, nRequestID);
 		}
 
+		int ReqOrderInsert(CThostFtdcInputOrderFieldWrapper^ pInputOrder, int nRequestID)
+		{
+			CThostFtdcInputOrderField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, pInputOrder->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, pInputOrder->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, pInputOrder->InstrumentID);
+			COPY_MANAGED_STRING(req.OrderRef, pInputOrder->OrderRef);
+			COPY_MANAGED_STRING(req.UserID, pInputOrder->UserID);
+			req.OrderPriceType = pInputOrder->OrderPriceType;
+			req.Direction = pInputOrder->Direction;
+			COPY_MANAGED_STRING(req.CombOffsetFlag, pInputOrder->CombOffsetFlag);
+			COPY_MANAGED_STRING(req.CombHedgeFlag, pInputOrder->CombHedgeFlag);
+			req.LimitPrice = pInputOrder->LimitPrice;
+			req.VolumeTotalOriginal = pInputOrder->VolumeTotalOriginal;
+			req.TimeCondition = pInputOrder->TimeCondition;
+			COPY_MANAGED_STRING(req.GTDDate, pInputOrder->GTDDate);
+			req.VolumeCondition = pInputOrder->VolumeCondition;
+			req.MinVolume = pInputOrder->MinVolume;
+			req.ContingentCondition = pInputOrder->ContingentCondition;
+			req.StopPrice = pInputOrder->StopPrice;
+			req.ForceCloseReason = pInputOrder->ForceCloseReason;
+			req.IsAutoSuspend = pInputOrder->IsAutoSuspend;
+			COPY_MANAGED_STRING(req.BusinessUnit, pInputOrder->BusinessUnit);
+			req.RequestID = pInputOrder->RequestID;
+			req.UserForceClose = pInputOrder->UserForceClose;
+			req.IsSwapOrder = pInputOrder->IsSwapOrder;
+			COPY_MANAGED_STRING(req.ExchangeID, pInputOrder->ExchangeID);
+			COPY_MANAGED_STRING(req.InvestUnitID, pInputOrder->InvestUnitID);
+			COPY_MANAGED_STRING(req.AccountID, pInputOrder->AccountID);
+			COPY_MANAGED_STRING(req.CurrencyID, pInputOrder->CurrencyID);
+			COPY_MANAGED_STRING(req.ClientID, pInputOrder->ClientID);
+			COPY_MANAGED_STRING(req.IPAddress, pInputOrder->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, pInputOrder->MacAddress);
+
+			return api_->ReqOrderInsert(&req, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;
