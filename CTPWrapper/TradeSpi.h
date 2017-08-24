@@ -43,6 +43,56 @@ namespace CTPWrapper {
 			wrapper_->OnRspAuthenticate(csharpAuth, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcRspUserLoginFieldWrapper^ rspUserLogin = gcnew CThostFtdcRspUserLoginFieldWrapper();
+			
+			COPY_UNMANAGED_STRING(rspUserLogin->TradingDay, pRspUserLogin->TradingDay);
+			COPY_UNMANAGED_STRING(rspUserLogin->LoginTime, pRspUserLogin->LoginTime);
+			COPY_UNMANAGED_STRING(rspUserLogin->BrokerID, pRspUserLogin->BrokerID);
+			COPY_UNMANAGED_STRING(rspUserLogin->UserID, pRspUserLogin->UserID);
+			COPY_UNMANAGED_STRING(rspUserLogin->SystemName, pRspUserLogin->SystemName);
+			rspUserLogin->FrontID = pRspUserLogin->FrontID;
+			rspUserLogin->SessionID = pRspUserLogin->SessionID;
+			COPY_UNMANAGED_STRING(rspUserLogin->MaxOrderRef, pRspUserLogin->MaxOrderRef);
+			COPY_UNMANAGED_STRING(rspUserLogin->SHFETime, pRspUserLogin->SHFETime);
+			COPY_UNMANAGED_STRING(rspUserLogin->DCETime, pRspUserLogin->DCETime);
+			COPY_UNMANAGED_STRING(rspUserLogin->CZCETime, pRspUserLogin->CZCETime);
+			COPY_UNMANAGED_STRING(rspUserLogin->FFEXTime, pRspUserLogin->FFEXTime);
+			COPY_UNMANAGED_STRING(rspUserLogin->INETime, pRspUserLogin->INETime);
+
+			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
+			rspInfo->ErrorID = pRspInfo->ErrorID;
+			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+
+			wrapper_->OnRspUserLogin(rspUserLogin, rspInfo, nRequestID, bIsLast);
+		}
+
+		virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcUserLogoutFieldWrapper^ csharpUserLogout = gcnew CThostFtdcUserLogoutFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpUserLogout->BrokerID, pUserLogout->BrokerID);
+			COPY_UNMANAGED_STRING(csharpUserLogout->UserID, pUserLogout->UserID);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = pRspInfo->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, pRspInfo->ErrorMsg);
+
+			wrapper_->OnRspUserLogout(csharpUserLogout, csharpError, nRequestID, bIsLast);
+		}
+
+
+
+
+		virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+		{
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = pRspInfo->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, pRspInfo->ErrorMsg);
+
+			wrapper_->OnRspError(csharpError, nRequestID, bIsLast);
+		}
+
 	private:
 		msclr::auto_gcroot<TradeSpiWrapper^> wrapper_;
 	};

@@ -81,6 +81,27 @@ namespace CTPTest
         }
     }
 
+    class MyTradeSpi : TradeSpiWrapper
+    {
+        private TradeApiWrapper api_ = null;
+        private int requestId_ = 0;
+
+        public MyTradeSpi(TradeApiWrapper api)
+        {
+            api_ = api;
+        }
+
+        public override void OnFrontConnected()
+        {
+            Console.WriteLine("[Trade][OnFrontConnected]");
+        }
+
+        public override void OnFrontDisconnected(int nReason)
+        {
+            Console.WriteLine("[Trade][OnFrontConnected] nReason:{0}", nReason);
+        }
+    }
+
     class Program
     {
         const string TRADE_FRONT_ADDR  = "tcp://180.168.146.187:10010";
@@ -89,7 +110,14 @@ namespace CTPTest
         static void TradeApiTest()
         {
             Console.WriteLine("trade api version: {0}", TradeApiWrapper.GetApiVersion());
-            Console.WriteLine("market api version: {0}", MarketApiWrapper.GetApiVersion());
+
+
+            TradeApiWrapper api = new TradeApiWrapper("");
+            api.RegisterSpi(new MyTradeSpi(api));
+            api.RegisterFront(TRADE_FRONT_ADDR);
+
+            api.Init();
+            api.Join();
         }
 
         static void MarketApiTest()
