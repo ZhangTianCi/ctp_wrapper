@@ -18,7 +18,7 @@ namespace CTPWrapper {
 	public:
 		static String^ GetApiVersion()
 		{
-			return gcnew String(CThostFtdcMdApi::GetApiVersion());
+			return MyUnmanagedString::ToManaged(CThostFtdcMdApi::GetApiVersion());
 		}
 
 	public:

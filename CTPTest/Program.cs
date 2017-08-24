@@ -83,7 +83,14 @@ namespace CTPTest
 
     class Program
     {
+        const string TRADE_FRONT_ADDR  = "tcp://180.168.146.187:10010";
         const string MARKET_FRONT_ADDR = "tcp://180.168.146.187:10010";
+
+        static void TradeApiTest()
+        {
+            Console.WriteLine("trade api version: {0}", TradeApiWrapper.GetApiVersion());
+            Console.WriteLine("market api version: {0}", MarketApiWrapper.GetApiVersion());
+        }
 
         static void MarketApiTest()
         {
@@ -99,7 +106,8 @@ namespace CTPTest
 
         static void Main(string[] args)
         {
-            MarketApiTest();
+            TradeApiTest();
+            // MarketApiTest();
         }
     }
 }
