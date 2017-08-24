@@ -142,4 +142,77 @@ namespace CTPWrapper {
 		String^ CurrencyID;
 	};
 
+	public ref struct CThostFtdcInputOrderFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ OrderRef;
+		String^ UserID;
+		char OrderPriceType;
+		char Direction;
+		String^ CombOffsetFlag;
+		String^ CombHedgeFlag;
+		double LimitPrice;
+		int VolumeTotalOriginal;
+		char TimeCondition;
+		String^ GTDDate;
+		char VolumeCondition;
+		int MinVolume;
+		char ContingentCondition;
+		double StopPrice;
+		char ForceCloseReason;
+		int IsAutoSuspend;
+		String^ BusinessUnit;
+		int RequestID;
+		int UserForceClose;
+		int IsSwapOrder;
+		String^ ExchangeID;
+		String^ InvestUnitID;
+		String^ AccountID;
+		String^ CurrencyID;
+		String^ ClientID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
+
+	public ref struct CThostFtdcParkedOrderFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ OrderRef;
+		String^ UserID;
+		char OrderPriceType;
+		char Direction;
+		String^ CombOffsetFlag;
+		String^ CombHedgeFlag;
+		double LimitPrice;
+		int VolumeTotalOriginal;
+		char TimeCondition;
+		String^ GTDDate;
+		char VolumeCondition;
+		int MinVolume;
+		char ContingentCondition;
+		double StopPrice;
+		char ForceCloseReason;
+		int IsAutoSuspend;
+		String^ BusinessUnit;
+		int RequestID;
+		int UserForceClose;
+		String^ ExchangeID;
+		String^ ParkedOrderID;
+		char UserType;
+		char Status;
+		int ErrorID;
+		String^ ErrorMsg;
+		int IsSwapOrder;
+		String^ AccountID;
+		String^ CurrencyID;
+		String^ ClientID;
+		String^ InvestUnitID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
+
 }
