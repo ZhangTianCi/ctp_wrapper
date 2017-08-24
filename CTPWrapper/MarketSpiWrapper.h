@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MarketStructWrapper.h"
+#include "CtpStructWrapper.h"
 
 using namespace System;
 

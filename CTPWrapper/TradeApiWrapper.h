@@ -4,7 +4,7 @@ using namespace System;
 
 #include "ThostFtdcTraderApi.h"
 #include "MyUnmanagedString.h"
-#include "MarketStructWrapper.h"
+#include "CtpStructWrapper.h"
 #include "TradeSpi.h"
 #include <vector>
 

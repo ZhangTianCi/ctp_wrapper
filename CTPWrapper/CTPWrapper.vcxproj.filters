@@ -48,7 +48,7 @@
     <ClInclude Include="TradeSpiWrapper.h">
       <Filter>Trade</Filter>
     </ClInclude>
-    <ClInclude Include="MarketStructWrapper.h">
+    <ClInclude Include="CtpStructWrapper.h">
       <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
@@ -80,7 +80,7 @@
     <ClCompile Include="TradeSpiWrapper.cpp">
       <Filter>Trade</Filter>
     </ClCompile>
-    <ClCompile Include="MarketStructWrapper.cpp">
+    <ClCompile Include="CtpStructWrapper.cpp">
       <Filter>Util</Filter>
     </ClCompile>
   </ItemGroup>
