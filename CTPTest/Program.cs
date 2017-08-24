@@ -64,11 +64,16 @@ namespace CTPTest
         {
             Console.WriteLine("OnRspSubMarketData: {0}, nRequestID: {1}, last: {2}", pSpecificInstrument.InstrumentID, nRequestID, bIsLast);
         }
+
+        public override void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentFieldWrapper pSpecificInstrument, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
+        {
+            Console.WriteLine("[OnRspUnSubMarketData] {0}, nRequestID: {1}, last: {2}", pSpecificInstrument.InstrumentID, nRequestID, bIsLast);
+        }
     }
 
     class Program
     {
-        const string FRONT_ADDR = "tcp://180.168.146.187:10000";
+        const string FRONT_ADDR = "tcp://180.168.146.187:10010";
 
         static void Main(string[] args)
         {

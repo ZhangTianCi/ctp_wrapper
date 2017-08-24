@@ -88,6 +88,18 @@ namespace CTPWrapper {
 			wrapper_->OnRspSubMarketData(csharpInstrument, rspInfo, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
+
+			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
+			rspInfo->ErrorID = pRspInfo->ErrorID;
+			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+
+			wrapper_->OnRspUnSubMarketData(csharpInstrument, rspInfo, nRequestID, bIsLast);
+		}
+
 	private:
 		msclr::auto_gcroot<CThostFtdcMdSpiWrapper^> wrapper_;
 	};
