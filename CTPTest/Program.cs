@@ -62,12 +62,17 @@ namespace CTPTest
 
         public override void OnRspSubMarketData(CThostFtdcSpecificInstrumentFieldWrapper pSpecificInstrument, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
         {
-            Console.WriteLine("OnRspSubMarketData: {0}, nRequestID: {1}, last: {2}", pSpecificInstrument.InstrumentID, nRequestID, bIsLast);
+            Console.WriteLine("[OnRspSubMarketData] {0}, nRequestID: {1}, last: {2}", pSpecificInstrument.InstrumentID, nRequestID, bIsLast);
         }
 
         public override void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentFieldWrapper pSpecificInstrument, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
         {
             Console.WriteLine("[OnRspUnSubMarketData] {0}, nRequestID: {1}, last: {2}", pSpecificInstrument.InstrumentID, nRequestID, bIsLast);
+        }
+
+        public override void OnRtnDepthMarketData(CThostFtdcDepthMarketDataFieldWrapper pDepthMarketData)
+        {
+            Console.WriteLine("[OnRtnDepthMarketData] {0}, 最新价：{1}", pDepthMarketData.InstrumentID, pDepthMarketData.LastPrice);
         }
     }
 

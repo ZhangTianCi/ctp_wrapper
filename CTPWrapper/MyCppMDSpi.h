@@ -100,6 +100,87 @@ namespace CTPWrapper {
 			wrapper_->OnRspUnSubMarketData(csharpInstrument, rspInfo, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
+
+			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
+			rspInfo->ErrorID = pRspInfo->ErrorID;
+			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+
+			wrapper_->OnRspSubForQuoteRsp(csharpInstrument, rspInfo, nRequestID, bIsLast);
+		}
+
+		virtual void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
+
+			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
+			rspInfo->ErrorID = pRspInfo->ErrorID;
+			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+
+			wrapper_->OnRspUnSubForQuoteRsp(csharpInstrument, rspInfo, nRequestID, bIsLast);
+		}
+
+		virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData)
+		{
+			CThostFtdcDepthMarketDataFieldWrapper^ csharpData = gcnew CThostFtdcDepthMarketDataFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, pDepthMarketData->TradingDay);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, pDepthMarketData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, pDepthMarketData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, pDepthMarketData->ExchangeInstID);
+			csharpData->LastPrice = pDepthMarketData->LastPrice;
+			csharpData->PreSettlementPrice = pDepthMarketData->PreSettlementPrice;
+			csharpData->PreClosePrice = pDepthMarketData->PreClosePrice;
+			csharpData->PreOpenInterest = pDepthMarketData->PreOpenInterest;
+			csharpData->OpenPrice = pDepthMarketData->OpenPrice;
+			csharpData->HighestPrice = pDepthMarketData->HighestPrice;
+			csharpData->LowestPrice = pDepthMarketData->LowestPrice;
+			csharpData->Volume = pDepthMarketData->Volume;
+			csharpData->Turnover = pDepthMarketData->Turnover;
+			csharpData->OpenInterest = pDepthMarketData->OpenInterest;
+			csharpData->ClosePrice = pDepthMarketData->ClosePrice;
+			csharpData->SettlementPrice = pDepthMarketData->SettlementPrice;
+			csharpData->UpperLimitPrice = pDepthMarketData->UpperLimitPrice;
+			csharpData->LowerLimitPrice = pDepthMarketData->LowerLimitPrice;
+			csharpData->PreDelta = pDepthMarketData->PreDelta;
+			csharpData->CurrDelta = pDepthMarketData->CurrDelta;
+			COPY_UNMANAGED_STRING(csharpData->UpdateTime, pDepthMarketData->UpdateTime);
+			csharpData->UpdateMillisec = pDepthMarketData->UpdateMillisec;
+
+			csharpData->BidPrice1 = pDepthMarketData->BidPrice1;
+			csharpData->BidVolume1 = pDepthMarketData->BidVolume1;
+			csharpData->AskPrice1 = pDepthMarketData->AskPrice1;
+			csharpData->AskVolume1 = pDepthMarketData->AskVolume1;
+
+			csharpData->BidPrice2 = pDepthMarketData->BidPrice2;
+			csharpData->BidVolume2 = pDepthMarketData->BidVolume2;
+			csharpData->AskPrice2 = pDepthMarketData->AskPrice2;
+			csharpData->AskVolume2 = pDepthMarketData->AskVolume2;
+
+			csharpData->BidPrice3 = pDepthMarketData->BidPrice3;
+			csharpData->BidVolume3 = pDepthMarketData->BidVolume3;
+			csharpData->AskPrice3 = pDepthMarketData->AskPrice3;
+			csharpData->AskVolume3 = pDepthMarketData->AskVolume3;
+
+			csharpData->BidPrice4 = pDepthMarketData->BidPrice4;
+			csharpData->BidVolume4 = pDepthMarketData->BidVolume4;
+			csharpData->AskPrice4 = pDepthMarketData->AskPrice4;
+			csharpData->AskVolume4 = pDepthMarketData->AskVolume4;
+
+			csharpData->BidPrice5 = pDepthMarketData->BidPrice5;
+			csharpData->BidVolume5 = pDepthMarketData->BidVolume5;
+			csharpData->AskPrice5 = pDepthMarketData->AskPrice5;
+			csharpData->AskVolume5 = pDepthMarketData->AskVolume5;
+
+			csharpData->AveragePrice = pDepthMarketData->AveragePrice;
+			COPY_UNMANAGED_STRING(csharpData->ActionDay, pDepthMarketData->ActionDay);
+
+			wrapper_->OnRtnDepthMarketData(csharpData);
+		}
+
 	private:
 		msclr::auto_gcroot<CThostFtdcMdSpiWrapper^> wrapper_;
 	};
