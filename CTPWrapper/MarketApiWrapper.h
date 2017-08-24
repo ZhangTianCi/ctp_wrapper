@@ -7,8 +7,8 @@ using namespace System;
 
 #include "ThostFtdcMdApi.h"
 #include "MarketSpi.h"
-#include "MyUnmanagedString.h"
 #include "MarketSpiWrapper.h"
+#include "MyUnmanagedString.h"
 #include <vector>
 
 namespace CTPWrapper {
