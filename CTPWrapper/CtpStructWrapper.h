@@ -262,4 +262,12 @@ namespace CTPWrapper {
 		String^ MacAddress;
 	};
 
+	public ref struct CThostFtdcReqAuthenticateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ UserID;
+		String^ UserProductInfo;
+		String^ AuthCode;
+	};
+
 }

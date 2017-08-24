@@ -83,6 +83,29 @@ namespace CTPWrapper {
 			api_->RegisterSpi(spi_);
 		}
 
+		void SubscribePrivateTopic(int nResumeType)
+		{
+			api_->SubscribePrivateTopic((THOST_TE_RESUME_TYPE)nResumeType);
+		}
+
+		void SubscribePublicTopic(int nResumeType)
+		{
+			api_->SubscribePrivateTopic((THOST_TE_RESUME_TYPE)nResumeType);
+		}
+
+		int ReqAuthenticate(CThostFtdcReqAuthenticateFieldWrapper^ csharpAuth, int nRequestID)
+		{
+			CThostFtdcReqAuthenticateField cppAuth;
+			memset(&cppAuth, 0, sizeof(cppAuth));
+
+			COPY_MANAGED_STRING(cppAuth.BrokerID, csharpAuth->BrokerID);
+			COPY_MANAGED_STRING(cppAuth.UserID, csharpAuth->UserID);
+			COPY_MANAGED_STRING(cppAuth.UserProductInfo, csharpAuth->UserProductInfo);
+			COPY_MANAGED_STRING(cppAuth.AuthCode, csharpAuth->AuthCode);
+
+			return api_->ReqAuthenticate(&cppAuth, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;

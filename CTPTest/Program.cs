@@ -91,14 +91,37 @@ namespace CTPTest
             api_ = api;
         }
 
+        public int GetNextRequestId()
+        {
+            ++requestId_;
+            return requestId_;
+        }
+
+        public override void OnRspError(CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
+        {
+            Console.WriteLine("[Trade][OnRspError] ErrorID:{0}, ErrorMsg:{1}, nRequestID:{2}, bIsLast:{3}", pRspInfo.ErrorID, pRspInfo.ErrorMsg, nRequestID, bIsLast);
+        }
+
         public override void OnFrontConnected()
         {
             Console.WriteLine("[Trade][OnFrontConnected]");
+
+            CThostFtdcReqAuthenticateFieldWrapper auth = new CThostFtdcReqAuthenticateFieldWrapper();
+            auth.BrokerID = "9999";
+            auth.UserID = "100753";
+
+            int n = api_.ReqAuthenticate(auth, GetNextRequestId());
+            Console.WriteLine("[Trade][OnFrontConnected] auth: {0}", n);
         }
 
         public override void OnFrontDisconnected(int nReason)
         {
             Console.WriteLine("[Trade][OnFrontConnected] nReason:{0}", nReason);
+        }
+
+        public override void OnRspAuthenticate(CThostFtdcRspAuthenticateFieldWrapper pRspAuthenticateField, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
+        {
+            Console.WriteLine("[Trade][OnRspAuthenticate] BrokerID:{0}, UserID:{1}, nRequestID:{2}, bIsLast:{3}", pRspAuthenticateField.BrokerID, pRspAuthenticateField.UserID, nRequestID, bIsLast);
         }
     }
 
