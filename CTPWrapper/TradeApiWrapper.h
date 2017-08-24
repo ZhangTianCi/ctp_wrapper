@@ -137,6 +137,19 @@ namespace CTPWrapper {
 			return api_->ReqUserLogout(&req, nRequestID);
 		}
 
+		int ReqUserPasswordUpdate(CThostFtdcUserPasswordUpdateFieldWrapper^ pUserPasswordUpdate, int nRequestID)
+		{
+			CThostFtdcUserPasswordUpdateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, pUserPasswordUpdate->BrokerID);
+			COPY_MANAGED_STRING(req.UserID, pUserPasswordUpdate->UserID);
+			COPY_MANAGED_STRING(req.OldPassword, pUserPasswordUpdate->OldPassword);
+			COPY_MANAGED_STRING(req.NewPassword, pUserPasswordUpdate->NewPassword);
+
+			return api_->ReqUserPasswordUpdate(&req, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;

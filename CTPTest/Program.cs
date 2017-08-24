@@ -20,7 +20,7 @@ namespace CTPTest
             CThostFtdcReqUserLoginFieldWrapper loginInfo = new CThostFtdcReqUserLoginFieldWrapper();
             loginInfo.BrokerID = "9999";
             loginInfo.UserID   = "100753";
-            loginInfo.Password = "666009";
+            loginInfo.Password = "a1202b";
             requestId_++;
             int ok = api_.ReqUserLogin(loginInfo, requestId_);
 
@@ -111,11 +111,10 @@ namespace CTPTest
             CThostFtdcReqUserLoginFieldWrapper loginInfo = new CThostFtdcReqUserLoginFieldWrapper();
             loginInfo.BrokerID = "9999";
             loginInfo.UserID = "100753";
-            loginInfo.Password = "666009";
+            loginInfo.Password = "a1202b";
             int requestId = GetNextRequestId();
             int ok = api_.ReqUserLogin(loginInfo, requestId);
-
-            Console.WriteLine("尝试登录：{0}, requestId：{1}", ok == 0 ? "成功" : "失败", requestId);
+            Console.WriteLine("尝试登录：{0}, requestId：{1}", ok, requestId);
 
 
             CThostFtdcReqAuthenticateFieldWrapper auth = new CThostFtdcReqAuthenticateFieldWrapper();
@@ -135,9 +134,24 @@ namespace CTPTest
         {
             Console.WriteLine("[Trade][OnRspUserLogin] nRequestID:{0}, bIsLast:{1}", nRequestID, bIsLast);
             Console.WriteLine("  TradingDay: {0}", pRspUserLogin.TradingDay);
+            // Console.WriteLine("  LoginTime: {0}", pRspUserLogin.LoginTime);
+            // Console.WriteLine("  SystemName: {0}", pRspUserLogin.SystemName);
             Console.WriteLine("  ErrorID: {0}", pRspInfo.ErrorID);
-            Console.WriteLine("  ErrorMsg: {1}", null);
-      }
+            Console.WriteLine("  ErrorMsg: {0}", pRspInfo.ErrorMsg);
+
+            /*
+            if (pRspInfo.ErrorID == 0)
+            {
+                CThostFtdcUserPasswordUpdateFieldWrapper req = new CThostFtdcUserPasswordUpdateFieldWrapper();
+                req.BrokerID = "9999";
+                req.UserID = "100753";
+                req.OldPassword = "666009";
+                req.NewPassword = "a1202b";
+                int ok = api_.ReqUserPasswordUpdate(req, GetNextRequestId());
+                Console.WriteLine("  尝试修改密码: {0}", ok);
+            }
+            */
+        }
 
         public override void OnRspAuthenticate(CThostFtdcRspAuthenticateFieldWrapper pRspAuthenticateField, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
         {
@@ -145,7 +159,14 @@ namespace CTPTest
             Console.WriteLine("  BrokerID: {0}", pRspAuthenticateField.BrokerID);
             Console.WriteLine("  UserID: {0}", pRspAuthenticateField.UserID);
             Console.WriteLine("  ErrorID: {0}", pRspInfo.ErrorID);
-            Console.WriteLine("  ErrorMsg: {1}", null);
+            Console.WriteLine("  ErrorMsg: {0}", pRspInfo.ErrorMsg);
+        }
+
+        public override void OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateFieldWrapper pUserPasswordUpdate, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
+        {
+            Console.WriteLine("[Trade][OnRspUserPasswordUpdate] nRequestID:{0}, bIsLast:{1}", nRequestID, bIsLast);
+            Console.WriteLine("  ErrorID: {0}", pRspInfo.ErrorID);
+            Console.WriteLine("  ErrorMsg: {0}", pRspInfo.ErrorMsg);
         }
     }
 
