@@ -203,6 +203,50 @@ namespace CTPWrapper {
 			return api_->ReqOrderInsert(&req, nRequestID);
 		}
 
+		int ReqParkedOrderInsert(CThostFtdcParkedOrderFieldWrapper^ pParkedOrder, int nRequestID)
+		{
+			CThostFtdcParkedOrderField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, pParkedOrder->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, pParkedOrder->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, pParkedOrder->InstrumentID);
+			COPY_MANAGED_STRING(req.OrderRef, pParkedOrder->OrderRef);
+			COPY_MANAGED_STRING(req.UserID, pParkedOrder->UserID);
+			req.OrderPriceType = pParkedOrder->OrderPriceType;
+			req.Direction = pParkedOrder->Direction;
+			COPY_MANAGED_STRING(req.CombOffsetFlag, pParkedOrder->CombOffsetFlag);
+			COPY_MANAGED_STRING(req.CombHedgeFlag, pParkedOrder->CombHedgeFlag);
+			req.LimitPrice = pParkedOrder->LimitPrice;
+			req.VolumeTotalOriginal = pParkedOrder->VolumeTotalOriginal;
+			req.TimeCondition = pParkedOrder->TimeCondition;
+			COPY_MANAGED_STRING(req.GTDDate, pParkedOrder->GTDDate);
+			req.VolumeCondition = pParkedOrder->VolumeCondition;
+			req.MinVolume = pParkedOrder->MinVolume;
+			req.ContingentCondition = pParkedOrder->ContingentCondition;
+			req.StopPrice = pParkedOrder->StopPrice;
+			req.ForceCloseReason = pParkedOrder->ForceCloseReason;
+			req.IsAutoSuspend = pParkedOrder->IsAutoSuspend;
+			COPY_MANAGED_STRING(req.BusinessUnit, pParkedOrder->BusinessUnit);
+			req.RequestID = pParkedOrder->RequestID;
+			req.UserForceClose = pParkedOrder->UserForceClose;
+			COPY_MANAGED_STRING(req.ExchangeID, pParkedOrder->ExchangeID);
+			COPY_MANAGED_STRING(req.ParkedOrderID, pParkedOrder->ParkedOrderID);
+			req.UserType = pParkedOrder->UserType;
+			req.Status = pParkedOrder->Status;
+			req.ErrorID = pParkedOrder->ErrorID;
+			COPY_MANAGED_STRING(req.ErrorMsg, pParkedOrder->ErrorMsg);
+			req.IsSwapOrder = pParkedOrder->IsSwapOrder;
+			COPY_MANAGED_STRING(req.AccountID, pParkedOrder->AccountID);
+			COPY_MANAGED_STRING(req.CurrencyID, pParkedOrder->CurrencyID);
+			COPY_MANAGED_STRING(req.ClientID, pParkedOrder->ClientID);
+			COPY_MANAGED_STRING(req.InvestUnitID, pParkedOrder->InvestUnitID);
+			COPY_MANAGED_STRING(req.IPAddress, pParkedOrder->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, pParkedOrder->MacAddress);
+
+			return api_->ReqParkedOrderInsert(&req, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;
