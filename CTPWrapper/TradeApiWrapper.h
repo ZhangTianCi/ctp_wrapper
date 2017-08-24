@@ -106,6 +106,37 @@ namespace CTPWrapper {
 			return api_->ReqAuthenticate(&cppAuth, nRequestID);
 		}
 
+		int ReqUserLogin(CThostFtdcReqUserLoginFieldWrapper^ pReqUserLoginField, int nRequestID)
+		{
+			CThostFtdcReqUserLoginField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.TradingDay, pReqUserLoginField->TradingDay);
+			COPY_MANAGED_STRING(req.BrokerID, pReqUserLoginField->BrokerID);
+			COPY_MANAGED_STRING(req.UserID, pReqUserLoginField->UserID);
+			COPY_MANAGED_STRING(req.Password, pReqUserLoginField->Password);
+			COPY_MANAGED_STRING(req.UserProductInfo, pReqUserLoginField->UserProductInfo);
+			COPY_MANAGED_STRING(req.InterfaceProductInfo, pReqUserLoginField->InterfaceProductInfo);
+			COPY_MANAGED_STRING(req.ProtocolInfo, pReqUserLoginField->ProtocolInfo);
+			COPY_MANAGED_STRING(req.MacAddress, pReqUserLoginField->MacAddress);
+			COPY_MANAGED_STRING(req.OneTimePassword, pReqUserLoginField->OneTimePassword);
+			COPY_MANAGED_STRING(req.ClientIPAddress, pReqUserLoginField->ClientIPAddress);
+			COPY_MANAGED_STRING(req.LoginRemark, pReqUserLoginField->LoginRemark);
+
+			return api_->ReqUserLogin(&req, nRequestID);
+		}
+
+		int ReqUserLogout(CThostFtdcUserLogoutFieldWrapper^ pUserLogout, int nRequestID)
+		{
+			CThostFtdcUserLogoutField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, pUserLogout->BrokerID);
+			COPY_MANAGED_STRING(req.UserID, pUserLogout->UserID);
+
+			return api_->ReqUserLogout(&req, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;

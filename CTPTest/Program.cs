@@ -81,6 +81,7 @@ namespace CTPTest
         }
     }
 
+
     class MyTradeSpi : TradeSpiWrapper
     {
         private TradeApiWrapper api_ = null;
@@ -106,12 +107,23 @@ namespace CTPTest
         {
             Console.WriteLine("[Trade][OnFrontConnected]");
 
+
+            CThostFtdcReqUserLoginFieldWrapper loginInfo = new CThostFtdcReqUserLoginFieldWrapper();
+            loginInfo.BrokerID = "9999";
+            loginInfo.UserID = "100753";
+            loginInfo.Password = "666009";
+            int requestId = GetNextRequestId();
+            int ok = api_.ReqUserLogin(loginInfo, requestId);
+
+            Console.WriteLine("尝试登录：{0}, requestId：{1}", ok == 0 ? "成功" : "失败", requestId);
+
+
             CThostFtdcReqAuthenticateFieldWrapper auth = new CThostFtdcReqAuthenticateFieldWrapper();
             auth.BrokerID = "9999";
             auth.UserID = "100753";
-
-            int n = api_.ReqAuthenticate(auth, GetNextRequestId());
-            Console.WriteLine("[Trade][OnFrontConnected] auth: {0}", n);
+            requestId = GetNextRequestId();
+            ok = api_.ReqAuthenticate(auth, requestId);
+            Console.WriteLine("尝试认证：{0}, requestId：{1}", ok, requestId);
         }
 
         public override void OnFrontDisconnected(int nReason)
@@ -119,15 +131,27 @@ namespace CTPTest
             Console.WriteLine("[Trade][OnFrontConnected] nReason:{0}", nReason);
         }
 
+        public override void OnRspUserLogin(CThostFtdcRspUserLoginFieldWrapper pRspUserLogin, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
+        {
+            Console.WriteLine("[Trade][OnRspUserLogin] nRequestID:{0}, bIsLast:{1}", nRequestID, bIsLast);
+            Console.WriteLine("  TradingDay: {0}", pRspUserLogin.TradingDay);
+            Console.WriteLine("  ErrorID: {0}", pRspInfo.ErrorID);
+            Console.WriteLine("  ErrorMsg: {1}", null);
+      }
+
         public override void OnRspAuthenticate(CThostFtdcRspAuthenticateFieldWrapper pRspAuthenticateField, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
         {
-            Console.WriteLine("[Trade][OnRspAuthenticate] BrokerID:{0}, UserID:{1}, nRequestID:{2}, bIsLast:{3}", pRspAuthenticateField.BrokerID, pRspAuthenticateField.UserID, nRequestID, bIsLast);
+            Console.WriteLine("[Trade][OnRspAuthenticate] nRequestID:{0}, bIsLast:{1}", nRequestID, bIsLast);
+            Console.WriteLine("  BrokerID: {0}", pRspAuthenticateField.BrokerID);
+            Console.WriteLine("  UserID: {0}", pRspAuthenticateField.UserID);
+            Console.WriteLine("  ErrorID: {0}", pRspInfo.ErrorID);
+            Console.WriteLine("  ErrorMsg: {1}", null);
         }
     }
 
     class Program
     {
-        const string TRADE_FRONT_ADDR  = "tcp://180.168.146.187:10010";
+        const string TRADE_FRONT_ADDR  = "tcp://180.168.146.187:10000";
         const string MARKET_FRONT_ADDR = "tcp://180.168.146.187:10010";
 
         static void TradeApiTest()
