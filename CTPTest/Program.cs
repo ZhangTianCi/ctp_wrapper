@@ -35,10 +35,11 @@ namespace CTPTest
         public override void OnRspUserLogin(CThostFtdcRspUserLoginFieldWrapper pRspUserLogin, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
         {
             Console.WriteLine("OnRspUserLogin: {0}, nRequestID: {1}, last: {2}, error: {3}", pRspUserLogin.TradingDay, nRequestID, bIsLast, pRspInfo.ErrorID);
-            
-            // int n = api_.SubscribeMarketData(new String[] { "ni1701", "rb1701" });
-            // Console.WriteLine("OnRspUserLogin: sub: {0}", n);
 
+            int n = api_.SubscribeMarketData(new String[] { "rb1801", });
+            Console.WriteLine("尝试订阅： {0}", n);
+
+            /*
             CThostFtdcUserLogoutFieldWrapper logoutInfo = new CThostFtdcUserLogoutFieldWrapper();
             logoutInfo.BrokerID = "9999";
             logoutInfo.UserID = "100753";
@@ -46,11 +47,17 @@ namespace CTPTest
             int ok = api_.ReqUserLogout(logoutInfo, requestId_);
 
             Console.WriteLine("尝试退出：{0}", ok == 0 ? "成功" : "失败");
+            */
         }
 
 		public override void OnRspUserLogout(CThostFtdcUserLogoutFieldWrapper pUserLogout, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
         {
             Console.WriteLine("OnRspUserLogout: BrokerId/UserId:{0}/{1}, nRequestID: {2}, last: {3}, error: {4}", pUserLogout.BrokerID, pUserLogout.UserID, nRequestID, bIsLast, pRspInfo.ErrorID);
+        }
+
+        public override void OnRspError(CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
+        {
+            Console.WriteLine("[OnRspError] ErrorID:{0}, ErrorMsg:{1}, nRequestID:{2}, bIsLast:{3}", pRspInfo.ErrorID, pRspInfo.ErrorMsg, nRequestID, bIsLast);
         }
 
         public override void OnRspSubMarketData(CThostFtdcSpecificInstrumentFieldWrapper pSpecificInstrument, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)

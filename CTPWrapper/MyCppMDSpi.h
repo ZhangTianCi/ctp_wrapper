@@ -67,6 +67,15 @@ namespace CTPWrapper {
 			wrapper_->OnRspUserLogout(csharpUserLogout, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+		{
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = pRspInfo->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, pRspInfo->ErrorMsg);
+
+			wrapper_->OnRspError(csharpError, nRequestID, bIsLast);
+		}
+
 		virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
