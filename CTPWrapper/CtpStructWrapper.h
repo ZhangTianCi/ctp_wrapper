@@ -719,4 +719,39 @@ namespace CTPWrapper {
 		String^ ExchangeProductID;
 		double UnderlyingMultiple;
 	};
+
+	public ref struct CThostFtdcInstrumentFieldWrapper
+	{
+		String^ InstrumentID;
+		String^ ExchangeID;
+		String^ InstrumentName;
+		String^ ExchangeInstID;
+		String^ ProductID;
+		char ProductClass;
+		int DeliveryYear;
+		int DeliveryMonth;
+		int MaxMarketOrderVolume;
+		int MinMarketOrderVolume;
+		int MaxLimitOrderVolume;
+		int MinLimitOrderVolume;
+		int VolumeMultiple;
+		double PriceTick;
+		String^ CreateDate;
+		String^ OpenDate;
+		String^ ExpireDate;
+		String^ StartDelivDate;
+		String^ EndDelivDate;
+		char InstLifePhase;
+		int IsTrading;
+		char PositionType;
+		char PositionDateType;
+		double LongMarginRatio;
+		double ShortMarginRatio;
+		char MaxMarginSideAlgorithm;
+		String^ UnderlyingInstrID;
+		double StrikePrice;
+		char OptionsType;
+		double UnderlyingMultiple;
+		char CombinationType;
+	};
 }

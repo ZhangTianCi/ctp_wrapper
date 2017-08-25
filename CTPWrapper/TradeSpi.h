@@ -857,6 +857,48 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryProduct(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryInstrument(CThostFtdcInstrumentField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcInstrumentFieldWrapper^ csharpData = gcnew CThostFtdcInstrumentFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentName, cppData->InstrumentName);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+			COPY_UNMANAGED_STRING(csharpData->ProductID, cppData->ProductID);
+			csharpData->ProductClass = cppData->ProductClass;
+			csharpData->DeliveryYear = cppData->DeliveryYear;
+			csharpData->DeliveryMonth = cppData->DeliveryMonth;
+			csharpData->MaxMarketOrderVolume = cppData->MaxMarketOrderVolume;
+			csharpData->MinMarketOrderVolume = cppData->MinMarketOrderVolume;
+			csharpData->MaxLimitOrderVolume = cppData->MaxLimitOrderVolume;
+			csharpData->MinLimitOrderVolume = cppData->MinLimitOrderVolume;
+			csharpData->VolumeMultiple = cppData->VolumeMultiple;
+			csharpData->PriceTick = cppData->PriceTick;
+			COPY_UNMANAGED_STRING(csharpData->CreateDate, cppData->CreateDate);
+			COPY_UNMANAGED_STRING(csharpData->OpenDate, cppData->OpenDate);
+			COPY_UNMANAGED_STRING(csharpData->ExpireDate, cppData->ExpireDate);
+			COPY_UNMANAGED_STRING(csharpData->StartDelivDate, cppData->StartDelivDate);
+			COPY_UNMANAGED_STRING(csharpData->EndDelivDate, cppData->EndDelivDate);
+			csharpData->InstLifePhase = cppData->InstLifePhase;
+			csharpData->IsTrading = cppData->IsTrading;
+			csharpData->PositionType = cppData->PositionType;
+			csharpData->PositionDateType = cppData->PositionDateType;
+			csharpData->LongMarginRatio = cppData->LongMarginRatio;
+			csharpData->ShortMarginRatio = cppData->ShortMarginRatio;
+			csharpData->MaxMarginSideAlgorithm = cppData->MaxMarginSideAlgorithm;
+			COPY_UNMANAGED_STRING(csharpData->UnderlyingInstrID, cppData->UnderlyingInstrID);
+			csharpData->StrikePrice = cppData->StrikePrice;
+			csharpData->OptionsType = cppData->OptionsType;
+			csharpData->UnderlyingMultiple = cppData->UnderlyingMultiple;
+			csharpData->CombinationType = cppData->CombinationType;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryInstrument(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
