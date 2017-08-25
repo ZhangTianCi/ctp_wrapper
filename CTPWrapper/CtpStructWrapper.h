@@ -586,4 +586,54 @@ namespace CTPWrapper {
 		int AbandonFrozen;
 	};
 
+
+	public ref struct CThostFtdcTradingAccountFieldWrapper
+	{
+		String^ BrokerID;
+		String^ AccountID;
+		double PreMortgage;
+		double PreCredit;
+		double PreDeposit;
+		double PreBalance;
+		double PreMargin;
+		double InterestBase;
+		double Interest;
+		double Deposit;
+		double Withdraw;
+		double FrozenMargin;
+		double FrozenCash;
+		double FrozenCommission;
+		double CurrMargin;
+		double CashIn;
+		double Commission;
+		double CloseProfit;
+		double PositionProfit;
+		double Balance;
+		double Available;
+		double WithdrawQuota;
+		double Reserve;
+		String^ TradingDay;
+		int SettlementID;
+		double Credit;
+		double Mortgage;
+		double ExchangeMargin;
+		double DeliveryMargin;
+		double ExchangeDeliveryMargin;
+		double ReserveBalance;
+		String^ CurrencyID;
+		double PreFundMortgageIn;
+		double PreFundMortgageOut;
+		double FundMortgageIn;
+		double FundMortgageOut;
+		double FundMortgageAvailable;
+		double MortgageableFund;
+		double SpecProductMargin;
+		double SpecProductFrozenMargin;
+		double SpecProductCommission;
+		double SpecProductFrozenCommission;
+		double SpecProductPositionProfit;
+		double SpecProductCloseProfit;
+		double SpecProductPositionProfitByAlg;
+		double SpecProductExchangeMargin;
+	};
 }

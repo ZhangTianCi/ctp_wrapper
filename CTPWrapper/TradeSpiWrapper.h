@@ -39,6 +39,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryOrder(CThostFtdcOrderFieldWrapper^ pOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 		virtual void OnRspQryTrade(CThostFtdcTradeFieldWrapper^ pTrade, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 		virtual void OnRspQryInvestorPosition(CThostFtdcInvestorPositionFieldWrapper^ pInvestorPosition, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
+		virtual void OnRspQryTradingAccount(CThostFtdcTradingAccountFieldWrapper^ pTradingAccount, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 
 
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}

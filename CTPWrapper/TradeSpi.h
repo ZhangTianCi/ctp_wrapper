@@ -674,6 +674,62 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryInvestorPosition(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryTradingAccount(CThostFtdcTradingAccountField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcTradingAccountFieldWrapper^ csharpData = gcnew CThostFtdcTradingAccountFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			csharpData->PreMortgage = cppData->PreMortgage;
+			csharpData->PreCredit = cppData->PreCredit;
+			csharpData->PreDeposit = cppData->PreDeposit;
+			csharpData->PreBalance = cppData->PreBalance;
+			csharpData->PreMargin = cppData->PreMargin;
+			csharpData->InterestBase = cppData->InterestBase;
+			csharpData->Interest = cppData->Interest;
+			csharpData->Deposit = cppData->Deposit;
+			csharpData->Withdraw = cppData->Withdraw;
+			csharpData->FrozenMargin = cppData->FrozenMargin;
+			csharpData->FrozenCash = cppData->FrozenCash;
+			csharpData->FrozenCommission = cppData->FrozenCommission;
+			csharpData->CurrMargin = cppData->CurrMargin;
+			csharpData->CashIn = cppData->CashIn;
+			csharpData->Commission = cppData->Commission;
+			csharpData->CloseProfit = cppData->CloseProfit;
+			csharpData->PositionProfit = cppData->PositionProfit;
+			csharpData->Balance = cppData->Balance;
+			csharpData->Available = cppData->Available;
+			csharpData->WithdrawQuota = cppData->WithdrawQuota;
+			csharpData->Reserve = cppData->Reserve;
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			csharpData->Credit = cppData->Credit;
+			csharpData->Mortgage = cppData->Mortgage;
+			csharpData->ExchangeMargin = cppData->ExchangeMargin;
+			csharpData->DeliveryMargin = cppData->DeliveryMargin;
+			csharpData->ExchangeDeliveryMargin = cppData->ExchangeDeliveryMargin;
+			csharpData->ReserveBalance = cppData->ReserveBalance;
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			csharpData->PreFundMortgageIn = cppData->PreFundMortgageIn;
+			csharpData->PreFundMortgageOut = cppData->PreFundMortgageOut;
+			csharpData->FundMortgageIn = cppData->FundMortgageIn;
+			csharpData->FundMortgageOut = cppData->FundMortgageOut;
+			csharpData->FundMortgageAvailable = cppData->FundMortgageAvailable;
+			csharpData->MortgageableFund = cppData->MortgageableFund;
+			csharpData->SpecProductMargin = cppData->SpecProductMargin;
+			csharpData->SpecProductFrozenMargin = cppData->SpecProductFrozenMargin;
+			csharpData->SpecProductCommission = cppData->SpecProductCommission;
+			csharpData->SpecProductFrozenCommission = cppData->SpecProductFrozenCommission;
+			csharpData->SpecProductPositionProfit = cppData->SpecProductPositionProfit;
+			csharpData->SpecProductCloseProfit = cppData->SpecProductCloseProfit;
+			csharpData->SpecProductPositionProfitByAlg = cppData->SpecProductPositionProfitByAlg;
+			csharpData->SpecProductExchangeMargin = cppData->SpecProductExchangeMargin;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryTradingAccount(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
 
 
