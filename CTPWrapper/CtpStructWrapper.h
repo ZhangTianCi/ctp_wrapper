@@ -273,4 +273,12 @@ namespace CTPWrapper {
 		int MaxVolume;
 	};
 
+	public ref struct CThostFtdcSettlementInfoConfirmFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ ConfirmDate;
+		String^ ConfirmTime;
+	};
+
 }
