@@ -28,6 +28,7 @@ namespace CTPWrapper {
 		virtual void OnRspQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeFieldWrapper^ pQueryMaxOrderVolume, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 		virtual void OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmFieldWrapper^ pSettlementInfoConfirm, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 		virtual void OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderFieldWrapper^ pRemoveParkedOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
+		virtual void OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionFieldWrapper^ pRemoveParkedOrderAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 
 
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}

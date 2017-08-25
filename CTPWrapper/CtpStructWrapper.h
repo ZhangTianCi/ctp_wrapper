@@ -288,4 +288,11 @@ namespace CTPWrapper {
 		String^ ParkedOrderID;
 	};
 
+	public ref struct CThostFtdcRemoveParkedOrderActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ ParkedOrderActionID;
+	};
+
 }

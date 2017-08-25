@@ -307,6 +307,20 @@ namespace CTPWrapper {
 			wrapper_->OnRspRemoveParkedOrder(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcRemoveParkedOrderActionFieldWrapper^ csharpData = gcnew CThostFtdcRemoveParkedOrderActionFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->ParkedOrderActionID, cppData->ParkedOrderActionID);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspRemoveParkedOrderAction(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
