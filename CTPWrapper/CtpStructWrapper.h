@@ -413,4 +413,20 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
+	public ref struct CThostFtdcInputCombActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ CombActionRef;
+		String^ UserID;
+		char Direction;
+		int Volume;
+		char CombDirection;
+		char HedgeFlag;
+		String^ ExchangeID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }
