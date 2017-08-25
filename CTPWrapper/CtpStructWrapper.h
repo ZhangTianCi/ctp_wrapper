@@ -398,4 +398,19 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
+	public ref struct CThostFtdcInputBatchOrderActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		int OrderActionRef;
+		int RequestID;
+		int FrontID;
+		int SessionID;
+		String^ ExchangeID;
+		String^ UserID;
+		String^ InvestUnitID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }
