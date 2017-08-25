@@ -37,6 +37,7 @@ namespace CTPWrapper {
 		virtual void OnRspBatchOrderAction(CThostFtdcInputBatchOrderActionFieldWrapper^ pInputBatchOrderAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 		virtual void OnRspCombActionInsert(CThostFtdcInputCombActionFieldWrapper^ pInputCombAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 		virtual void OnRspQryOrder(CThostFtdcOrderFieldWrapper^ pOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
+		virtual void OnRspQryTrade(CThostFtdcTradeFieldWrapper^ pTrade, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 
 
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}

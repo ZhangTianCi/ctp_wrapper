@@ -505,4 +505,37 @@ namespace CTPWrapper {
 		String^ AuthCode;
 	};
 
+	public ref struct CThostFtdcTradeFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ OrderRef;
+		String^ UserID;
+		String^ ExchangeID;
+		String^ TradeID;
+		char Direction;
+		String^ OrderSysID;
+		String^ ParticipantID;
+		String^ ClientID;
+		char TradingRole;
+		String^ ExchangeInstID;
+		char OffsetFlag;
+		char HedgeFlag;
+		double Price;
+		int Volume;
+		String^ TradeDate;
+		String^ TradeTime;
+		char TradeType;
+		char PriceSource;
+		String^ TraderID;
+		String^ OrderLocalID;
+		String^ ClearingPartID;
+		String^ BusinessUnit;
+		int SequenceNo;
+		String^ TradingDay;
+		int SettlementID;
+		int BrokerOrderSeq;
+		char TradeSource;
+	};
 }
