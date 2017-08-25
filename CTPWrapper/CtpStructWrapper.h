@@ -677,4 +677,18 @@ namespace CTPWrapper {
 		double ShortMarginRatioByVolume;
 		int IsRelative;
 	};
+
+	public ref struct CThostFtdcInstrumentCommissionRateFieldWrapper
+	{
+		String^ InstrumentID;
+		char InvestorRange;
+		String^ BrokerID;
+		String^ InvestorID;
+		double OpenRatioByMoney;
+		double OpenRatioByVolume;
+		double CloseRatioByMoney;
+		double CloseRatioByVolume;
+		double CloseTodayRatioByMoney;
+		double CloseTodayRatioByVolume;
+	};
 }
