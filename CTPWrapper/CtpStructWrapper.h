@@ -698,4 +698,25 @@ namespace CTPWrapper {
 		String^ ExchangeName;
 		char ExchangeProperty;
 	};
+
+	public ref struct CThostFtdcProductFieldWrapper
+	{
+		String^ ProductID;
+		String^ ProductName;
+		String^ ExchangeID;
+		char ProductClass;
+		int VolumeMultiple;
+		double PriceTick;
+		int MaxMarketOrderVolume;
+		int MinMarketOrderVolume;
+		int MaxLimitOrderVolume;
+		int MinLimitOrderVolume;
+		char PositionType;
+		char PositionDateType;
+		char CloseDealType;
+		String^ TradeCurrencyID;
+		char MortgageFundUseRange;
+		String^ ExchangeProductID;
+		double UnderlyingMultiple;
+	};
 }

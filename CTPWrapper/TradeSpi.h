@@ -828,6 +828,35 @@ namespace CTPWrapper {
 
 			wrapper_->OnRspQryExchange(csharpData, csharpError, nRequestID, bIsLast);
 		}
+		
+		virtual void OnRspQryProduct(CThostFtdcProductField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcProductFieldWrapper^ csharpData = gcnew CThostFtdcProductFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->ProductID, cppData->ProductID);
+			COPY_UNMANAGED_STRING(csharpData->ProductName, cppData->ProductName);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			csharpData->ProductClass = cppData->ProductClass;
+			csharpData->VolumeMultiple = cppData->VolumeMultiple;
+			csharpData->PriceTick = cppData->PriceTick;
+			csharpData->MaxMarketOrderVolume = cppData->MaxMarketOrderVolume;
+			csharpData->MinMarketOrderVolume = cppData->MinMarketOrderVolume;
+			csharpData->MaxLimitOrderVolume = cppData->MaxLimitOrderVolume;
+			csharpData->MinLimitOrderVolume = cppData->MinLimitOrderVolume;
+			csharpData->PositionType = cppData->PositionType;
+			csharpData->PositionDateType = cppData->PositionDateType;
+			csharpData->CloseDealType = cppData->CloseDealType;
+			COPY_UNMANAGED_STRING(csharpData->TradeCurrencyID, cppData->TradeCurrencyID);
+			csharpData->MortgageFundUseRange = cppData->MortgageFundUseRange;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeProductID, cppData->ExchangeProductID);
+			csharpData->UnderlyingMultiple = cppData->UnderlyingMultiple;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryProduct(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
