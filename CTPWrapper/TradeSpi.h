@@ -772,6 +772,26 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryTradingCode(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryInstrumentMarginRate(CThostFtdcInstrumentMarginRateField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcInstrumentMarginRateFieldWrapper^ csharpData = gcnew CThostFtdcInstrumentMarginRateFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->InvestorRange = cppData->InvestorRange;
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->LongMarginRatioByMoney = cppData->LongMarginRatioByMoney;
+			csharpData->LongMarginRatioByVolume = cppData->LongMarginRatioByVolume;
+			csharpData->ShortMarginRatioByMoney = cppData->ShortMarginRatioByMoney;
+			csharpData->ShortMarginRatioByVolume = cppData->ShortMarginRatioByVolume;
+			csharpData->IsRelative = cppData->IsRelative;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryInstrumentMarginRate(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
 
 

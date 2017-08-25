@@ -663,4 +663,18 @@ namespace CTPWrapper {
 		int IsActive;
 		char ClientIDType;
 	};
+
+	public ref struct CThostFtdcInstrumentMarginRateFieldWrapper
+	{
+		String^ InstrumentID;
+		char InvestorRange;
+		String^ BrokerID;
+		String^ InvestorID;
+		char HedgeFlag;
+		double LongMarginRatioByMoney;
+		double LongMarginRatioByVolume;
+		double ShortMarginRatioByMoney;
+		double ShortMarginRatioByVolume;
+		int IsRelative;
+	};
 }
