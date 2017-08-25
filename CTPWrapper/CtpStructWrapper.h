@@ -538,4 +538,52 @@ namespace CTPWrapper {
 		int BrokerOrderSeq;
 		char TradeSource;
 	};
+
+	public ref struct CThostFtdcInvestorPositionFieldWrapper
+	{
+		String^ InstrumentID;
+		String^ BrokerID;
+		String^ InvestorID;
+		char PosiDirection;
+		char HedgeFlag;
+		char PositionDate;
+		int YdPosition;
+		int Position;
+		int LongFrozen;
+		int ShortFrozen;
+		double LongFrozenAmount;
+		double ShortFrozenAmount;
+		int OpenVolume;
+		int CloseVolume;
+		double OpenAmount;
+		double CloseAmount;
+		double PositionCost;
+		double PreMargin;
+		double UseMargin;
+		double FrozenMargin;
+		double FrozenCash;
+		double FrozenCommission;
+		double CashIn;
+		double Commission;
+		double CloseProfit;
+		double PositionProfit;
+		double PreSettlementPrice;
+		double SettlementPrice;
+		String^ TradingDay;
+		int SettlementID;
+		double OpenCost;
+		double ExchangeMargin;
+		int CombPosition;
+		int CombLongFrozen;
+		int CombShortFrozen;
+		double CloseProfitByDate;
+		double CloseProfitByTrade;
+		int TodayPosition;
+		double MarginRateByMoney;
+		double MarginRateByVolume;
+		int StrikeFrozen;
+		double StrikeFrozenAmount;
+		int AbandonFrozen;
+	};
+
 }

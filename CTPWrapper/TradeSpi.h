@@ -620,6 +620,62 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryTrade(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcInvestorPositionFieldWrapper^ csharpData = gcnew CThostFtdcInvestorPositionFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->PosiDirection = cppData->PosiDirection;
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->PositionDate = cppData->PositionDate;
+			csharpData->YdPosition = cppData->YdPosition;
+			csharpData->Position = cppData->Position;
+			csharpData->LongFrozen = cppData->LongFrozen;
+			csharpData->ShortFrozen = cppData->ShortFrozen;
+			csharpData->LongFrozenAmount = cppData->LongFrozenAmount;
+			csharpData->ShortFrozenAmount = cppData->ShortFrozenAmount;
+			csharpData->OpenVolume = cppData->OpenVolume;
+			csharpData->CloseVolume = cppData->CloseVolume;
+			csharpData->OpenAmount = cppData->OpenAmount;
+			csharpData->CloseAmount = cppData->CloseAmount;
+			csharpData->PositionCost = cppData->PositionCost;
+			csharpData->PreMargin = cppData->PreMargin;
+			csharpData->UseMargin = cppData->UseMargin;
+			csharpData->FrozenMargin = cppData->FrozenMargin;
+			csharpData->FrozenCash = cppData->FrozenCash;
+			csharpData->FrozenCommission = cppData->FrozenCommission;
+			csharpData->CashIn = cppData->CashIn;
+			csharpData->Commission = cppData->Commission;
+			csharpData->CloseProfit = cppData->CloseProfit;
+			csharpData->PositionProfit = cppData->PositionProfit;
+			csharpData->PreSettlementPrice = cppData->PreSettlementPrice;
+			csharpData->SettlementPrice = cppData->SettlementPrice;
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			csharpData->OpenCost = cppData->OpenCost;
+			csharpData->ExchangeMargin = cppData->ExchangeMargin;
+			csharpData->CombPosition = cppData->CombPosition;
+			csharpData->CombLongFrozen = cppData->CombLongFrozen;
+			csharpData->CombShortFrozen = cppData->CombShortFrozen;
+			csharpData->CloseProfitByDate = cppData->CloseProfitByDate;
+			csharpData->CloseProfitByTrade = cppData->CloseProfitByTrade;
+			csharpData->TodayPosition = cppData->TodayPosition;
+			csharpData->MarginRateByMoney = cppData->MarginRateByMoney;
+			csharpData->MarginRateByVolume = cppData->MarginRateByVolume;
+			csharpData->StrikeFrozen = cppData->StrikeFrozen;
+			csharpData->StrikeFrozenAmount = cppData->StrikeFrozenAmount;
+			csharpData->AbandonFrozen = cppData->AbandonFrozen;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryInvestorPosition(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
+
+
 
 
 		virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
