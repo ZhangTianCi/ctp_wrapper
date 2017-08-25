@@ -35,24 +35,24 @@ if __name__ == '__main__':
 	print ''
 	print ''
 
-	print '%sWrapper^ csharpData = gcnew %sWrapper();' % (name, name)
+	print '\t\t\t%sWrapper^ csharpData = gcnew %sWrapper();' % (name, name)
 	for (typ, field) in attrs:
 		if CPPTYPES_TO_CSHARPTYPES[typ] == 'String^':
-			print 'COPY_UNMANAGED_STRING(csharpData->%s, cppData->%s);' % (field, field)
+			print '\t\t\tCOPY_UNMANAGED_STRING(csharpData->%s, cppData->%s);' % (field, field)
 		else:
-			print 'csharpData->%s = cppData->%s;' % (field, field)
+			print '\t\t\tcsharpData->%s = cppData->%s;' % (field, field)
 
 	print ''
 	print ''
 	print ''
 	print ''
 
-	print '%s req;' % name
-	print 'memset(&req, 0, sizeof(req));'
+	print '\t\t\t%s req;' % name
+	print '\t\t\tmemset(&req, 0, sizeof(req));'
 	print ''
 	for (typ, field) in attrs:
 		if CPPTYPES_TO_CSHARPTYPES[typ] == 'String^':
-			print 'COPY_MANAGED_STRING(req.%s, pFensUserInfo->%s);' % (field, field)
+			print '\t\t\tCOPY_MANAGED_STRING(req.%s, pFensUserInfo->%s);' % (field, field)
 		else:
-			print 'req->%s = csharpData->%s;' % (field, field)
+			print '\t\t\treq->%s = csharpData->%s;' % (field, field)
 	print ''
