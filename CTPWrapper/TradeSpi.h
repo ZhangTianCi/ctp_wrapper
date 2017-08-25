@@ -899,6 +899,60 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryInstrument(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcDepthMarketDataFieldWrapper^ csharpData = gcnew CThostFtdcDepthMarketDataFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+			csharpData->LastPrice = cppData->LastPrice;
+			csharpData->PreSettlementPrice = cppData->PreSettlementPrice;
+			csharpData->PreClosePrice = cppData->PreClosePrice;
+			csharpData->PreOpenInterest = cppData->PreOpenInterest;
+			csharpData->OpenPrice = cppData->OpenPrice;
+			csharpData->HighestPrice = cppData->HighestPrice;
+			csharpData->LowestPrice = cppData->LowestPrice;
+			csharpData->Volume = cppData->Volume;
+			csharpData->Turnover = cppData->Turnover;
+			csharpData->OpenInterest = cppData->OpenInterest;
+			csharpData->ClosePrice = cppData->ClosePrice;
+			csharpData->SettlementPrice = cppData->SettlementPrice;
+			csharpData->UpperLimitPrice = cppData->UpperLimitPrice;
+			csharpData->LowerLimitPrice = cppData->LowerLimitPrice;
+			csharpData->PreDelta = cppData->PreDelta;
+			csharpData->CurrDelta = cppData->CurrDelta;
+			COPY_UNMANAGED_STRING(csharpData->UpdateTime, cppData->UpdateTime);
+			csharpData->UpdateMillisec = cppData->UpdateMillisec;
+			csharpData->BidPrice1 = cppData->BidPrice1;
+			csharpData->BidVolume1 = cppData->BidVolume1;
+			csharpData->AskPrice1 = cppData->AskPrice1;
+			csharpData->AskVolume1 = cppData->AskVolume1;
+			csharpData->BidPrice2 = cppData->BidPrice2;
+			csharpData->BidVolume2 = cppData->BidVolume2;
+			csharpData->AskPrice2 = cppData->AskPrice2;
+			csharpData->AskVolume2 = cppData->AskVolume2;
+			csharpData->BidPrice3 = cppData->BidPrice3;
+			csharpData->BidVolume3 = cppData->BidVolume3;
+			csharpData->AskPrice3 = cppData->AskPrice3;
+			csharpData->AskVolume3 = cppData->AskVolume3;
+			csharpData->BidPrice4 = cppData->BidPrice4;
+			csharpData->BidVolume4 = cppData->BidVolume4;
+			csharpData->AskPrice4 = cppData->AskPrice4;
+			csharpData->AskVolume4 = cppData->AskVolume4;
+			csharpData->BidPrice5 = cppData->BidPrice5;
+			csharpData->BidVolume5 = cppData->BidVolume5;
+			csharpData->AskPrice5 = cppData->AskPrice5;
+			csharpData->AskVolume5 = cppData->AskVolume5;
+			csharpData->AveragePrice = cppData->AveragePrice;
+			COPY_UNMANAGED_STRING(csharpData->ActionDay, cppData->ActionDay);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryDepthMarketData(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
 
 
