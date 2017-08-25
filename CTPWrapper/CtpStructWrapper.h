@@ -636,4 +636,21 @@ namespace CTPWrapper {
 		double SpecProductPositionProfitByAlg;
 		double SpecProductExchangeMargin;
 	};
+
+	public ref struct CThostFtdcInvestorFieldWrapper
+	{
+		String^ InvestorID;
+		String^ BrokerID;
+		String^ InvestorGroupID;
+		String^ InvestorName;
+		char IdentifiedCardType;
+		String^ IdentifiedCardNo;
+		int IsActive;
+		String^ Telephone;
+		String^ Address;
+		String^ OpenDate;
+		String^ Mobile;
+		String^ CommModelID;
+		String^ MarginModelID;
+	};
 }

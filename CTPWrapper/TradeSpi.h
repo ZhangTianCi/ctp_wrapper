@@ -731,6 +731,30 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryTradingAccount(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryInvestor(CThostFtdcInvestorField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcInvestorFieldWrapper^ csharpData = gcnew CThostFtdcInvestorFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorGroupID, cppData->InvestorGroupID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorName, cppData->InvestorName);
+			csharpData->IdentifiedCardType = cppData->IdentifiedCardType;
+			COPY_UNMANAGED_STRING(csharpData->IdentifiedCardNo, cppData->IdentifiedCardNo);
+			csharpData->IsActive = cppData->IsActive;
+			COPY_UNMANAGED_STRING(csharpData->Telephone, cppData->Telephone);
+			COPY_UNMANAGED_STRING(csharpData->Address, cppData->Address);
+			COPY_UNMANAGED_STRING(csharpData->OpenDate, cppData->OpenDate);
+			COPY_UNMANAGED_STRING(csharpData->Mobile, cppData->Mobile);
+			COPY_UNMANAGED_STRING(csharpData->CommModelID, cppData->CommModelID);
+			COPY_UNMANAGED_STRING(csharpData->MarginModelID, cppData->MarginModelID);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryInvestor(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
