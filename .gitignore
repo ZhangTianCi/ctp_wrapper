@@ -15,3 +15,5 @@ ipch
 Debug
 Release
 *.con
+*.pyc
+*.pyo

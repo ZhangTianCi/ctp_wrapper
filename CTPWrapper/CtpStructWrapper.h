@@ -295,4 +295,28 @@ namespace CTPWrapper {
 		String^ ParkedOrderActionID;
 	};
 
+	public ref struct CThostFtdcInputExecOrderFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExecOrderRef;
+		String^ UserID;
+		int Volume;
+		int RequestID;
+		String^ BusinessUnit;
+		char OffsetFlag;
+		char HedgeFlag;
+		char ActionType;
+		char PosiDirection;
+		char ReservePositionFlag;
+		char CloseFlag;
+		String^ ExchangeID;
+		String^ InvestUnitID;
+		String^ AccountID;
+		String^ CurrencyID;
+		String^ ClientID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }
