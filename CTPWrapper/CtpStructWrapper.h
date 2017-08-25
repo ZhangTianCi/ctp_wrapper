@@ -691,4 +691,11 @@ namespace CTPWrapper {
 		double CloseTodayRatioByMoney;
 		double CloseTodayRatioByVolume;
 	};
+
+	public ref struct CThostFtdcExchangeFieldWrapper
+	{
+		String^ ExchangeID;
+		String^ ExchangeName;
+		char ExchangeProperty;
+	};
 }

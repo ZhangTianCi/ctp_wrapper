@@ -44,6 +44,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryTradingCode(CThostFtdcTradingCodeFieldWrapper^ pTradingCode, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 		virtual void OnRspQryInstrumentMarginRate(CThostFtdcInstrumentMarginRateFieldWrapper^ pInstrumentMarginRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRateFieldWrapper^ pInstrumentCommissionRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryExchange(CThostFtdcExchangeFieldWrapper^ pExchange, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}

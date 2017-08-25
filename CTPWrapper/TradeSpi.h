@@ -815,6 +815,19 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryInstrumentCommissionRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryExchange(CThostFtdcExchangeField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcExchangeFieldWrapper^ csharpData = gcnew CThostFtdcExchangeFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeName, cppData->ExchangeName);
+			csharpData->ExchangeProperty = cppData->ExchangeProperty;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryExchange(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
 
 
