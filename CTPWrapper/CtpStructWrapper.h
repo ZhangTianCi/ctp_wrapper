@@ -281,4 +281,11 @@ namespace CTPWrapper {
 		String^ ConfirmTime;
 	};
 
+	public ref struct CThostFtdcRemoveParkedOrderFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ ParkedOrderID;
+	};
+
 }
