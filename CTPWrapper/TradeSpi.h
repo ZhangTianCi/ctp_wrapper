@@ -755,6 +755,25 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryInvestor(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryTradingCode(CThostFtdcTradingCodeField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcTradingCodeFieldWrapper^ csharpData = gcnew CThostFtdcTradingCodeFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			csharpData->IsActive = cppData->IsActive;
+			csharpData->ClientIDType = cppData->ClientIDType;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryTradingCode(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
+
+
 
 
 

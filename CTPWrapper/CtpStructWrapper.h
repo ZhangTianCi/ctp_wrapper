@@ -653,4 +653,14 @@ namespace CTPWrapper {
 		String^ CommModelID;
 		String^ MarginModelID;
 	};
+
+	public ref struct CThostFtdcTradingCodeFieldWrapper
+	{
+		String^ InvestorID;
+		String^ BrokerID;
+		String^ ExchangeID;
+		String^ ClientID;
+		int IsActive;
+		char ClientIDType;
+	};
 }
