@@ -262,4 +262,15 @@ namespace CTPWrapper {
 		String^ MacAddress;
 	};
 
+	public ref struct CThostFtdcQueryMaxOrderVolumeFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		char Direction;
+		char OffsetFlag;
+		char HedgeFlag;
+		int MaxVolume;
+	};
+
 }
