@@ -1440,4 +1440,13 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
+	public ref struct CThostFtdcCFMMCTradingAccountTokenFieldWrapper
+	{
+		String^ BrokerID;
+		String^ ParticipantID;
+		String^ AccountID;
+		int KeyID;
+		String^ Token;
+	};
 }

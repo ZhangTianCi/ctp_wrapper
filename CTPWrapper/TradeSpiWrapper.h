@@ -94,6 +94,7 @@ namespace CTPWrapper {
 		virtual void OnErrRtnQuoteInsert(CThostFtdcInputQuoteFieldWrapper^ pInputQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnErrRtnQuoteAction(CThostFtdcQuoteActionFieldWrapper^ pQuoteAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspFieldWrapper^ pForQuoteRsp) {};
+		virtual void OnRtnCFMMCTradingAccountToken(CThostFtdcCFMMCTradingAccountTokenFieldWrapper^ pCFMMCTradingAccountToken) {};
 
 
 	};

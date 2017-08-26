@@ -2235,6 +2235,18 @@ namespace CTPWrapper {
 			wrapper_->OnRtnForQuoteRsp(csharpData);
 		}
 
+		virtual void OnRtnCFMMCTradingAccountToken(CThostFtdcCFMMCTradingAccountTokenField *cppData) override
+		{
+			CThostFtdcCFMMCTradingAccountTokenFieldWrapper^ csharpData = gcnew CThostFtdcCFMMCTradingAccountTokenFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->ParticipantID, cppData->ParticipantID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			csharpData->KeyID = cppData->KeyID;
+			COPY_UNMANAGED_STRING(csharpData->Token, cppData->Token);
+
+			wrapper_->OnRtnCFMMCTradingAccountToken(csharpData);
+		}
+
 
 
 
