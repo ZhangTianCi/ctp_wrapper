@@ -809,4 +809,5 @@ namespace CTPWrapper {
 		String^ Content;
 		String^ SequenceLabel;
 	};
+
 }
