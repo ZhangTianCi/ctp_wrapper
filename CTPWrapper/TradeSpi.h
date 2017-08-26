@@ -1118,6 +1118,44 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryEWarrantOffset(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryInvestorProductGroupMargin(CThostFtdcInvestorProductGroupMarginField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcInvestorProductGroupMarginFieldWrapper^ csharpData = gcnew CThostFtdcInvestorProductGroupMarginFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->ProductGroupID, cppData->ProductGroupID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			csharpData->FrozenMargin = cppData->FrozenMargin;
+			csharpData->LongFrozenMargin = cppData->LongFrozenMargin;
+			csharpData->ShortFrozenMargin = cppData->ShortFrozenMargin;
+			csharpData->UseMargin = cppData->UseMargin;
+			csharpData->LongUseMargin = cppData->LongUseMargin;
+			csharpData->ShortUseMargin = cppData->ShortUseMargin;
+			csharpData->ExchMargin = cppData->ExchMargin;
+			csharpData->LongExchMargin = cppData->LongExchMargin;
+			csharpData->ShortExchMargin = cppData->ShortExchMargin;
+			csharpData->CloseProfit = cppData->CloseProfit;
+			csharpData->FrozenCommission = cppData->FrozenCommission;
+			csharpData->Commission = cppData->Commission;
+			csharpData->FrozenCash = cppData->FrozenCash;
+			csharpData->CashIn = cppData->CashIn;
+			csharpData->PositionProfit = cppData->PositionProfit;
+			csharpData->OffsetAmount = cppData->OffsetAmount;
+			csharpData->LongOffsetAmount = cppData->LongOffsetAmount;
+			csharpData->ShortOffsetAmount = cppData->ShortOffsetAmount;
+			csharpData->ExchOffsetAmount = cppData->ExchOffsetAmount;
+			csharpData->LongExchOffsetAmount = cppData->LongExchOffsetAmount;
+			csharpData->ShortExchOffsetAmount = cppData->ShortExchOffsetAmount;
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryInvestorProductGroupMargin(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

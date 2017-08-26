@@ -854,4 +854,35 @@ namespace CTPWrapper {
 		char HedgeFlag;
 		int Volume;
 	};
+
+	public ref struct CThostFtdcInvestorProductGroupMarginFieldWrapper
+	{
+		String^ ProductGroupID;
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ TradingDay;
+		int SettlementID;
+		double FrozenMargin;
+		double LongFrozenMargin;
+		double ShortFrozenMargin;
+		double UseMargin;
+		double LongUseMargin;
+		double ShortUseMargin;
+		double ExchMargin;
+		double LongExchMargin;
+		double ShortExchMargin;
+		double CloseProfit;
+		double FrozenCommission;
+		double Commission;
+		double FrozenCash;
+		double CashIn;
+		double PositionProfit;
+		double OffsetAmount;
+		double LongOffsetAmount;
+		double ShortOffsetAmount;
+		double ExchOffsetAmount;
+		double LongExchOffsetAmount;
+		double ShortExchOffsetAmount;
+		char HedgeFlag;
+	};
 }
