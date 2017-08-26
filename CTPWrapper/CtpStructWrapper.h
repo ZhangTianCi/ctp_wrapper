@@ -842,4 +842,16 @@ namespace CTPWrapper {
 		int KeyID;
 		String^ CurrentKey;
 	};
+
+	public ref struct CThostFtdcEWarrantOffsetFieldWrapper
+	{
+		String^ TradingDay;
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ ExchangeID;
+		String^ InstrumentID;
+		char Direction;
+		char HedgeFlag;
+		int Volume;
+	};
 }

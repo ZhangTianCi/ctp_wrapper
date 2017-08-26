@@ -55,6 +55,9 @@ namespace CTPWrapper {
 		virtual void OnRspQrySettlementInfoConfirm(CThostFtdcSettlementInfoConfirmFieldWrapper^ pSettlementInfoConfirm, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryInvestorPositionCombineDetail(CThostFtdcInvestorPositionCombineDetailFieldWrapper^ pInvestorPositionCombineDetail, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryCFMMCTradingAccountKey(CThostFtdcCFMMCTradingAccountKeyFieldWrapper^ pCFMMCTradingAccountKey, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryEWarrantOffset(CThostFtdcEWarrantOffsetFieldWrapper^ pEWarrantOffset, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+
+
 
 
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}

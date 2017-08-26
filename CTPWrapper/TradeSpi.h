@@ -1097,7 +1097,25 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
 
 			wrapper_->OnRspQryCFMMCTradingAccountKey(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
+		virtual void OnRspQryEWarrantOffset(CThostFtdcEWarrantOffsetField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcEWarrantOffsetFieldWrapper^ csharpData = gcnew CThostFtdcEWarrantOffsetFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->Direction = cppData->Direction;
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->Volume = cppData->Volume;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryEWarrantOffset(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
 
