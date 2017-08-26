@@ -75,11 +75,11 @@ namespace CTPWrapper {
 		virtual void OnRspQryCombAction(CThostFtdcCombActionFieldWrapper^ pCombAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryTransferSerial(CThostFtdcTransferSerialFieldWrapper^ pTransferSerial, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryAccountregister(CThostFtdcAccountregisterFieldWrapper^ pAccountregister, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
-
-
-
-
+		
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
+
+		virtual void OnRtnOrder(CThostFtdcOrderFieldWrapper^ pOrder) {};
+
 	};
 
 }
