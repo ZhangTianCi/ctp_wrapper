@@ -355,7 +355,36 @@ namespace CTPWrapper {
 			COPY_MANAGED_STRING(req.ParkedOrderActionID, csharpData->ParkedOrderActionID);
 
 			return api_->ReqRemoveParkedOrderAction(&req, nRequestID);
+		}
 
+		int ReqExecOrderInsert(CThostFtdcInputExecOrderFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcInputExecOrderField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExecOrderRef, csharpData->ExecOrderRef);
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			req.Volume = csharpData->Volume;
+			req.RequestID = csharpData->RequestID;
+			COPY_MANAGED_STRING(req.BusinessUnit, csharpData->BusinessUnit);
+			req.OffsetFlag = csharpData->OffsetFlag;
+			req.HedgeFlag = csharpData->HedgeFlag;
+			req.ActionType = csharpData->ActionType;
+			req.PosiDirection = csharpData->PosiDirection;
+			req.ReservePositionFlag = csharpData->ReservePositionFlag;
+			req.CloseFlag = csharpData->CloseFlag;
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.InvestUnitID, csharpData->InvestUnitID);
+			COPY_MANAGED_STRING(req.AccountID, csharpData->AccountID);
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+			COPY_MANAGED_STRING(req.ClientID, csharpData->ClientID);
+			COPY_MANAGED_STRING(req.IPAddress, csharpData->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, csharpData->MacAddress);
+
+			return api_->ReqExecOrderInsert(&req, nRequestID);
 		}
 
 
