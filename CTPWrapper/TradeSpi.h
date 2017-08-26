@@ -2150,6 +2150,40 @@ namespace CTPWrapper {
 			wrapper_->OnRtnQuote(csharpData);
 		}
 
+		virtual void OnErrRtnQuoteInsert(CThostFtdcInputQuoteField *cppData, CThostFtdcRspInfoField *cppError) override
+		{
+			CThostFtdcInputQuoteFieldWrapper^ csharpData = gcnew CThostFtdcInputQuoteFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->QuoteRef, cppData->QuoteRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->AskPrice = cppData->AskPrice;
+			csharpData->BidPrice = cppData->BidPrice;
+			csharpData->AskVolume = cppData->AskVolume;
+			csharpData->BidVolume = cppData->BidVolume;
+			csharpData->RequestID = cppData->RequestID;
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->AskOffsetFlag = cppData->AskOffsetFlag;
+			csharpData->BidOffsetFlag = cppData->BidOffsetFlag;
+			csharpData->AskHedgeFlag = cppData->AskHedgeFlag;
+			csharpData->BidHedgeFlag = cppData->BidHedgeFlag;
+			COPY_UNMANAGED_STRING(csharpData->AskOrderRef, cppData->AskOrderRef);
+			COPY_UNMANAGED_STRING(csharpData->BidOrderRef, cppData->BidOrderRef);
+			COPY_UNMANAGED_STRING(csharpData->ForQuoteSysID, cppData->ForQuoteSysID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnErrRtnQuoteInsert(csharpData, csharpError);
+		}
+
 
 
 

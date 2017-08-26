@@ -91,6 +91,7 @@ namespace CTPWrapper {
 		virtual void OnErrRtnExecOrderAction(CThostFtdcExecOrderActionFieldWrapper^ pExecOrderAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnErrRtnForQuoteInsert(CThostFtdcInputForQuoteFieldWrapper^ pInputForQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnRtnQuote(CThostFtdcQuoteFieldWrapper^ pQuote) {};
+		virtual void OnErrRtnQuoteInsert(CThostFtdcInputQuoteFieldWrapper^ pInputQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 
 
 	};
