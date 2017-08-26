@@ -833,4 +833,13 @@ namespace CTPWrapper {
 		String^ CombInstrumentID;
 		int TradeGroupID;
 	};
+
+	public ref struct CThostFtdcCFMMCTradingAccountKeyFieldWrapper
+	{
+		String^ BrokerID;
+		String^ ParticipantID;
+		String^ AccountID;
+		int KeyID;
+		String^ CurrentKey;
+	};
 }

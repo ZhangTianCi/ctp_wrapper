@@ -1083,6 +1083,24 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryInvestorPositionCombineDetail(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryCFMMCTradingAccountKey(CThostFtdcCFMMCTradingAccountKeyField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcCFMMCTradingAccountKeyFieldWrapper^ csharpData = gcnew CThostFtdcCFMMCTradingAccountKeyFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->ParticipantID, cppData->ParticipantID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			csharpData->KeyID = cppData->KeyID;
+			COPY_UNMANAGED_STRING(csharpData->CurrentKey, cppData->CurrentKey);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryCFMMCTradingAccountKey(csharpData, csharpError, nRequestID, bIsLast);
+
+		}
+
+
 
 
 		virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
