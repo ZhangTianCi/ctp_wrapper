@@ -1751,6 +1751,48 @@ namespace CTPWrapper {
 			wrapper_->OnRtnTrade(csharpData);
 		}
 
+		virtual void OnErrRtnOrderInsert(CThostFtdcInputOrderField *cppData, CThostFtdcRspInfoField *cppError) override
+		{
+			CThostFtdcInputOrderFieldWrapper^ csharpData = gcnew CThostFtdcInputOrderFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->OrderRef, cppData->OrderRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->OrderPriceType = cppData->OrderPriceType;
+			csharpData->Direction = cppData->Direction;
+			COPY_UNMANAGED_STRING(csharpData->CombOffsetFlag, cppData->CombOffsetFlag);
+			COPY_UNMANAGED_STRING(csharpData->CombHedgeFlag, cppData->CombHedgeFlag);
+			csharpData->LimitPrice = cppData->LimitPrice;
+			csharpData->VolumeTotalOriginal = cppData->VolumeTotalOriginal;
+			csharpData->TimeCondition = cppData->TimeCondition;
+			COPY_UNMANAGED_STRING(csharpData->GTDDate, cppData->GTDDate);
+			csharpData->VolumeCondition = cppData->VolumeCondition;
+			csharpData->MinVolume = cppData->MinVolume;
+			csharpData->ContingentCondition = cppData->ContingentCondition;
+			csharpData->StopPrice = cppData->StopPrice;
+			csharpData->ForceCloseReason = cppData->ForceCloseReason;
+			csharpData->IsAutoSuspend = cppData->IsAutoSuspend;
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->RequestID = cppData->RequestID;
+			csharpData->UserForceClose = cppData->UserForceClose;
+			csharpData->IsSwapOrder = cppData->IsSwapOrder;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnErrRtnOrderInsert(csharpData, csharpError);
+		}
+
+
 
 	private:
 		msclr::auto_gcroot<TradeSpiWrapper^> wrapper_;
