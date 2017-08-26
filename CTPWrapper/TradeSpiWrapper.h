@@ -97,6 +97,7 @@ namespace CTPWrapper {
 		virtual void OnRtnCFMMCTradingAccountToken(CThostFtdcCFMMCTradingAccountTokenFieldWrapper^ pCFMMCTradingAccountToken) {};
 		virtual void OnErrRtnBatchOrderAction(CThostFtdcBatchOrderActionFieldWrapper^ pBatchOrderAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnRtnCombAction(CThostFtdcCombActionFieldWrapper^ pCombAction) {};
+		virtual void OnErrRtnCombActionInsert(CThostFtdcInputCombActionFieldWrapper^ pInputCombAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 
 
 	};
