@@ -1246,6 +1246,20 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryProductExchRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryProductGroup(CThostFtdcProductGroupField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcProductGroupFieldWrapper^ csharpData = gcnew CThostFtdcProductGroupFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->ProductID, cppData->ProductID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ProductGroupID, cppData->ProductGroupID);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryProductGroup(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

@@ -941,4 +941,11 @@ namespace CTPWrapper {
 		double ExchangeRate;
 	};
 
+	public ref struct CThostFtdcProductGroupFieldWrapper
+	{
+		String^ ProductID;
+		String^ ExchangeID;
+		String^ ProductGroupID;
+	};
+
 }
