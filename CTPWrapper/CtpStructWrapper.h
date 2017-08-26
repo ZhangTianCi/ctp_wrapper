@@ -961,4 +961,20 @@ namespace CTPWrapper {
 		double CloseTodayRatioByMoney;
 		double CloseTodayRatioByVolume;
 	};
+
+	public ref struct CThostFtdcMMOptionInstrCommRateFieldWrapper
+	{
+		String^ InstrumentID;
+		char InvestorRange;
+		String^ BrokerID;
+		String^ InvestorID;
+		double OpenRatioByMoney;
+		double OpenRatioByVolume;
+		double CloseRatioByMoney;
+		double CloseRatioByVolume;
+		double CloseTodayRatioByMoney;
+		double CloseTodayRatioByVolume;
+		double StrikeRatioByMoney;
+		double StrikeRatioByVolume;
+	};
 }
