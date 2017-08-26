@@ -99,6 +99,7 @@ namespace CTPWrapper {
 		virtual void OnRtnCombAction(CThostFtdcCombActionFieldWrapper^ pCombAction) {};
 		virtual void OnErrRtnCombActionInsert(CThostFtdcInputCombActionFieldWrapper^ pInputCombAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnRspQryContractBank(CThostFtdcContractBankFieldWrapper^ pContractBank, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryParkedOrder(CThostFtdcParkedOrderFieldWrapper^ pParkedOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 	};

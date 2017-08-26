@@ -153,83 +153,83 @@ namespace CTPWrapper {
 			wrapper_->OnRspOrderInsert(csharpOrder, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspParkedOrderInsert(CThostFtdcParkedOrderField *cppOrder, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		virtual void OnRspParkedOrderInsert(CThostFtdcParkedOrderField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
-			CThostFtdcParkedOrderFieldWrapper^ csharpOrder = gcnew CThostFtdcParkedOrderFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpOrder->BrokerID, cppOrder->BrokerID);
-			COPY_UNMANAGED_STRING(csharpOrder->InvestorID, cppOrder->InvestorID);
-			COPY_UNMANAGED_STRING(csharpOrder->InstrumentID, cppOrder->InstrumentID);
-			COPY_UNMANAGED_STRING(csharpOrder->OrderRef, cppOrder->OrderRef);
-			COPY_UNMANAGED_STRING(csharpOrder->UserID, cppOrder->UserID);
-			csharpOrder->OrderPriceType = cppOrder->OrderPriceType;
-			csharpOrder->Direction = cppOrder->Direction;
-			COPY_UNMANAGED_STRING(csharpOrder->CombOffsetFlag, cppOrder->CombOffsetFlag);
-			COPY_UNMANAGED_STRING(csharpOrder->CombHedgeFlag, cppOrder->CombHedgeFlag);
-			csharpOrder->LimitPrice = cppOrder->LimitPrice;
-			csharpOrder->VolumeTotalOriginal = cppOrder->VolumeTotalOriginal;
-			csharpOrder->TimeCondition = cppOrder->TimeCondition;
-			COPY_UNMANAGED_STRING(csharpOrder->GTDDate, cppOrder->GTDDate);
-			csharpOrder->VolumeCondition = cppOrder->VolumeCondition;
-			csharpOrder->MinVolume = cppOrder->MinVolume;
-			csharpOrder->ContingentCondition = cppOrder->ContingentCondition;
-			csharpOrder->StopPrice = cppOrder->StopPrice;
-			csharpOrder->ForceCloseReason = cppOrder->ForceCloseReason;
-			csharpOrder->IsAutoSuspend = cppOrder->IsAutoSuspend;
-			COPY_UNMANAGED_STRING(csharpOrder->BusinessUnit, cppOrder->BusinessUnit);
-			csharpOrder->RequestID = cppOrder->RequestID;
-			csharpOrder->UserForceClose = cppOrder->UserForceClose;
-			COPY_UNMANAGED_STRING(csharpOrder->ExchangeID, cppOrder->ExchangeID);
-			COPY_UNMANAGED_STRING(csharpOrder->ParkedOrderID, cppOrder->ParkedOrderID);
-			csharpOrder->UserType = cppOrder->UserType;
-			csharpOrder->Status = cppOrder->Status;
-			csharpOrder->ErrorID = cppOrder->ErrorID;
-			COPY_UNMANAGED_STRING(csharpOrder->ErrorMsg, cppOrder->ErrorMsg);
-			csharpOrder->IsSwapOrder = cppOrder->IsSwapOrder;
-			COPY_UNMANAGED_STRING(csharpOrder->AccountID, cppOrder->AccountID);
-			COPY_UNMANAGED_STRING(csharpOrder->CurrencyID, cppOrder->CurrencyID);
-			COPY_UNMANAGED_STRING(csharpOrder->ClientID, cppOrder->ClientID);
-			COPY_UNMANAGED_STRING(csharpOrder->InvestUnitID, cppOrder->InvestUnitID);
-			COPY_UNMANAGED_STRING(csharpOrder->IPAddress, cppOrder->IPAddress);
-			COPY_UNMANAGED_STRING(csharpOrder->MacAddress, cppOrder->MacAddress);
+			CThostFtdcParkedOrderFieldWrapper^ csharpData = gcnew CThostFtdcParkedOrderFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->OrderRef, cppData->OrderRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->OrderPriceType = cppData->OrderPriceType;
+			csharpData->Direction = cppData->Direction;
+			COPY_UNMANAGED_STRING(csharpData->CombOffsetFlag, cppData->CombOffsetFlag);
+			COPY_UNMANAGED_STRING(csharpData->CombHedgeFlag, cppData->CombHedgeFlag);
+			csharpData->LimitPrice = cppData->LimitPrice;
+			csharpData->VolumeTotalOriginal = cppData->VolumeTotalOriginal;
+			csharpData->TimeCondition = cppData->TimeCondition;
+			COPY_UNMANAGED_STRING(csharpData->GTDDate, cppData->GTDDate);
+			csharpData->VolumeCondition = cppData->VolumeCondition;
+			csharpData->MinVolume = cppData->MinVolume;
+			csharpData->ContingentCondition = cppData->ContingentCondition;
+			csharpData->StopPrice = cppData->StopPrice;
+			csharpData->ForceCloseReason = cppData->ForceCloseReason;
+			csharpData->IsAutoSuspend = cppData->IsAutoSuspend;
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->RequestID = cppData->RequestID;
+			csharpData->UserForceClose = cppData->UserForceClose;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ParkedOrderID, cppData->ParkedOrderID);
+			csharpData->UserType = cppData->UserType;
+			csharpData->Status = cppData->Status;
+			csharpData->ErrorID = cppData->ErrorID;
+			COPY_UNMANAGED_STRING(csharpData->ErrorMsg, cppData->ErrorMsg);
+			csharpData->IsSwapOrder = cppData->IsSwapOrder;
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
 			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
 			csharpError->ErrorID = cppError->ErrorID;
 			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
 
-			wrapper_->OnRspParkedOrderInsert(csharpOrder, csharpError, nRequestID, bIsLast);
+			wrapper_->OnRspParkedOrderInsert(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *cppAction, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		virtual void OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
-			CThostFtdcParkedOrderActionFieldWrapper^ csharpAction = gcnew CThostFtdcParkedOrderActionFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpAction->BrokerID, cppAction->BrokerID);
-			COPY_UNMANAGED_STRING(csharpAction->InvestorID, cppAction->InvestorID);
-			csharpAction->OrderActionRef = cppAction->OrderActionRef;
-			COPY_UNMANAGED_STRING(csharpAction->OrderRef, cppAction->OrderRef);
-			csharpAction->RequestID = cppAction->RequestID;
-			csharpAction->FrontID = cppAction->FrontID;
-			csharpAction->SessionID = cppAction->SessionID;
-			COPY_UNMANAGED_STRING(csharpAction->ExchangeID, cppAction->ExchangeID);
-			COPY_UNMANAGED_STRING(csharpAction->OrderSysID, cppAction->OrderSysID);
-			csharpAction->ActionFlag = cppAction->ActionFlag;
-			csharpAction->LimitPrice = cppAction->LimitPrice;
-			csharpAction->VolumeChange = cppAction->VolumeChange;
-			COPY_UNMANAGED_STRING(csharpAction->UserID, cppAction->UserID);
-			COPY_UNMANAGED_STRING(csharpAction->InstrumentID, cppAction->InstrumentID);
-			COPY_UNMANAGED_STRING(csharpAction->ParkedOrderActionID, cppAction->ParkedOrderActionID);
-			csharpAction->UserType = cppAction->UserType;
-			csharpAction->Status = cppAction->Status;
-			csharpAction->ErrorID = cppAction->ErrorID;
-			COPY_UNMANAGED_STRING(csharpAction->ErrorMsg, cppAction->ErrorMsg);
-			COPY_UNMANAGED_STRING(csharpAction->InvestUnitID, cppAction->InvestUnitID);
-			COPY_UNMANAGED_STRING(csharpAction->IPAddress, cppAction->IPAddress);
-			COPY_UNMANAGED_STRING(csharpAction->MacAddress, cppAction->MacAddress);
+			CThostFtdcParkedOrderActionFieldWrapper^ csharpData = gcnew CThostFtdcParkedOrderActionFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->OrderActionRef = cppData->OrderActionRef;
+			COPY_UNMANAGED_STRING(csharpData->OrderRef, cppData->OrderRef);
+			csharpData->RequestID = cppData->RequestID;
+			csharpData->FrontID = cppData->FrontID;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->OrderSysID, cppData->OrderSysID);
+			csharpData->ActionFlag = cppData->ActionFlag;
+			csharpData->LimitPrice = cppData->LimitPrice;
+			csharpData->VolumeChange = cppData->VolumeChange;
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ParkedOrderActionID, cppData->ParkedOrderActionID);
+			csharpData->UserType = cppData->UserType;
+			csharpData->Status = cppData->Status;
+			csharpData->ErrorID = cppData->ErrorID;
+			COPY_UNMANAGED_STRING(csharpData->ErrorMsg, cppData->ErrorMsg);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
 			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
 			csharpError->ErrorID = cppError->ErrorID;
 			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
 
-			wrapper_->OnRspParkedOrderAction(csharpAction, csharpError, nRequestID, bIsLast);
+			wrapper_->OnRspParkedOrderAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
 		virtual void OnRspOrderAction(CThostFtdcInputOrderActionField *cppAction, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
@@ -2349,6 +2349,53 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
 
 			wrapper_->OnRspQryContractBank(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
+		virtual void OnRspQryParkedOrder(CThostFtdcParkedOrderField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcParkedOrderFieldWrapper^ csharpData = gcnew CThostFtdcParkedOrderFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->OrderRef, cppData->OrderRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->OrderPriceType = cppData->OrderPriceType;
+			csharpData->Direction = cppData->Direction;
+			COPY_UNMANAGED_STRING(csharpData->CombOffsetFlag, cppData->CombOffsetFlag);
+			COPY_UNMANAGED_STRING(csharpData->CombHedgeFlag, cppData->CombHedgeFlag);
+			csharpData->LimitPrice = cppData->LimitPrice;
+			csharpData->VolumeTotalOriginal = cppData->VolumeTotalOriginal;
+			csharpData->TimeCondition = cppData->TimeCondition;
+			COPY_UNMANAGED_STRING(csharpData->GTDDate, cppData->GTDDate);
+			csharpData->VolumeCondition = cppData->VolumeCondition;
+			csharpData->MinVolume = cppData->MinVolume;
+			csharpData->ContingentCondition = cppData->ContingentCondition;
+			csharpData->StopPrice = cppData->StopPrice;
+			csharpData->ForceCloseReason = cppData->ForceCloseReason;
+			csharpData->IsAutoSuspend = cppData->IsAutoSuspend;
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->RequestID = cppData->RequestID;
+			csharpData->UserForceClose = cppData->UserForceClose;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ParkedOrderID, cppData->ParkedOrderID);
+			csharpData->UserType = cppData->UserType;
+			csharpData->Status = cppData->Status;
+			csharpData->ErrorID = cppData->ErrorID;
+			COPY_UNMANAGED_STRING(csharpData->ErrorMsg, cppData->ErrorMsg);
+			csharpData->IsSwapOrder = cppData->IsSwapOrder;
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryParkedOrder(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
 
