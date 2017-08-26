@@ -304,6 +304,22 @@ namespace CTPWrapper {
 			return api_->ReqOrderAction(&req, nRequestID);
 		}
 
+		virtual int ReqQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQueryMaxOrderVolumeField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			req.Direction = csharpData->Direction;
+			req.OffsetFlag = csharpData->OffsetFlag;
+			req.HedgeFlag = csharpData->HedgeFlag;
+			req.MaxVolume = csharpData->MaxVolume;
+
+			return api_->ReqQueryMaxOrderVolume(&req, nRequestID);
+		}
+
 
 
 	private:
