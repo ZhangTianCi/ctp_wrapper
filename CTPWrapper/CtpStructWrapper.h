@@ -1494,4 +1494,15 @@ namespace CTPWrapper {
 		int SequenceNo;
 		String^ FieldContent;
 	};
+
+	public ref struct CThostFtdcBrokerTradingParamsFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		char MarginPriceType;
+		char Algorithm;
+		char AvailIncludeCloseProfit;
+		String^ CurrencyID;
+		char OptionRoyaltyPriceType;
+	};
 }

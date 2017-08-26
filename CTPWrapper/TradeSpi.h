@@ -2450,6 +2450,24 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryTradingNotice(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryBrokerTradingParams(CThostFtdcBrokerTradingParamsField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcBrokerTradingParamsFieldWrapper^ csharpData = gcnew CThostFtdcBrokerTradingParamsFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->MarginPriceType = cppData->MarginPriceType;
+			csharpData->Algorithm = cppData->Algorithm;
+			csharpData->AvailIncludeCloseProfit = cppData->AvailIncludeCloseProfit;
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			csharpData->OptionRoyaltyPriceType = cppData->OptionRoyaltyPriceType;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryBrokerTradingParams(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
