@@ -117,6 +117,7 @@ namespace CTPWrapper {
 		virtual void OnErrRtnBankToFutureByFuture(CThostFtdcReqTransferFieldWrapper^ pReqTransfer, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnErrRtnFutureToBankByFuture(CThostFtdcReqTransferFieldWrapper^ pReqTransfer, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnErrRtnRepealBankToFutureByFutureManual(CThostFtdcReqRepealFieldWrapper^ pReqRepeal, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
+		virtual void OnErrRtnRepealFutureToBankByFutureManual(CThostFtdcReqRepealFieldWrapper^ pReqRepeal, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 
 
 	};
