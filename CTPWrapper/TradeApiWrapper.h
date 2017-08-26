@@ -429,6 +429,38 @@ namespace CTPWrapper {
 			return api_->ReqForQuoteInsert(&req, nRequestID);
 		}
 
+		int ReqQuoteInsert(CThostFtdcInputQuoteFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcInputQuoteField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.QuoteRef, csharpData->QuoteRef);
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			req.AskPrice = csharpData->AskPrice;
+			req.BidPrice = csharpData->BidPrice;
+			req.AskVolume = csharpData->AskVolume;
+			req.BidVolume = csharpData->BidVolume;
+			req.RequestID = csharpData->RequestID;
+			COPY_MANAGED_STRING(req.BusinessUnit, csharpData->BusinessUnit);
+			req.AskOffsetFlag = csharpData->AskOffsetFlag;
+			req.BidOffsetFlag = csharpData->BidOffsetFlag;
+			req.AskHedgeFlag = csharpData->AskHedgeFlag;
+			req.BidHedgeFlag = csharpData->BidHedgeFlag;
+			COPY_MANAGED_STRING(req.AskOrderRef, csharpData->AskOrderRef);
+			COPY_MANAGED_STRING(req.BidOrderRef, csharpData->BidOrderRef);
+			COPY_MANAGED_STRING(req.ForQuoteSysID, csharpData->ForQuoteSysID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.InvestUnitID, csharpData->InvestUnitID);
+			COPY_MANAGED_STRING(req.ClientID, csharpData->ClientID);
+			COPY_MANAGED_STRING(req.IPAddress, csharpData->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, csharpData->MacAddress);
+
+			return api_->ReqQuoteInsert(&req, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;
