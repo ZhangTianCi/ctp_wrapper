@@ -2279,6 +2279,40 @@ namespace CTPWrapper {
 			wrapper_->OnErrRtnBatchOrderAction(csharpData, csharpError);
 		}
 
+		virtual void OnRtnCombAction(CThostFtdcCombActionField *cppData) override
+		{
+			CThostFtdcCombActionFieldWrapper^ csharpData = gcnew CThostFtdcCombActionFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->CombActionRef, cppData->CombActionRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->Direction = cppData->Direction;
+			csharpData->Volume = cppData->Volume;
+			csharpData->CombDirection = cppData->CombDirection;
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			COPY_UNMANAGED_STRING(csharpData->ActionLocalID, cppData->ActionLocalID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ParticipantID, cppData->ParticipantID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+			COPY_UNMANAGED_STRING(csharpData->TraderID, cppData->TraderID);
+			csharpData->InstallID = cppData->InstallID;
+			csharpData->ActionStatus = cppData->ActionStatus;
+			csharpData->NotifySequence = cppData->NotifySequence;
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			csharpData->SequenceNo = cppData->SequenceNo;
+			csharpData->FrontID = cppData->FrontID;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->UserProductInfo, cppData->UserProductInfo);
+			COPY_UNMANAGED_STRING(csharpData->StatusMsg, cppData->StatusMsg);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			wrapper_->OnRtnCombAction(csharpData);
+		}
+
 
 
 

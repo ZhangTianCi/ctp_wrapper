@@ -1474,4 +1474,5 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
 }
