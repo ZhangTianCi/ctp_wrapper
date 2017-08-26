@@ -1377,4 +1377,36 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
+	public ref struct CThostFtdcExecOrderActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		int ExecOrderActionRef;
+		String^ ExecOrderRef;
+		int RequestID;
+		int FrontID;
+		int SessionID;
+		String^ ExchangeID;
+		String^ ExecOrderSysID;
+		char ActionFlag;
+		String^ ActionDate;
+		String^ ActionTime;
+		String^ TraderID;
+		int InstallID;
+		String^ ExecOrderLocalID;
+		String^ ActionLocalID;
+		String^ ParticipantID;
+		String^ ClientID;
+		String^ BusinessUnit;
+		char OrderActionStatus;
+		String^ UserID;
+		char ActionType;
+		String^ StatusMsg;
+		String^ InstrumentID;
+		String^ BranchID;
+		String^ InvestUnitID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }
