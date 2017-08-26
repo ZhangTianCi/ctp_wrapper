@@ -93,6 +93,7 @@ namespace CTPWrapper {
 		virtual void OnRtnQuote(CThostFtdcQuoteFieldWrapper^ pQuote) {};
 		virtual void OnErrRtnQuoteInsert(CThostFtdcInputQuoteFieldWrapper^ pInputQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnErrRtnQuoteAction(CThostFtdcQuoteActionFieldWrapper^ pQuoteAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
+		virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspFieldWrapper^ pForQuoteRsp) {};
 
 
 	};

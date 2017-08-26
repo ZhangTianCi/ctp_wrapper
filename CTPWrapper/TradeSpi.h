@@ -2222,6 +2222,19 @@ namespace CTPWrapper {
 			wrapper_->OnErrRtnQuoteAction(csharpData, csharpError);
 		}
 
+		virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *cppData) override
+		{
+			CThostFtdcForQuoteRspFieldWrapper^ csharpData = gcnew CThostFtdcForQuoteRspFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ForQuoteSysID, cppData->ForQuoteSysID);
+			COPY_UNMANAGED_STRING(csharpData->ForQuoteTime, cppData->ForQuoteTime);
+			COPY_UNMANAGED_STRING(csharpData->ActionDay, cppData->ActionDay);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+
+			wrapper_->OnRtnForQuoteRsp(csharpData);
+		}
+
 
 
 
