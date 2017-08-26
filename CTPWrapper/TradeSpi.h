@@ -1052,6 +1052,36 @@ namespace CTPWrapper {
 			wrapper_->OnRspQrySettlementInfoConfirm(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryInvestorPositionCombineDetail(CThostFtdcInvestorPositionCombineDetailField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcInvestorPositionCombineDetailFieldWrapper^ csharpData = gcnew CThostFtdcInvestorPositionCombineDetailFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			COPY_UNMANAGED_STRING(csharpData->OpenDate, cppData->OpenDate);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			csharpData->SettlementID = cppData->SettlementID;
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->ComTradeID, cppData->ComTradeID);
+			COPY_UNMANAGED_STRING(csharpData->TradeID, cppData->TradeID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->Direction = cppData->Direction;
+			csharpData->TotalAmt = cppData->TotalAmt;
+			csharpData->Margin = cppData->Margin;
+			csharpData->ExchMargin = cppData->ExchMargin;
+			csharpData->MarginRateByMoney = cppData->MarginRateByMoney;
+			csharpData->MarginRateByVolume = cppData->MarginRateByVolume;
+			csharpData->LegID = cppData->LegID;
+			csharpData->LegMultiple = cppData->LegMultiple;
+			COPY_UNMANAGED_STRING(csharpData->CombInstrumentID, cppData->CombInstrumentID);
+			csharpData->TradeGroupID = cppData->TradeGroupID;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryInvestorPositionCombineDetail(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
 
 

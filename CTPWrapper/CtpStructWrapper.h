@@ -810,4 +810,27 @@ namespace CTPWrapper {
 		String^ SequenceLabel;
 	};
 
+	public ref struct CThostFtdcInvestorPositionCombineDetailFieldWrapper
+	{
+		String^ TradingDay;
+		String^ OpenDate;
+		String^ ExchangeID;
+		int SettlementID;
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ ComTradeID;
+		String^ TradeID;
+		String^ InstrumentID;
+		char HedgeFlag;
+		char Direction;
+		int TotalAmt;
+		double Margin;
+		double ExchMargin;
+		double MarginRateByMoney;
+		double MarginRateByVolume;
+		int LegID;
+		int LegMultiple;
+		String^ CombInstrumentID;
+		int TradeGroupID;
+	};
 }
