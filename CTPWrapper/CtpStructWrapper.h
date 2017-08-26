@@ -754,4 +754,14 @@ namespace CTPWrapper {
 		double AveragePrice;
 		String^ ActionDay;
 	};
+
+	public ref struct CThostFtdcSettlementInfoFieldWrapper
+	{
+		String^ TradingDay;
+		int SettlementID;
+		String^ BrokerID;
+		String^ InvestorID;
+		int SequenceNo;
+		String^ Content;
+	};
 }

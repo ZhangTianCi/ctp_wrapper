@@ -954,6 +954,24 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryDepthMarketData(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQrySettlementInfo(CThostFtdcSettlementInfoField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcSettlementInfoFieldWrapper^ csharpData = gcnew CThostFtdcSettlementInfoFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->SequenceNo = cppData->SequenceNo;
+			COPY_UNMANAGED_STRING(csharpData->Content, cppData->Content);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQrySettlementInfo(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
+
 
 
 		virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
