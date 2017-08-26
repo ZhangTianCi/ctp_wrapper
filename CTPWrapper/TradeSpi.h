@@ -3666,6 +3666,55 @@ namespace CTPWrapper {
 			wrapper_->OnRtnCancelAccountByBank(csharpData);
 		}
 
+		virtual void OnRtnChangeAccountByBank(CThostFtdcChangeAccountField *cppData) override
+		{
+			CThostFtdcChangeAccountFieldWrapper^ csharpData = gcnew CThostFtdcChangeAccountFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradeCode, cppData->TradeCode);
+			COPY_UNMANAGED_STRING(csharpData->BankID, cppData->BankID);
+			COPY_UNMANAGED_STRING(csharpData->BankBranchID, cppData->BankBranchID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerBranchID, cppData->BrokerBranchID);
+			COPY_UNMANAGED_STRING(csharpData->TradeDate, cppData->TradeDate);
+			COPY_UNMANAGED_STRING(csharpData->TradeTime, cppData->TradeTime);
+			COPY_UNMANAGED_STRING(csharpData->BankSerial, cppData->BankSerial);
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->PlateSerial = cppData->PlateSerial;
+			csharpData->LastFragment = cppData->LastFragment;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->CustomerName, cppData->CustomerName);
+			csharpData->IdCardType = cppData->IdCardType;
+			COPY_UNMANAGED_STRING(csharpData->IdentifiedCardNo, cppData->IdentifiedCardNo);
+			csharpData->Gender = cppData->Gender;
+			COPY_UNMANAGED_STRING(csharpData->CountryCode, cppData->CountryCode);
+			csharpData->CustType = cppData->CustType;
+			COPY_UNMANAGED_STRING(csharpData->Address, cppData->Address);
+			COPY_UNMANAGED_STRING(csharpData->ZipCode, cppData->ZipCode);
+			COPY_UNMANAGED_STRING(csharpData->Telephone, cppData->Telephone);
+			COPY_UNMANAGED_STRING(csharpData->MobilePhone, cppData->MobilePhone);
+			COPY_UNMANAGED_STRING(csharpData->Fax, cppData->Fax);
+			COPY_UNMANAGED_STRING(csharpData->EMail, cppData->EMail);
+			csharpData->MoneyAccountStatus = cppData->MoneyAccountStatus;
+			COPY_UNMANAGED_STRING(csharpData->BankAccount, cppData->BankAccount);
+			COPY_UNMANAGED_STRING(csharpData->BankPassWord, cppData->BankPassWord);
+			COPY_UNMANAGED_STRING(csharpData->NewBankAccount, cppData->NewBankAccount);
+			COPY_UNMANAGED_STRING(csharpData->NewBankPassWord, cppData->NewBankPassWord);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->Password, cppData->Password);
+			csharpData->BankAccType = cppData->BankAccType;
+			csharpData->InstallID = cppData->InstallID;
+			csharpData->VerifyCertNoFlag = cppData->VerifyCertNoFlag;
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerIDByBank, cppData->BrokerIDByBank);
+			csharpData->BankPwdFlag = cppData->BankPwdFlag;
+			csharpData->SecuPwdFlag = cppData->SecuPwdFlag;
+			csharpData->TID = cppData->TID;
+			COPY_UNMANAGED_STRING(csharpData->Digest, cppData->Digest);
+			csharpData->ErrorID = cppData->ErrorID;
+			COPY_UNMANAGED_STRING(csharpData->ErrorMsg, cppData->ErrorMsg);
+			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
+
+			wrapper_->OnRtnChangeAccountByBank(csharpData);
+		}
 
 
 	private:
