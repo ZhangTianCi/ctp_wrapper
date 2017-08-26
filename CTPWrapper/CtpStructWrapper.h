@@ -924,4 +924,13 @@ namespace CTPWrapper {
 		String^ ToCurrencyID;
 		double ExchangeRate;
 	};
+
+	public ref struct CThostFtdcSecAgentACIDMapFieldWrapper
+	{
+		String^ BrokerID;
+		String^ UserID;
+		String^ AccountID;
+		String^ CurrencyID;
+		String^ BrokerSecAgentID;
+	};
 }

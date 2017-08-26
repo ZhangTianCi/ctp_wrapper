@@ -1216,6 +1216,22 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryExchangeRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQrySecAgentACIDMap(CThostFtdcSecAgentACIDMapField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcSecAgentACIDMapFieldWrapper^ csharpData = gcnew CThostFtdcSecAgentACIDMapFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerSecAgentID, cppData->BrokerSecAgentID);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQrySecAgentACIDMap(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
