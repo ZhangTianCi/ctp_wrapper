@@ -1832,6 +1832,21 @@ namespace CTPWrapper {
 			wrapper_->OnErrRtnOrderAction(csharpData, csharpError);
 		}
 
+		virtual void OnRtnInstrumentStatus(CThostFtdcInstrumentStatusField *cppData) override
+		{
+			CThostFtdcInstrumentStatusFieldWrapper^ csharpData = gcnew CThostFtdcInstrumentStatusFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+			COPY_UNMANAGED_STRING(csharpData->SettlementGroupID, cppData->SettlementGroupID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->InstrumentStatus = cppData->InstrumentStatus;
+			csharpData->TradingSegmentSN = cppData->TradingSegmentSN;
+			COPY_UNMANAGED_STRING(csharpData->EnterTime, cppData->EnterTime);
+			csharpData->EnterReason = cppData->EnterReason;
+
+			wrapper_->OnRtnInstrumentStatus(csharpData);
+		}
+
 
 
 	private:

@@ -1270,4 +1270,16 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
+	public ref struct CThostFtdcInstrumentStatusFieldWrapper
+	{
+		String^ ExchangeID;
+		String^ ExchangeInstID;
+		String^ SettlementGroupID;
+		String^ InstrumentID;
+		char InstrumentStatus;
+		int TradingSegmentSN;
+		String^ EnterTime;
+		char EnterReason;
+	};
 }
