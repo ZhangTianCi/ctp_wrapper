@@ -1792,6 +1792,46 @@ namespace CTPWrapper {
 			wrapper_->OnErrRtnOrderInsert(csharpData, csharpError);
 		}
 
+		virtual void OnErrRtnOrderAction(CThostFtdcOrderActionField *cppData, CThostFtdcRspInfoField *cppError) override
+		{
+			CThostFtdcOrderActionFieldWrapper^ csharpData = gcnew CThostFtdcOrderActionFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->OrderActionRef = cppData->OrderActionRef;
+			COPY_UNMANAGED_STRING(csharpData->OrderRef, cppData->OrderRef);
+			csharpData->RequestID = cppData->RequestID;
+			csharpData->FrontID = cppData->FrontID;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->OrderSysID, cppData->OrderSysID);
+			csharpData->ActionFlag = cppData->ActionFlag;
+			csharpData->LimitPrice = cppData->LimitPrice;
+			csharpData->VolumeChange = cppData->VolumeChange;
+			COPY_UNMANAGED_STRING(csharpData->ActionDate, cppData->ActionDate);
+			COPY_UNMANAGED_STRING(csharpData->ActionTime, cppData->ActionTime);
+			COPY_UNMANAGED_STRING(csharpData->TraderID, cppData->TraderID);
+			csharpData->InstallID = cppData->InstallID;
+			COPY_UNMANAGED_STRING(csharpData->OrderLocalID, cppData->OrderLocalID);
+			COPY_UNMANAGED_STRING(csharpData->ActionLocalID, cppData->ActionLocalID);
+			COPY_UNMANAGED_STRING(csharpData->ParticipantID, cppData->ParticipantID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->OrderActionStatus = cppData->OrderActionStatus;
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			COPY_UNMANAGED_STRING(csharpData->StatusMsg, cppData->StatusMsg);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->BranchID, cppData->BranchID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnErrRtnOrderAction(csharpData, csharpError);
+		}
+
 
 
 	private:

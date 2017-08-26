@@ -1238,4 +1238,36 @@ namespace CTPWrapper {
 		String^ LongCustomerName;
 	};
 
+	public ref struct CThostFtdcOrderActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		int OrderActionRef;
+		String^ OrderRef;
+		int RequestID;
+		int FrontID;
+		int SessionID;
+		String^ ExchangeID;
+		String^ OrderSysID;
+		char ActionFlag;
+		double LimitPrice;
+		int VolumeChange;
+		String^ ActionDate;
+		String^ ActionTime;
+		String^ TraderID;
+		int InstallID;
+		String^ OrderLocalID;
+		String^ ActionLocalID;
+		String^ ParticipantID;
+		String^ ClientID;
+		String^ BusinessUnit;
+		char OrderActionStatus;
+		String^ UserID;
+		String^ StatusMsg;
+		String^ InstrumentID;
+		String^ BranchID;
+		String^ InvestUnitID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }

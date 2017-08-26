@@ -81,6 +81,7 @@ namespace CTPWrapper {
 		virtual void OnRtnOrder(CThostFtdcOrderFieldWrapper^ pOrder) {};
 		virtual void OnRtnTrade(CThostFtdcTradeFieldWrapper^ pTrade) {};
 		virtual void OnErrRtnOrderInsert(CThostFtdcInputOrderFieldWrapper^ pInputOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
+		virtual void OnErrRtnOrderAction(CThostFtdcOrderActionFieldWrapper^ pOrderAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 
 
 	};
