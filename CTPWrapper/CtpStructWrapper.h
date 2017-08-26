@@ -1184,4 +1184,37 @@ namespace CTPWrapper {
 		String^ MacAddress;
 	};
 
+	public ref struct CThostFtdcTransferSerialFieldWrapper
+	{
+		int PlateSerial;
+		String^ TradeDate;
+		String^ TradingDay;
+		String^ TradeTime;
+		String^ TradeCode;
+		int SessionID;
+		String^ BankID;
+		String^ BankBranchID;
+		char BankAccType;
+		String^ BankAccount;
+		String^ BankSerial;
+		String^ BrokerID;
+		String^ BrokerBranchID;
+		char FutureAccType;
+		String^ AccountID;
+		String^ InvestorID;
+		int FutureSerial;
+		char IdCardType;
+		String^ IdentifiedCardNo;
+		String^ CurrencyID;
+		double TradeAmount;
+		double CustFee;
+		double BrokerFee;
+		char AvailabilityFlag;
+		String^ OperatorCode;
+		String^ BankNewAccount;
+		int ErrorID;
+		String^ ErrorMsg;
+	};
+
+
 }
