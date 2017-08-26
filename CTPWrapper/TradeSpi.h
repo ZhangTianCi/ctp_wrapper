@@ -1420,6 +1420,40 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryExecOrder(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryForQuote(CThostFtdcForQuoteField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcForQuoteFieldWrapper^ csharpData = gcnew CThostFtdcForQuoteFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ForQuoteRef, cppData->ForQuoteRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			COPY_UNMANAGED_STRING(csharpData->ForQuoteLocalID, cppData->ForQuoteLocalID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ParticipantID, cppData->ParticipantID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+			COPY_UNMANAGED_STRING(csharpData->TraderID, cppData->TraderID);
+			csharpData->InstallID = cppData->InstallID;
+			COPY_UNMANAGED_STRING(csharpData->InsertDate, cppData->InsertDate);
+			COPY_UNMANAGED_STRING(csharpData->InsertTime, cppData->InsertTime);
+			csharpData->ForQuoteStatus = cppData->ForQuoteStatus;
+			csharpData->FrontID = cppData->FrontID;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->StatusMsg, cppData->StatusMsg);
+			COPY_UNMANAGED_STRING(csharpData->ActiveUserID, cppData->ActiveUserID);
+			csharpData->BrokerForQutoSeq = cppData->BrokerForQutoSeq;
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryForQuote(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

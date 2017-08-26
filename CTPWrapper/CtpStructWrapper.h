@@ -1065,4 +1065,30 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+	public ref struct CThostFtdcForQuoteFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ForQuoteRef;
+		String^ UserID;
+		String^ ForQuoteLocalID;
+		String^ ExchangeID;
+		String^ ParticipantID;
+		String^ ClientID;
+		String^ ExchangeInstID;
+		String^ TraderID;
+		int InstallID;
+		String^ InsertDate;
+		String^ InsertTime;
+		char ForQuoteStatus;
+		int FrontID;
+		int SessionID;
+		String^ StatusMsg;
+		String^ ActiveUserID;
+		int BrokerForQutoSeq;
+		String^ InvestUnitID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }

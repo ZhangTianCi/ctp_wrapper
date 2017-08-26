@@ -69,6 +69,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryOptionInstrTradeCost(CThostFtdcOptionInstrTradeCostFieldWrapper^ pOptionInstrTradeCost, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryOptionInstrCommRate(CThostFtdcOptionInstrCommRateFieldWrapper^ pOptionInstrCommRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryExecOrder(CThostFtdcExecOrderFieldWrapper^ pExecOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryForQuote(CThostFtdcForQuoteFieldWrapper^ pForQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 
