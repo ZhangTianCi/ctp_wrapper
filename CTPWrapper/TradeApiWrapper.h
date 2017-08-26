@@ -461,6 +461,32 @@ namespace CTPWrapper {
 			return api_->ReqQuoteInsert(&req, nRequestID);
 		}
 
+		int ReqQuoteAction(CThostFtdcInputQuoteActionFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcInputQuoteActionField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			req.QuoteActionRef = csharpData->QuoteActionRef;
+			COPY_MANAGED_STRING(req.QuoteRef, csharpData->QuoteRef);
+			req.RequestID = csharpData->RequestID;
+			req.FrontID = csharpData->FrontID;
+			req.SessionID = csharpData->SessionID;
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.QuoteSysID, csharpData->QuoteSysID);
+			req.ActionFlag = csharpData->ActionFlag;
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.InvestUnitID, csharpData->InvestUnitID);
+			COPY_MANAGED_STRING(req.ClientID, csharpData->ClientID);
+			COPY_MANAGED_STRING(req.IPAddress, csharpData->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, csharpData->MacAddress);
+
+
+			return api_->ReqQuoteAction(&req, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;
