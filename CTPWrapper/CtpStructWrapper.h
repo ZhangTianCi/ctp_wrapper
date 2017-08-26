@@ -896,4 +896,23 @@ namespace CTPWrapper {
 		double ShortMarginRatioByMoney;
 		double ShortMarginRatioByVolume;
 	};
+
+	public ref struct CThostFtdcExchangeMarginRateAdjustFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InstrumentID;
+		char HedgeFlag;
+		double LongMarginRatioByMoney;
+		double LongMarginRatioByVolume;
+		double ShortMarginRatioByMoney;
+		double ShortMarginRatioByVolume;
+		double ExchLongMarginRatioByMoney;
+		double ExchLongMarginRatioByVolume;
+		double ExchShortMarginRatioByMoney;
+		double ExchShortMarginRatioByVolume;
+		double NoLongMarginRatioByMoney;
+		double NoLongMarginRatioByVolume;
+		double NoShortMarginRatioByMoney;
+		double NoShortMarginRatioByVolume;
+	};
 }

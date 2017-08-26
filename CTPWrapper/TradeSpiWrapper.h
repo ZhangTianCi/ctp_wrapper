@@ -58,6 +58,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryEWarrantOffset(CThostFtdcEWarrantOffsetFieldWrapper^ pEWarrantOffset, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryInvestorProductGroupMargin(CThostFtdcInvestorProductGroupMarginFieldWrapper^ pInvestorProductGroupMargin, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryExchangeMarginRate(CThostFtdcExchangeMarginRateFieldWrapper^ pExchangeMarginRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryExchangeMarginRateAdjust(CThostFtdcExchangeMarginRateAdjustFieldWrapper^ pExchangeMarginRateAdjust, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 

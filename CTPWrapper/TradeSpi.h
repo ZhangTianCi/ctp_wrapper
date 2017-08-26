@@ -1174,6 +1174,32 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryExchangeMarginRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryExchangeMarginRateAdjust(CThostFtdcExchangeMarginRateAdjustField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcExchangeMarginRateAdjustFieldWrapper^ csharpData = gcnew CThostFtdcExchangeMarginRateAdjustFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->LongMarginRatioByMoney = cppData->LongMarginRatioByMoney;
+			csharpData->LongMarginRatioByVolume = cppData->LongMarginRatioByVolume;
+			csharpData->ShortMarginRatioByMoney = cppData->ShortMarginRatioByMoney;
+			csharpData->ShortMarginRatioByVolume = cppData->ShortMarginRatioByVolume;
+			csharpData->ExchLongMarginRatioByMoney = cppData->ExchLongMarginRatioByMoney;
+			csharpData->ExchLongMarginRatioByVolume = cppData->ExchLongMarginRatioByVolume;
+			csharpData->ExchShortMarginRatioByMoney = cppData->ExchShortMarginRatioByMoney;
+			csharpData->ExchShortMarginRatioByVolume = cppData->ExchShortMarginRatioByVolume;
+			csharpData->NoLongMarginRatioByMoney = cppData->NoLongMarginRatioByMoney;
+			csharpData->NoLongMarginRatioByVolume = cppData->NoLongMarginRatioByVolume;
+			csharpData->NoShortMarginRatioByMoney = cppData->NoShortMarginRatioByMoney;
+			csharpData->NoShortMarginRatioByVolume = cppData->NoShortMarginRatioByVolume;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryExchangeMarginRateAdjust(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
