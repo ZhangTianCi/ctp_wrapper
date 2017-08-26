@@ -1145,4 +1145,11 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
+	public ref struct CThostFtdcCombInstrumentGuardFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InstrumentID;
+		double GuarantRatio;
+	};
 }

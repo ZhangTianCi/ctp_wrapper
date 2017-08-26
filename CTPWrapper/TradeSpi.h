@@ -1515,6 +1515,20 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryQuote(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryCombInstrumentGuard(CThostFtdcCombInstrumentGuardField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcCombInstrumentGuardFieldWrapper^ csharpData = gcnew CThostFtdcCombInstrumentGuardFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->GuarantRatio = cppData->GuarantRatio;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryCombInstrumentGuard(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
