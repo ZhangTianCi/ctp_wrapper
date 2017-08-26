@@ -1365,6 +1365,61 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryOptionInstrCommRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryExecOrder(CThostFtdcExecOrderField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcExecOrderFieldWrapper^ csharpData = gcnew CThostFtdcExecOrderFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ExecOrderRef, cppData->ExecOrderRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->Volume = cppData->Volume;
+			csharpData->RequestID = cppData->RequestID;
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->OffsetFlag = cppData->OffsetFlag;
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->ActionType = cppData->ActionType;
+			csharpData->PosiDirection = cppData->PosiDirection;
+			csharpData->ReservePositionFlag = cppData->ReservePositionFlag;
+			csharpData->CloseFlag = cppData->CloseFlag;
+			COPY_UNMANAGED_STRING(csharpData->ExecOrderLocalID, cppData->ExecOrderLocalID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ParticipantID, cppData->ParticipantID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+			COPY_UNMANAGED_STRING(csharpData->TraderID, cppData->TraderID);
+			csharpData->InstallID = cppData->InstallID;
+			csharpData->OrderSubmitStatus = cppData->OrderSubmitStatus;
+			csharpData->NotifySequence = cppData->NotifySequence;
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			COPY_UNMANAGED_STRING(csharpData->ExecOrderSysID, cppData->ExecOrderSysID);
+			COPY_UNMANAGED_STRING(csharpData->InsertDate, cppData->InsertDate);
+			COPY_UNMANAGED_STRING(csharpData->InsertTime, cppData->InsertTime);
+			COPY_UNMANAGED_STRING(csharpData->CancelTime, cppData->CancelTime);
+			csharpData->ExecResult = cppData->ExecResult;
+			COPY_UNMANAGED_STRING(csharpData->ClearingPartID, cppData->ClearingPartID);
+			csharpData->SequenceNo = cppData->SequenceNo;
+			csharpData->FrontID = cppData->FrontID;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->UserProductInfo, cppData->UserProductInfo);
+			COPY_UNMANAGED_STRING(csharpData->StatusMsg, cppData->StatusMsg);
+			COPY_UNMANAGED_STRING(csharpData->ActiveUserID, cppData->ActiveUserID);
+			csharpData->BrokerExecOrderSeq = cppData->BrokerExecOrderSeq;
+			COPY_UNMANAGED_STRING(csharpData->BranchID, cppData->BranchID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryExecOrder(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

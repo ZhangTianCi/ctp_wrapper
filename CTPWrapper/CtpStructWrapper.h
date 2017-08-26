@@ -1017,4 +1017,52 @@ namespace CTPWrapper {
 		double StrikeRatioByMoney;
 		double StrikeRatioByVolume;
 	};
+
+	public ref struct CThostFtdcExecOrderFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExecOrderRef;
+		String^ UserID;
+		int Volume;
+		int RequestID;
+		String^ BusinessUnit;
+		char OffsetFlag;
+		char HedgeFlag;
+		char ActionType;
+		char PosiDirection;
+		char ReservePositionFlag;
+		char CloseFlag;
+		String^ ExecOrderLocalID;
+		String^ ExchangeID;
+		String^ ParticipantID;
+		String^ ClientID;
+		String^ ExchangeInstID;
+		String^ TraderID;
+		int InstallID;
+		char OrderSubmitStatus;
+		int NotifySequence;
+		String^ TradingDay;
+		int SettlementID;
+		String^ ExecOrderSysID;
+		String^ InsertDate;
+		String^ InsertTime;
+		String^ CancelTime;
+		char ExecResult;
+		String^ ClearingPartID;
+		int SequenceNo;
+		int FrontID;
+		int SessionID;
+		String^ UserProductInfo;
+		String^ StatusMsg;
+		String^ ActiveUserID;
+		int BrokerExecOrderSeq;
+		String^ BranchID;
+		String^ InvestUnitID;
+		String^ AccountID;
+		String^ CurrencyID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }
