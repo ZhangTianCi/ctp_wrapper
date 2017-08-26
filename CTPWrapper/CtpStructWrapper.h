@@ -915,4 +915,13 @@ namespace CTPWrapper {
 		double NoShortMarginRatioByMoney;
 		double NoShortMarginRatioByVolume;
 	};
+
+	public ref struct CThostFtdcExchangeRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ FromCurrencyID;
+		double FromCurrencyUnit;
+		String^ ToCurrencyID;
+		double ExchangeRate;
+	};
 }

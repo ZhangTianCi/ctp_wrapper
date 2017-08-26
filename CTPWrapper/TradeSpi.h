@@ -1200,6 +1200,23 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryExchangeMarginRateAdjust(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryExchangeRate(CThostFtdcExchangeRateField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcExchangeRateFieldWrapper^ csharpData = gcnew CThostFtdcExchangeRateFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->FromCurrencyID, cppData->FromCurrencyID);
+			csharpData->FromCurrencyUnit = cppData->FromCurrencyUnit;
+			COPY_UNMANAGED_STRING(csharpData->ToCurrencyID, cppData->ToCurrencyID);
+			csharpData->ExchangeRate = cppData->ExchangeRate;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryExchangeRate(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
+
 
 
 
