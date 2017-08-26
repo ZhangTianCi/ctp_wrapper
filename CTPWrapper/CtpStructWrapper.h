@@ -933,4 +933,12 @@ namespace CTPWrapper {
 		String^ CurrencyID;
 		String^ BrokerSecAgentID;
 	};
+
+	public ref struct CThostFtdcProductExchRateFieldWrapper
+	{
+		String^ ProductID;
+		String^ QuoteCurrencyID;
+		double ExchangeRate;
+	};
+
 }
