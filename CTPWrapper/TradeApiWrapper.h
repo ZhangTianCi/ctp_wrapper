@@ -387,6 +387,29 @@ namespace CTPWrapper {
 			return api_->ReqExecOrderInsert(&req, nRequestID);
 		}
 
+		int ReqExecOrderAction(CThostFtdcInputExecOrderActionFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcInputExecOrderActionField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			req.ExecOrderActionRef = csharpData->ExecOrderActionRef;
+			COPY_MANAGED_STRING(req.ExecOrderRef, csharpData->ExecOrderRef);
+			req.RequestID = csharpData->RequestID;
+			req.FrontID = csharpData->FrontID;
+			req.SessionID = csharpData->SessionID;
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.ExecOrderSysID, csharpData->ExecOrderSysID);
+			req.ActionFlag = csharpData->ActionFlag;
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.InvestUnitID, csharpData->InvestUnitID);
+			COPY_MANAGED_STRING(req.IPAddress, csharpData->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, csharpData->MacAddress);
+
+			return api_->ReqExecOrderAction(&req, nRequestID);
+		}
 
 
 	private:
