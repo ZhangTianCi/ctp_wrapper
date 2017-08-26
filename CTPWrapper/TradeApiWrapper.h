@@ -247,7 +247,7 @@ namespace CTPWrapper {
 			return api_->ReqParkedOrderInsert(&req, nRequestID);
 		}
 
-		virtual int ReqParkedOrderAction(CThostFtdcParkedOrderActionFieldWrapper^ csharpData, int nRequestID)
+		int ReqParkedOrderAction(CThostFtdcParkedOrderActionFieldWrapper^ csharpData, int nRequestID)
 		{
 			CThostFtdcParkedOrderActionField req;
 			memset(&req, 0, sizeof(req));
@@ -278,7 +278,7 @@ namespace CTPWrapper {
 			return api_->ReqParkedOrderAction(&req, nRequestID);
 		}
 
-		virtual int ReqOrderAction(CThostFtdcInputOrderActionFieldWrapper^ csharpData, int nRequestID)
+		int ReqOrderAction(CThostFtdcInputOrderActionFieldWrapper^ csharpData, int nRequestID)
 		{
 			CThostFtdcInputOrderActionField req;
 			memset(&req, 0, sizeof(req));
@@ -304,7 +304,7 @@ namespace CTPWrapper {
 			return api_->ReqOrderAction(&req, nRequestID);
 		}
 
-		virtual int ReqQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeFieldWrapper^ csharpData, int nRequestID)
+		int ReqQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeFieldWrapper^ csharpData, int nRequestID)
 		{
 			CThostFtdcQueryMaxOrderVolumeField req;
 			memset(&req, 0, sizeof(req));
@@ -320,7 +320,7 @@ namespace CTPWrapper {
 			return api_->ReqQueryMaxOrderVolume(&req, nRequestID);
 		}
 
-		virtual int ReqSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmFieldWrapper^ csharpData, int nRequestID)
+		int ReqSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmFieldWrapper^ csharpData, int nRequestID)
 		{
 			CThostFtdcSettlementInfoConfirmField req;
 			memset(&req, 0, sizeof(req));
@@ -332,6 +332,19 @@ namespace CTPWrapper {
 
 			return api_->ReqSettlementInfoConfirm(&req, nRequestID);
 		}
+
+		int ReqRemoveParkedOrder(CThostFtdcRemoveParkedOrderFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcRemoveParkedOrderField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.ParkedOrderID, csharpData->ParkedOrderID);
+
+			return api_->ReqRemoveParkedOrder(&req, nRequestID);
+		}
+
 
 
 
