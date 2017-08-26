@@ -63,6 +63,7 @@ namespace CTPWrapper {
 		virtual void OnRspQrySecAgentACIDMap(CThostFtdcSecAgentACIDMapFieldWrapper^ pSecAgentACIDMap, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryProductExchRate(CThostFtdcProductExchRateFieldWrapper^ pProductExchRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryProductGroup(CThostFtdcProductGroupFieldWrapper^ pProductGroup, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryMMInstrumentCommissionRate(CThostFtdcMMInstrumentCommissionRateFieldWrapper^ pMMInstrumentCommissionRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 

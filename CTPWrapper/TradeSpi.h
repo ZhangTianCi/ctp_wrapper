@@ -1260,6 +1260,27 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryProductGroup(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryMMInstrumentCommissionRate(CThostFtdcMMInstrumentCommissionRateField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcMMInstrumentCommissionRateFieldWrapper^ csharpData = gcnew CThostFtdcMMInstrumentCommissionRateFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->InvestorRange = cppData->InvestorRange;
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->OpenRatioByMoney = cppData->OpenRatioByMoney;
+			csharpData->OpenRatioByVolume = cppData->OpenRatioByVolume;
+			csharpData->CloseRatioByMoney = cppData->CloseRatioByMoney;
+			csharpData->CloseRatioByVolume = cppData->CloseRatioByVolume;
+			csharpData->CloseTodayRatioByMoney = cppData->CloseTodayRatioByMoney;
+			csharpData->CloseTodayRatioByVolume = cppData->CloseTodayRatioByVolume;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryMMInstrumentCommissionRate(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

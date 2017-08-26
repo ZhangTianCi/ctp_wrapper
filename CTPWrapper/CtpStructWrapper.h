@@ -948,4 +948,17 @@ namespace CTPWrapper {
 		String^ ProductGroupID;
 	};
 
+	public ref struct CThostFtdcMMInstrumentCommissionRateFieldWrapper
+	{
+		String^ InstrumentID;
+		char InvestorRange;
+		String^ BrokerID;
+		String^ InvestorID;
+		double OpenRatioByMoney;
+		double OpenRatioByVolume;
+		double CloseRatioByMoney;
+		double CloseRatioByVolume;
+		double CloseTodayRatioByMoney;
+		double CloseTodayRatioByVolume;
+	};
 }
