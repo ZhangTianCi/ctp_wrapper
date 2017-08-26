@@ -1304,6 +1304,23 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryMMOptionInstrCommRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryInstrumentOrderCommRate(CThostFtdcInstrumentOrderCommRateField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcInstrumentOrderCommRateFieldWrapper^ csharpData = gcnew CThostFtdcInstrumentOrderCommRateFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->InvestorRange = cppData->InvestorRange;
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->OrderCommByVolume = cppData->OrderCommByVolume;
+			csharpData->OrderActionCommByVolume = cppData->OrderActionCommByVolume;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryInstrumentOrderCommRate(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
 
 

@@ -65,6 +65,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryProductGroup(CThostFtdcProductGroupFieldWrapper^ pProductGroup, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryMMInstrumentCommissionRate(CThostFtdcMMInstrumentCommissionRateFieldWrapper^ pMMInstrumentCommissionRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryMMOptionInstrCommRate(CThostFtdcMMOptionInstrCommRateFieldWrapper^ pMMOptionInstrCommRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryInstrumentOrderCommRate(CThostFtdcInstrumentOrderCommRateFieldWrapper^ pInstrumentOrderCommRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 

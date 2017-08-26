@@ -977,4 +977,15 @@ namespace CTPWrapper {
 		double StrikeRatioByMoney;
 		double StrikeRatioByVolume;
 	};
+
+	public ref struct CThostFtdcInstrumentOrderCommRateFieldWrapper
+	{
+		String^ InstrumentID;
+		char InvestorRange;
+		String^ BrokerID;
+		String^ InvestorID;
+		char HedgeFlag;
+		double OrderCommByVolume;
+		double OrderActionCommByVolume;
+	};
 }
