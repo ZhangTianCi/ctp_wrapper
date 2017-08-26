@@ -247,6 +247,39 @@ namespace CTPWrapper {
 			return api_->ReqParkedOrderInsert(&req, nRequestID);
 		}
 
+		virtual int ReqParkedOrderAction(CThostFtdcParkedOrderActionFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcParkedOrderActionField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			req.OrderActionRef = csharpData->OrderActionRef;
+			COPY_MANAGED_STRING(req.OrderRef, csharpData->OrderRef);
+			req.RequestID = csharpData->RequestID;
+			req.FrontID = csharpData->FrontID;
+			req.SessionID = csharpData->SessionID;
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.OrderSysID, csharpData->OrderSysID);
+			req.ActionFlag = csharpData->ActionFlag;
+			req.LimitPrice = csharpData->LimitPrice;
+			req.VolumeChange = csharpData->VolumeChange;
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ParkedOrderActionID, csharpData->ParkedOrderActionID);
+			req.UserType = csharpData->UserType;
+			req.Status = csharpData->Status;
+			req.ErrorID = csharpData->ErrorID;
+			COPY_MANAGED_STRING(req.ErrorMsg, csharpData->ErrorMsg);
+			COPY_MANAGED_STRING(req.InvestUnitID, csharpData->InvestUnitID);
+			COPY_MANAGED_STRING(req.IPAddress, csharpData->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, csharpData->MacAddress);
+
+			return api_->ReqParkedOrderAction(&req, nRequestID);
+
+		}
+
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;

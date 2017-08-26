@@ -52,7 +52,7 @@ if __name__ == '__main__':
 	print ''
 	for (typ, field) in attrs:
 		if CPPTYPES_TO_CSHARPTYPES[typ] == 'String^':
-			print '\t\t\tCOPY_MANAGED_STRING(req.%s, pFensUserInfo->%s);' % (field, field)
+			print '\t\t\tCOPY_MANAGED_STRING(req.%s, csharpData->%s);' % (field, field)
 		else:
-			print '\t\t\treq->%s = csharpData->%s;' % (field, field)
+			print '\t\t\treq.%s = csharpData->%s;' % (field, field)
 	print ''
