@@ -802,4 +802,11 @@ namespace CTPWrapper {
 		int CloseVolume;
 		double CloseAmount;
 	};
+
+	public ref struct CThostFtdcNoticeFieldWrapper
+	{
+		String^ BrokerID;
+		String^ Content;
+		String^ SequenceLabel;
+	};
 }

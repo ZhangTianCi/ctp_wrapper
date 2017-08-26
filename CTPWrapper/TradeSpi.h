@@ -1023,6 +1023,19 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryInvestorPositionDetail(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryNotice(CThostFtdcNoticeField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcNoticeFieldWrapper^ csharpData = gcnew CThostFtdcNoticeFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->Content, cppData->Content);
+			COPY_UNMANAGED_STRING(csharpData->SequenceLabel, cppData->SequenceLabel);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryNotice(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
 
 
