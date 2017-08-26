@@ -106,6 +106,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryBrokerTradingAlgos(CThostFtdcBrokerTradingAlgosFieldWrapper^ pBrokerTradingAlgos, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQueryCFMMCTradingAccountToken(CThostFtdcQueryCFMMCTradingAccountTokenFieldWrapper^ pQueryCFMMCTradingAccountToken, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRtnFromBankToFutureByBank(CThostFtdcRspTransferFieldWrapper^ pRspTransfer) {};
+		virtual void OnRtnFromFutureToBankByBank(CThostFtdcRspTransferFieldWrapper^ pRspTransfer) {};
 
 
 	};
