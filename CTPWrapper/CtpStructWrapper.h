@@ -764,4 +764,12 @@ namespace CTPWrapper {
 		int SequenceNo;
 		String^ Content;
 	};
+
+	public ref struct CThostFtdcTransferBankFieldWrapper
+	{
+		String^ BankID;
+		String^ BankBrchID;
+		String^ BankName;
+		int IsActive;
+	};
 }

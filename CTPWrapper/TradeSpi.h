@@ -971,6 +971,21 @@ namespace CTPWrapper {
 			wrapper_->OnRspQrySettlementInfo(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryTransferBank(CThostFtdcTransferBankField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcTransferBankFieldWrapper^ csharpData = gcnew CThostFtdcTransferBankFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BankID, cppData->BankID);
+			COPY_UNMANAGED_STRING(csharpData->BankBrchID, cppData->BankBrchID);
+			COPY_UNMANAGED_STRING(csharpData->BankName, cppData->BankName);
+			csharpData->IsActive = cppData->IsActive;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryTransferBank(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
