@@ -116,6 +116,7 @@ namespace CTPWrapper {
 		virtual void OnRtnQueryBankBalanceByFuture(CThostFtdcNotifyQueryAccountFieldWrapper^ pNotifyQueryAccount) {};
 		virtual void OnErrRtnBankToFutureByFuture(CThostFtdcReqTransferFieldWrapper^ pReqTransfer, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnErrRtnFutureToBankByFuture(CThostFtdcReqTransferFieldWrapper^ pReqTransfer, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
+		virtual void OnErrRtnRepealBankToFutureByFutureManual(CThostFtdcReqRepealFieldWrapper^ pReqRepeal, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 
 
 	};
