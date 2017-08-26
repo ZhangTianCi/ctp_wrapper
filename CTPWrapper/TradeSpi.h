@@ -2002,6 +2002,38 @@ namespace CTPWrapper {
 			wrapper_->OnRtnExecOrder(csharpData);
 		}
 
+		virtual void OnErrRtnExecOrderInsert(CThostFtdcInputExecOrderField *cppData, CThostFtdcRspInfoField *cppError) override
+		{
+			CThostFtdcInputExecOrderFieldWrapper^ csharpData = gcnew CThostFtdcInputExecOrderFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ExecOrderRef, cppData->ExecOrderRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->Volume = cppData->Volume;
+			csharpData->RequestID = cppData->RequestID;
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->OffsetFlag = cppData->OffsetFlag;
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->ActionType = cppData->ActionType;
+			csharpData->PosiDirection = cppData->PosiDirection;
+			csharpData->ReservePositionFlag = cppData->ReservePositionFlag;
+			csharpData->CloseFlag = cppData->CloseFlag;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnErrRtnExecOrderInsert(csharpData, csharpError);
+		}
+
 
 
 
