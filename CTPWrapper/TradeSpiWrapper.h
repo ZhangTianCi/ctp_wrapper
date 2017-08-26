@@ -50,6 +50,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryDepthMarketData(CThostFtdcDepthMarketDataFieldWrapper^ pDepthMarketData, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQrySettlementInfo(CThostFtdcSettlementInfoFieldWrapper^ pSettlementInfo, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryTransferBank(CThostFtdcTransferBankFieldWrapper^ pTransferBank, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryInvestorPositionDetail(CThostFtdcInvestorPositionDetailFieldWrapper^ pInvestorPositionDetail, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}

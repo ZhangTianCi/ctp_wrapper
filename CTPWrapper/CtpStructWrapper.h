@@ -772,4 +772,34 @@ namespace CTPWrapper {
 		String^ BankName;
 		int IsActive;
 	};
+
+	public ref struct CThostFtdcInvestorPositionDetailFieldWrapper
+	{
+		String^ InstrumentID;
+		String^ BrokerID;
+		String^ InvestorID;
+		char HedgeFlag;
+		char Direction;
+		String^ OpenDate;
+		String^ TradeID;
+		int Volume;
+		double OpenPrice;
+		String^ TradingDay;
+		int SettlementID;
+		char TradeType;
+		String^ CombInstrumentID;
+		String^ ExchangeID;
+		double CloseProfitByDate;
+		double CloseProfitByTrade;
+		double PositionProfitByDate;
+		double PositionProfitByTrade;
+		double Margin;
+		double ExchMargin;
+		double MarginRateByMoney;
+		double MarginRateByVolume;
+		double LastSettlementPrice;
+		double SettlementPrice;
+		int CloseVolume;
+		double CloseAmount;
+	};
 }

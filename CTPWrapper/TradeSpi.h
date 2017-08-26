@@ -986,6 +986,44 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryTransferBank(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryInvestorPositionDetail(CThostFtdcInvestorPositionDetailField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcInvestorPositionDetailFieldWrapper^ csharpData = gcnew CThostFtdcInvestorPositionDetailFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->Direction = cppData->Direction;
+			COPY_UNMANAGED_STRING(csharpData->OpenDate, cppData->OpenDate);
+			COPY_UNMANAGED_STRING(csharpData->TradeID, cppData->TradeID);
+			csharpData->Volume = cppData->Volume;
+			csharpData->OpenPrice = cppData->OpenPrice;
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			csharpData->TradeType = cppData->TradeType;
+			COPY_UNMANAGED_STRING(csharpData->CombInstrumentID, cppData->CombInstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			csharpData->CloseProfitByDate = cppData->CloseProfitByDate;
+			csharpData->CloseProfitByTrade = cppData->CloseProfitByTrade;
+			csharpData->PositionProfitByDate = cppData->PositionProfitByDate;
+			csharpData->PositionProfitByTrade = cppData->PositionProfitByTrade;
+			csharpData->Margin = cppData->Margin;
+			csharpData->ExchMargin = cppData->ExchMargin;
+			csharpData->MarginRateByMoney = cppData->MarginRateByMoney;
+			csharpData->MarginRateByVolume = cppData->MarginRateByVolume;
+			csharpData->LastSettlementPrice = cppData->LastSettlementPrice;
+			csharpData->SettlementPrice = cppData->SettlementPrice;
+			csharpData->CloseVolume = cppData->CloseVolume;
+			csharpData->CloseAmount = cppData->CloseAmount;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryInvestorPositionDetail(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
+
 
 
 
