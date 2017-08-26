@@ -1322,6 +1322,26 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryInstrumentOrderCommRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryOptionInstrTradeCost(CThostFtdcOptionInstrTradeCostField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcOptionInstrTradeCostFieldWrapper^ csharpData = gcnew CThostFtdcOptionInstrTradeCostFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->FixedMargin = cppData->FixedMargin;
+			csharpData->MiniMargin = cppData->MiniMargin;
+			csharpData->Royalty = cppData->Royalty;
+			csharpData->ExchFixedMargin = cppData->ExchFixedMargin;
+			csharpData->ExchMiniMargin = cppData->ExchMiniMargin;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryOptionInstrTradeCost(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

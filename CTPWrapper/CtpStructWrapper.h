@@ -988,4 +988,17 @@ namespace CTPWrapper {
 		double OrderCommByVolume;
 		double OrderActionCommByVolume;
 	};
+
+	public ref struct CThostFtdcOptionInstrTradeCostFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		char HedgeFlag;
+		double FixedMargin;
+		double MiniMargin;
+		double Royalty;
+		double ExchFixedMargin;
+		double ExchMiniMargin;
+	};
 }
