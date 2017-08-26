@@ -1521,4 +1521,55 @@ namespace CTPWrapper {
 		String^ BrokerID;
 		String^ InvestorID;
 	};
+
+	public ref struct CThostFtdcRspTransferFieldWrapper
+	{
+		String^ TradeCode;
+		String^ BankID;
+		String^ BankBranchID;
+		String^ BrokerID;
+		String^ BrokerBranchID;
+		String^ TradeDate;
+		String^ TradeTime;
+		String^ BankSerial;
+		String^ TradingDay;
+		int PlateSerial;
+		char LastFragment;
+		int SessionID;
+		String^ CustomerName;
+		char IdCardType;
+		String^ IdentifiedCardNo;
+		char CustType;
+		String^ BankAccount;
+		String^ BankPassWord;
+		String^ AccountID;
+		String^ Password;
+		int InstallID;
+		int FutureSerial;
+		String^ UserID;
+		char VerifyCertNoFlag;
+		String^ CurrencyID;
+		double TradeAmount;
+		double FutureFetchAmount;
+		char FeePayFlag;
+		double CustFee;
+		double BrokerFee;
+		String^ Message;
+		String^ Digest;
+		char BankAccType;
+		String^ DeviceID;
+		char BankSecuAccType;
+		String^ BrokerIDByBank;
+		String^ BankSecuAcc;
+		char BankPwdFlag;
+		char SecuPwdFlag;
+		String^ OperNo;
+		int RequestID;
+		int TID;
+		char TransferStatus;
+		int ErrorID;
+		String^ ErrorMsg;
+		String^ LongCustomerName;
+	};
+
 }
