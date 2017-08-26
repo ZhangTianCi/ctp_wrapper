@@ -2431,6 +2431,25 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryParkedOrderAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryTradingNotice(CThostFtdcTradingNoticeField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcTradingNoticeFieldWrapper^ csharpData = gcnew CThostFtdcTradingNoticeFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			csharpData->InvestorRange = cppData->InvestorRange;
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->SequenceSeries = cppData->SequenceSeries;
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			COPY_UNMANAGED_STRING(csharpData->SendTime, cppData->SendTime);
+			csharpData->SequenceNo = cppData->SequenceNo;
+			COPY_UNMANAGED_STRING(csharpData->FieldContent, cppData->FieldContent);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryTradingNotice(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

@@ -1483,4 +1483,15 @@ namespace CTPWrapper {
 		String^ BankName;
 	};
 
+	public ref struct CThostFtdcTradingNoticeFieldWrapper
+	{
+		String^ BrokerID;
+		char InvestorRange;
+		String^ InvestorID;
+		short SequenceSeries;
+		String^ UserID;
+		String^ SendTime;
+		int SequenceNo;
+		String^ FieldContent;
+	};
 }
