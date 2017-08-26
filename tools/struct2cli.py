@@ -24,7 +24,6 @@ def read_struct(filename):
 if __name__ == '__main__':
 	name, attrs = read_struct(sys.argv[1])
 
-	"""
 	print '\tpublic ref struct %sWrapper' % name
 	print '\t{'
 	for (typ, field) in attrs:
@@ -32,6 +31,7 @@ if __name__ == '__main__':
 	print '\t};'
 
 	print ''
+	"""
 	print ''
 	print ''
 	print ''
@@ -47,7 +47,6 @@ if __name__ == '__main__':
 	print ''
 	print ''
 	print ''
-	"""
 
 	print '\t\t\t%s req;' % name
 	print '\t\t\tmemset(&req, 0, sizeof(req));'
@@ -58,3 +57,5 @@ if __name__ == '__main__':
 		else:
 			print '\t\t\treq.%s = csharpData->%s;' % (field, field)
 	print ''
+	"""
+

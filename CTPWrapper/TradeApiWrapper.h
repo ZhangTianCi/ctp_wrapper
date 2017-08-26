@@ -528,6 +528,779 @@ namespace CTPWrapper {
 			return api_->ReqCombActionInsert(&req, nRequestID);
 		}
 
+		int ReqQryOrder(CThostFtdcQryOrderFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryOrderField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.OrderSysID, csharpData->OrderSysID);
+			COPY_MANAGED_STRING(req.InsertTimeStart, csharpData->InsertTimeStart);
+			COPY_MANAGED_STRING(req.InsertTimeEnd, csharpData->InsertTimeEnd);
+
+
+			return api_->ReqQryOrder(&req, nRequestID);
+		}
+
+		int ReqQryTrade(CThostFtdcQryTradeFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryTradeField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.TradeID, csharpData->TradeID);
+			COPY_MANAGED_STRING(req.TradeTimeStart, csharpData->TradeTimeStart);
+			COPY_MANAGED_STRING(req.TradeTimeEnd, csharpData->TradeTimeEnd);
+
+
+			return api_->ReqQryTrade(&req, nRequestID);
+		}
+
+		int ReqQryInvestorPosition(CThostFtdcQryInvestorPositionFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInvestorPositionField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryInvestorPosition(&req, nRequestID);
+		}
+
+		int ReqQryTradingAccount(CThostFtdcQryTradingAccountFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryTradingAccountField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+
+
+			return api_->ReqQryTradingAccount(&req, nRequestID);
+		}
+
+		int ReqQryInvestor(CThostFtdcQryInvestorFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInvestorField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+
+
+			return api_->ReqQryInvestor(&req, nRequestID);
+		}
+
+		int ReqQryTradingCode(CThostFtdcQryTradingCodeFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryTradingCodeField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.ClientID, csharpData->ClientID);
+			req.ClientIDType = csharpData->ClientIDType;
+
+
+			return api_->ReqQryTradingCode(&req, nRequestID);
+		}
+
+		int ReqQryInstrumentMarginRate(CThostFtdcQryInstrumentMarginRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInstrumentMarginRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			req.HedgeFlag = csharpData->HedgeFlag;
+
+
+			return api_->ReqQryInstrumentMarginRate(&req, nRequestID);
+		}
+
+		int ReqQryInstrumentCommissionRate(CThostFtdcQryInstrumentCommissionRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInstrumentCommissionRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryInstrumentCommissionRate(&req, nRequestID);
+		}
+
+		int ReqQryExchange(CThostFtdcQryExchangeFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryExchangeField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+
+
+			return api_->ReqQryExchange(&req, nRequestID);
+		}
+
+		int ReqQryProduct(CThostFtdcQryProductFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryProductField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.ProductID, csharpData->ProductID);
+			req.ProductClass = csharpData->ProductClass;
+
+
+			return api_->ReqQryProduct(&req, nRequestID);
+		}
+
+		int ReqQryInstrument(CThostFtdcQryInstrumentFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInstrumentField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.ExchangeInstID, csharpData->ExchangeInstID);
+			COPY_MANAGED_STRING(req.ProductID, csharpData->ProductID);
+
+
+			return api_->ReqQryInstrument(&req, nRequestID);
+		}
+
+		int ReqQryDepthMarketData(CThostFtdcQryDepthMarketDataFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryDepthMarketDataField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryDepthMarketData(&req, nRequestID);
+		}
+
+		int ReqQrySettlementInfo(CThostFtdcQrySettlementInfoFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQrySettlementInfoField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.TradingDay, csharpData->TradingDay);
+
+
+			return api_->ReqQrySettlementInfo(&req, nRequestID);
+		}
+
+		int ReqQryTransferBank(CThostFtdcQryTransferBankFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryTransferBankField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BankID, csharpData->BankID);
+			COPY_MANAGED_STRING(req.BankBrchID, csharpData->BankBrchID);
+
+
+			return api_->ReqQryTransferBank(&req, nRequestID);
+		}
+
+		int ReqQryInvestorPositionDetail(CThostFtdcQryInvestorPositionDetailFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInvestorPositionDetailField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryInvestorPositionDetail(&req, nRequestID);
+		}
+
+		int ReqQryNotice(CThostFtdcQryNoticeFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryNoticeField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+
+
+			return api_->ReqQryNotice(&req, nRequestID);
+		}
+
+		int ReqQrySettlementInfoConfirm(CThostFtdcQrySettlementInfoConfirmFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQrySettlementInfoConfirmField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+
+
+			return api_->ReqQrySettlementInfoConfirm(&req, nRequestID);
+		}
+
+		int ReqQryInvestorPositionCombineDetail(CThostFtdcQryInvestorPositionCombineDetailFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInvestorPositionCombineDetailField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.CombInstrumentID, csharpData->CombInstrumentID);
+
+
+			return api_->ReqQryInvestorPositionCombineDetail(&req, nRequestID);
+		}
+
+		int ReqQryCFMMCTradingAccountKey(CThostFtdcQryCFMMCTradingAccountKeyFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryCFMMCTradingAccountKeyField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+
+
+			return api_->ReqQryCFMMCTradingAccountKey(&req, nRequestID);
+		}
+
+		int ReqQryEWarrantOffset(CThostFtdcQryEWarrantOffsetFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryEWarrantOffsetField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryEWarrantOffset(&req, nRequestID);
+		}
+
+		int ReqQryInvestorProductGroupMargin(CThostFtdcQryInvestorProductGroupMarginFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInvestorProductGroupMarginField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.ProductGroupID, csharpData->ProductGroupID);
+			req.HedgeFlag = csharpData->HedgeFlag;
+
+
+			return api_->ReqQryInvestorProductGroupMargin(&req, nRequestID);
+		}
+
+		int ReqQryExchangeMarginRate(CThostFtdcQryExchangeMarginRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryExchangeMarginRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			req.HedgeFlag = csharpData->HedgeFlag;
+
+
+			return api_->ReqQryExchangeMarginRate(&req, nRequestID);
+		}
+
+		int ReqQryExchangeMarginRateAdjust(CThostFtdcQryExchangeMarginRateAdjustFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryExchangeMarginRateAdjustField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			req.HedgeFlag = csharpData->HedgeFlag;
+
+
+			return api_->ReqQryExchangeMarginRateAdjust(&req, nRequestID);
+		}
+
+		int ReqQryExchangeRate(CThostFtdcQryExchangeRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryExchangeRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.FromCurrencyID, csharpData->FromCurrencyID);
+			COPY_MANAGED_STRING(req.ToCurrencyID, csharpData->ToCurrencyID);
+
+
+			return api_->ReqQryExchangeRate(&req, nRequestID);
+		}
+
+		int ReqQrySecAgentACIDMap(CThostFtdcQrySecAgentACIDMapFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQrySecAgentACIDMapField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			COPY_MANAGED_STRING(req.AccountID, csharpData->AccountID);
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+
+
+			return api_->ReqQrySecAgentACIDMap(&req, nRequestID);
+		}
+
+		int ReqQryProductExchRate(CThostFtdcQryProductExchRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryProductExchRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.ProductID, csharpData->ProductID);
+
+
+			return api_->ReqQryProductExchRate(&req, nRequestID);
+		}
+
+		int ReqQryProductGroup(CThostFtdcQryProductGroupFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryProductGroupField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.ProductID, csharpData->ProductID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+
+
+			return api_->ReqQryProductGroup(&req, nRequestID);
+		}
+
+		int ReqQryMMInstrumentCommissionRate(CThostFtdcQryMMInstrumentCommissionRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryMMInstrumentCommissionRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryMMInstrumentCommissionRate(&req, nRequestID);
+		}
+
+		int ReqQryMMOptionInstrCommRate(CThostFtdcQryMMOptionInstrCommRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryMMOptionInstrCommRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryMMOptionInstrCommRate(&req, nRequestID);
+		}
+
+		int ReqQryInstrumentOrderCommRate(CThostFtdcQryInstrumentOrderCommRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryInstrumentOrderCommRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryInstrumentOrderCommRate(&req, nRequestID);
+		}
+
+		int ReqQryOptionInstrTradeCost(CThostFtdcQryOptionInstrTradeCostFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryOptionInstrTradeCostField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			req.HedgeFlag = csharpData->HedgeFlag;
+			req.InputPrice = csharpData->InputPrice;
+			req.UnderlyingPrice = csharpData->UnderlyingPrice;
+
+
+			return api_->ReqQryOptionInstrTradeCost(&req, nRequestID);
+		}
+
+		int ReqQryOptionInstrCommRate(CThostFtdcQryOptionInstrCommRateFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryOptionInstrCommRateField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryOptionInstrCommRate(&req, nRequestID);
+		}
+
+		int ReqQryExecOrder(CThostFtdcQryExecOrderFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryExecOrderField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.ExecOrderSysID, csharpData->ExecOrderSysID);
+			COPY_MANAGED_STRING(req.InsertTimeStart, csharpData->InsertTimeStart);
+			COPY_MANAGED_STRING(req.InsertTimeEnd, csharpData->InsertTimeEnd);
+
+
+			return api_->ReqQryExecOrder(&req, nRequestID);
+		}
+
+		int ReqQryForQuote(CThostFtdcQryForQuoteFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryForQuoteField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.InsertTimeStart, csharpData->InsertTimeStart);
+			COPY_MANAGED_STRING(req.InsertTimeEnd, csharpData->InsertTimeEnd);
+
+
+			return api_->ReqQryForQuote(&req, nRequestID);
+		}
+
+		int ReqQryQuote(CThostFtdcQryQuoteFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryQuoteField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.QuoteSysID, csharpData->QuoteSysID);
+			COPY_MANAGED_STRING(req.InsertTimeStart, csharpData->InsertTimeStart);
+			COPY_MANAGED_STRING(req.InsertTimeEnd, csharpData->InsertTimeEnd);
+
+
+			return api_->ReqQryQuote(&req, nRequestID);
+		}
+
+		int ReqQryCombInstrumentGuard(CThostFtdcQryCombInstrumentGuardFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryCombInstrumentGuardField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryCombInstrumentGuard(&req, nRequestID);
+		}
+
+		int ReqQryCombAction(CThostFtdcQryCombActionFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryCombActionField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+
+
+			return api_->ReqQryCombAction(&req, nRequestID);
+		}
+
+		int ReqQryTransferSerial(CThostFtdcQryTransferSerialFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryTransferSerialField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.AccountID, csharpData->AccountID);
+			COPY_MANAGED_STRING(req.BankID, csharpData->BankID);
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+
+
+			return api_->ReqQryTransferSerial(&req, nRequestID);
+		}
+
+		int ReqQryAccountregister(CThostFtdcQryAccountregisterFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryAccountregisterField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.AccountID, csharpData->AccountID);
+			COPY_MANAGED_STRING(req.BankID, csharpData->BankID);
+			COPY_MANAGED_STRING(req.BankBranchID, csharpData->BankBranchID);
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+
+
+			return api_->ReqQryAccountregister(&req, nRequestID);
+		}
+
+		int ReqQryContractBank(CThostFtdcQryContractBankFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryContractBankField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.BankID, csharpData->BankID);
+			COPY_MANAGED_STRING(req.BankBrchID, csharpData->BankBrchID);
+
+
+			return api_->ReqQryContractBank(&req, nRequestID);
+		}
+
+		int ReqQryParkedOrder(CThostFtdcQryParkedOrderFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryParkedOrderField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+
+
+			return api_->ReqQryParkedOrder(&req, nRequestID);
+		}
+
+		int ReqQryParkedOrderAction(CThostFtdcQryParkedOrderActionFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryParkedOrderActionField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+
+
+			return api_->ReqQryParkedOrderAction(&req, nRequestID);
+		}
+
+		int ReqQryTradingNotice(CThostFtdcQryTradingNoticeFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryTradingNoticeField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+
+
+			return api_->ReqQryTradingNotice(&req, nRequestID);
+		}
+
+		int ReqQryBrokerTradingParams(CThostFtdcQryBrokerTradingParamsFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryBrokerTradingParamsField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+
+
+			return api_->ReqQryBrokerTradingParams(&req, nRequestID);
+		}
+
+		int ReqQryBrokerTradingAlgos(CThostFtdcQryBrokerTradingAlgosFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQryBrokerTradingAlgosField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+
+
+			return api_->ReqQryBrokerTradingAlgos(&req, nRequestID);
+		}
+
+		int ReqQueryCFMMCTradingAccountToken(CThostFtdcQueryCFMMCTradingAccountTokenFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcQueryCFMMCTradingAccountTokenField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+
+
+			return api_->ReqQueryCFMMCTradingAccountToken(&req, nRequestID);
+		}
+
+		int ReqFromBankToFutureByFuture(CThostFtdcReqTransferFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcReqTransferField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.TradeCode, csharpData->TradeCode);
+			COPY_MANAGED_STRING(req.BankID, csharpData->BankID);
+			COPY_MANAGED_STRING(req.BankBranchID, csharpData->BankBranchID);
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.BrokerBranchID, csharpData->BrokerBranchID);
+			COPY_MANAGED_STRING(req.TradeDate, csharpData->TradeDate);
+			COPY_MANAGED_STRING(req.TradeTime, csharpData->TradeTime);
+			COPY_MANAGED_STRING(req.BankSerial, csharpData->BankSerial);
+			COPY_MANAGED_STRING(req.TradingDay, csharpData->TradingDay);
+			req.PlateSerial = csharpData->PlateSerial;
+			req.LastFragment = csharpData->LastFragment;
+			req.SessionID = csharpData->SessionID;
+			COPY_MANAGED_STRING(req.CustomerName, csharpData->CustomerName);
+			req.IdCardType = csharpData->IdCardType;
+			COPY_MANAGED_STRING(req.IdentifiedCardNo, csharpData->IdentifiedCardNo);
+			req.CustType = csharpData->CustType;
+			COPY_MANAGED_STRING(req.BankAccount, csharpData->BankAccount);
+			COPY_MANAGED_STRING(req.BankPassWord, csharpData->BankPassWord);
+			COPY_MANAGED_STRING(req.AccountID, csharpData->AccountID);
+			COPY_MANAGED_STRING(req.Password, csharpData->Password);
+			req.InstallID = csharpData->InstallID;
+			req.FutureSerial = csharpData->FutureSerial;
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			req.VerifyCertNoFlag = csharpData->VerifyCertNoFlag;
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+			req.TradeAmount = csharpData->TradeAmount;
+			req.FutureFetchAmount = csharpData->FutureFetchAmount;
+			req.FeePayFlag = csharpData->FeePayFlag;
+			req.CustFee = csharpData->CustFee;
+			req.BrokerFee = csharpData->BrokerFee;
+			COPY_MANAGED_STRING(req.Message, csharpData->Message);
+			COPY_MANAGED_STRING(req.Digest, csharpData->Digest);
+			req.BankAccType = csharpData->BankAccType;
+			COPY_MANAGED_STRING(req.DeviceID, csharpData->DeviceID);
+			req.BankSecuAccType = csharpData->BankSecuAccType;
+			COPY_MANAGED_STRING(req.BrokerIDByBank, csharpData->BrokerIDByBank);
+			COPY_MANAGED_STRING(req.BankSecuAcc, csharpData->BankSecuAcc);
+			req.BankPwdFlag = csharpData->BankPwdFlag;
+			req.SecuPwdFlag = csharpData->SecuPwdFlag;
+			COPY_MANAGED_STRING(req.OperNo, csharpData->OperNo);
+			req.RequestID = csharpData->RequestID;
+			req.TID = csharpData->TID;
+			req.TransferStatus = csharpData->TransferStatus;
+			COPY_MANAGED_STRING(req.LongCustomerName, csharpData->LongCustomerName);
+
+
+			return api_->ReqFromBankToFutureByFuture(&req, nRequestID);
+		}
+
+		int ReqFromFutureToBankByFuture(CThostFtdcReqTransferFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcReqTransferField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.TradeCode, csharpData->TradeCode);
+			COPY_MANAGED_STRING(req.BankID, csharpData->BankID);
+			COPY_MANAGED_STRING(req.BankBranchID, csharpData->BankBranchID);
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.BrokerBranchID, csharpData->BrokerBranchID);
+			COPY_MANAGED_STRING(req.TradeDate, csharpData->TradeDate);
+			COPY_MANAGED_STRING(req.TradeTime, csharpData->TradeTime);
+			COPY_MANAGED_STRING(req.BankSerial, csharpData->BankSerial);
+			COPY_MANAGED_STRING(req.TradingDay, csharpData->TradingDay);
+			req.PlateSerial = csharpData->PlateSerial;
+			req.LastFragment = csharpData->LastFragment;
+			req.SessionID = csharpData->SessionID;
+			COPY_MANAGED_STRING(req.CustomerName, csharpData->CustomerName);
+			req.IdCardType = csharpData->IdCardType;
+			COPY_MANAGED_STRING(req.IdentifiedCardNo, csharpData->IdentifiedCardNo);
+			req.CustType = csharpData->CustType;
+			COPY_MANAGED_STRING(req.BankAccount, csharpData->BankAccount);
+			COPY_MANAGED_STRING(req.BankPassWord, csharpData->BankPassWord);
+			COPY_MANAGED_STRING(req.AccountID, csharpData->AccountID);
+			COPY_MANAGED_STRING(req.Password, csharpData->Password);
+			req.InstallID = csharpData->InstallID;
+			req.FutureSerial = csharpData->FutureSerial;
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			req.VerifyCertNoFlag = csharpData->VerifyCertNoFlag;
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+			req.TradeAmount = csharpData->TradeAmount;
+			req.FutureFetchAmount = csharpData->FutureFetchAmount;
+			req.FeePayFlag = csharpData->FeePayFlag;
+			req.CustFee = csharpData->CustFee;
+			req.BrokerFee = csharpData->BrokerFee;
+			COPY_MANAGED_STRING(req.Message, csharpData->Message);
+			COPY_MANAGED_STRING(req.Digest, csharpData->Digest);
+			req.BankAccType = csharpData->BankAccType;
+			COPY_MANAGED_STRING(req.DeviceID, csharpData->DeviceID);
+			req.BankSecuAccType = csharpData->BankSecuAccType;
+			COPY_MANAGED_STRING(req.BrokerIDByBank, csharpData->BrokerIDByBank);
+			COPY_MANAGED_STRING(req.BankSecuAcc, csharpData->BankSecuAcc);
+			req.BankPwdFlag = csharpData->BankPwdFlag;
+			req.SecuPwdFlag = csharpData->SecuPwdFlag;
+			COPY_MANAGED_STRING(req.OperNo, csharpData->OperNo);
+			req.RequestID = csharpData->RequestID;
+			req.TID = csharpData->TID;
+			req.TransferStatus = csharpData->TransferStatus;
+			COPY_MANAGED_STRING(req.LongCustomerName, csharpData->LongCustomerName);
+
+
+			return api_->ReqFromFutureToBankByFuture(&req, nRequestID);
+		}
+
+		int ReqQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcReqQueryAccountField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.TradeCode, csharpData->TradeCode);
+			COPY_MANAGED_STRING(req.BankID, csharpData->BankID);
+			COPY_MANAGED_STRING(req.BankBranchID, csharpData->BankBranchID);
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.BrokerBranchID, csharpData->BrokerBranchID);
+			COPY_MANAGED_STRING(req.TradeDate, csharpData->TradeDate);
+			COPY_MANAGED_STRING(req.TradeTime, csharpData->TradeTime);
+			COPY_MANAGED_STRING(req.BankSerial, csharpData->BankSerial);
+			COPY_MANAGED_STRING(req.TradingDay, csharpData->TradingDay);
+			req.PlateSerial = csharpData->PlateSerial;
+			req.LastFragment = csharpData->LastFragment;
+			req.SessionID = csharpData->SessionID;
+			COPY_MANAGED_STRING(req.CustomerName, csharpData->CustomerName);
+			req.IdCardType = csharpData->IdCardType;
+			COPY_MANAGED_STRING(req.IdentifiedCardNo, csharpData->IdentifiedCardNo);
+			req.CustType = csharpData->CustType;
+			COPY_MANAGED_STRING(req.BankAccount, csharpData->BankAccount);
+			COPY_MANAGED_STRING(req.BankPassWord, csharpData->BankPassWord);
+			COPY_MANAGED_STRING(req.AccountID, csharpData->AccountID);
+			COPY_MANAGED_STRING(req.Password, csharpData->Password);
+			req.FutureSerial = csharpData->FutureSerial;
+			req.InstallID = csharpData->InstallID;
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			req.VerifyCertNoFlag = csharpData->VerifyCertNoFlag;
+			COPY_MANAGED_STRING(req.CurrencyID, csharpData->CurrencyID);
+			COPY_MANAGED_STRING(req.Digest, csharpData->Digest);
+			req.BankAccType = csharpData->BankAccType;
+			COPY_MANAGED_STRING(req.DeviceID, csharpData->DeviceID);
+			req.BankSecuAccType = csharpData->BankSecuAccType;
+			COPY_MANAGED_STRING(req.BrokerIDByBank, csharpData->BrokerIDByBank);
+			COPY_MANAGED_STRING(req.BankSecuAcc, csharpData->BankSecuAcc);
+			req.BankPwdFlag = csharpData->BankPwdFlag;
+			req.SecuPwdFlag = csharpData->SecuPwdFlag;
+			COPY_MANAGED_STRING(req.OperNo, csharpData->OperNo);
+			req.RequestID = csharpData->RequestID;
+			req.TID = csharpData->TID;
+			COPY_MANAGED_STRING(req.LongCustomerName, csharpData->LongCustomerName);
+
+
+			return api_->ReqQueryBankAccountMoneyByFuture(&req, nRequestID);
+		}
+
+
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;

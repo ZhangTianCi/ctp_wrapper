@@ -1966,4 +1966,385 @@ namespace CTPWrapper {
 		String^ ErrorMsg;
 		String^ LongCustomerName;
 	};
+
+	public ref struct CThostFtdcQryOrderFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExchangeID;
+		String^ OrderSysID;
+		String^ InsertTimeStart;
+		String^ InsertTimeEnd;
+	};
+
+
+	public ref struct CThostFtdcQryTradeFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExchangeID;
+		String^ TradeID;
+		String^ TradeTimeStart;
+		String^ TradeTimeEnd;
+	};
+
+
+	public ref struct CThostFtdcQryInvestorPositionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryTradingAccountFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ CurrencyID;
+	};
+
+
+	public ref struct CThostFtdcQryInvestorFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+	};
+
+
+	public ref struct CThostFtdcQryTradingCodeFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ ExchangeID;
+		String^ ClientID;
+		char ClientIDType;
+	};
+
+
+	public ref struct CThostFtdcQryInstrumentMarginRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		char HedgeFlag;
+	};
+
+
+	public ref struct CThostFtdcQryInstrumentCommissionRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryExchangeFieldWrapper
+	{
+		String^ ExchangeID;
+	};
+
+
+	public ref struct CThostFtdcQryProductFieldWrapper
+	{
+		String^ ProductID;
+		char ProductClass;
+	};
+
+
+	public ref struct CThostFtdcQryInstrumentFieldWrapper
+	{
+		String^ InstrumentID;
+		String^ ExchangeID;
+		String^ ExchangeInstID;
+		String^ ProductID;
+	};
+
+
+	public ref struct CThostFtdcQryDepthMarketDataFieldWrapper
+	{
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQrySettlementInfoFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ TradingDay;
+	};
+
+
+	public ref struct CThostFtdcQryTransferBankFieldWrapper
+	{
+		String^ BankID;
+		String^ BankBrchID;
+	};
+
+
+	public ref struct CThostFtdcQryInvestorPositionDetailFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryNoticeFieldWrapper
+	{
+		String^ BrokerID;
+	};
+
+
+	public ref struct CThostFtdcQrySettlementInfoConfirmFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+	};
+
+
+	public ref struct CThostFtdcQryInvestorPositionCombineDetailFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ CombInstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryCFMMCTradingAccountKeyFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+	};
+
+
+	public ref struct CThostFtdcQryEWarrantOffsetFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ ExchangeID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryInvestorProductGroupMarginFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ ProductGroupID;
+		char HedgeFlag;
+	};
+
+
+	public ref struct CThostFtdcQryExchangeMarginRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InstrumentID;
+		char HedgeFlag;
+	};
+
+
+	public ref struct CThostFtdcQryExchangeMarginRateAdjustFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InstrumentID;
+		char HedgeFlag;
+	};
+
+
+	public ref struct CThostFtdcQryExchangeRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ FromCurrencyID;
+		String^ ToCurrencyID;
+	};
+
+
+	public ref struct CThostFtdcQrySecAgentACIDMapFieldWrapper
+	{
+		String^ BrokerID;
+		String^ UserID;
+		String^ AccountID;
+		String^ CurrencyID;
+	};
+
+
+	public ref struct CThostFtdcQryProductExchRateFieldWrapper
+	{
+		String^ ProductID;
+	};
+
+
+	public ref struct CThostFtdcQryProductGroupFieldWrapper
+	{
+		String^ ProductID;
+		String^ ExchangeID;
+	};
+
+
+	public ref struct CThostFtdcQryMMInstrumentCommissionRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryMMOptionInstrCommRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryInstrumentOrderCommRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryOptionInstrTradeCostFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		char HedgeFlag;
+		double InputPrice;
+		double UnderlyingPrice;
+	};
+
+
+	public ref struct CThostFtdcQryOptionInstrCommRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryExecOrderFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExchangeID;
+		String^ ExecOrderSysID;
+		String^ InsertTimeStart;
+		String^ InsertTimeEnd;
+	};
+
+
+	public ref struct CThostFtdcQryForQuoteFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExchangeID;
+		String^ InsertTimeStart;
+		String^ InsertTimeEnd;
+	};
+
+
+	public ref struct CThostFtdcQryQuoteFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExchangeID;
+		String^ QuoteSysID;
+		String^ InsertTimeStart;
+		String^ InsertTimeEnd;
+	};
+
+
+	public ref struct CThostFtdcQryCombInstrumentGuardFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InstrumentID;
+	};
+
+
+	public ref struct CThostFtdcQryCombActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExchangeID;
+	};
+
+
+	public ref struct CThostFtdcQryTransferSerialFieldWrapper
+	{
+		String^ BrokerID;
+		String^ AccountID;
+		String^ BankID;
+		String^ CurrencyID;
+	};
+
+
+	public ref struct CThostFtdcQryAccountregisterFieldWrapper
+	{
+		String^ BrokerID;
+		String^ AccountID;
+		String^ BankID;
+		String^ BankBranchID;
+		String^ CurrencyID;
+	};
+
+
+	public ref struct CThostFtdcQryContractBankFieldWrapper
+	{
+		String^ BrokerID;
+		String^ BankID;
+		String^ BankBrchID;
+	};
+
+
+	public ref struct CThostFtdcQryParkedOrderFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExchangeID;
+	};
+
+
+	public ref struct CThostFtdcQryParkedOrderActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ ExchangeID;
+	};
+
+
+	public ref struct CThostFtdcQryTradingNoticeFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+	};
+
+
+	public ref struct CThostFtdcQryBrokerTradingParamsFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ CurrencyID;
+	};
+
+
+	public ref struct CThostFtdcQryBrokerTradingAlgosFieldWrapper
+	{
+		String^ BrokerID;
+		String^ ExchangeID;
+		String^ InstrumentID;
+	};
+
+
+
 }
