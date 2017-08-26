@@ -345,6 +345,18 @@ namespace CTPWrapper {
 			return api_->ReqRemoveParkedOrder(&req, nRequestID);
 		}
 
+		int ReqRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcRemoveParkedOrderActionField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.ParkedOrderActionID, csharpData->ParkedOrderActionID);
+
+			return api_->ReqRemoveParkedOrderAction(&req, nRequestID);
+
+		}
 
 
 
