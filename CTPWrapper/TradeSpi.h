@@ -2336,6 +2336,21 @@ namespace CTPWrapper {
 			wrapper_->OnErrRtnCombActionInsert(csharpData, csharpError);
 		}
 
+		virtual void OnRspQryContractBank(CThostFtdcContractBankField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcContractBankFieldWrapper^ csharpData = gcnew CThostFtdcContractBankFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->BankID, cppData->BankID);
+			COPY_UNMANAGED_STRING(csharpData->BankBrchID, cppData->BankBrchID);
+			COPY_UNMANAGED_STRING(csharpData->BankName, cppData->BankName);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryContractBank(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 	private:

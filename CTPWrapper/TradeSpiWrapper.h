@@ -98,6 +98,7 @@ namespace CTPWrapper {
 		virtual void OnErrRtnBatchOrderAction(CThostFtdcBatchOrderActionFieldWrapper^ pBatchOrderAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnRtnCombAction(CThostFtdcCombActionFieldWrapper^ pCombAction) {};
 		virtual void OnErrRtnCombActionInsert(CThostFtdcInputCombActionFieldWrapper^ pInputCombAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
+		virtual void OnRspQryContractBank(CThostFtdcContractBankFieldWrapper^ pContractBank, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 	};

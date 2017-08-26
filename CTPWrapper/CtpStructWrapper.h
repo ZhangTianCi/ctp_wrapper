@@ -1475,4 +1475,12 @@ namespace CTPWrapper {
 		String^ MacAddress;
 	};
 
+	public ref struct CThostFtdcContractBankFieldWrapper
+	{
+		String^ BrokerID;
+		String^ BankID;
+		String^ BankBrchID;
+		String^ BankName;
+	};
+
 }
