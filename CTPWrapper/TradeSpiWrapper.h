@@ -70,6 +70,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryOptionInstrCommRate(CThostFtdcOptionInstrCommRateFieldWrapper^ pOptionInstrCommRate, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryExecOrder(CThostFtdcExecOrderFieldWrapper^ pExecOrder, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryForQuote(CThostFtdcForQuoteFieldWrapper^ pForQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryQuote(CThostFtdcQuoteFieldWrapper^ pQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 

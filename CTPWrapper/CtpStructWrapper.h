@@ -1091,4 +1091,58 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
+	public ref struct CThostFtdcQuoteFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ QuoteRef;
+		String^ UserID;
+		double AskPrice;
+		double BidPrice;
+		int AskVolume;
+		int BidVolume;
+		int RequestID;
+		String^ BusinessUnit;
+		char AskOffsetFlag;
+		char BidOffsetFlag;
+		char AskHedgeFlag;
+		char BidHedgeFlag;
+		String^ QuoteLocalID;
+		String^ ExchangeID;
+		String^ ParticipantID;
+		String^ ClientID;
+		String^ ExchangeInstID;
+		String^ TraderID;
+		int InstallID;
+		int NotifySequence;
+		char OrderSubmitStatus;
+		String^ TradingDay;
+		int SettlementID;
+		String^ QuoteSysID;
+		String^ InsertDate;
+		String^ InsertTime;
+		String^ CancelTime;
+		char QuoteStatus;
+		String^ ClearingPartID;
+		int SequenceNo;
+		String^ AskOrderSysID;
+		String^ BidOrderSysID;
+		int FrontID;
+		int SessionID;
+		String^ UserProductInfo;
+		String^ StatusMsg;
+		String^ ActiveUserID;
+		int BrokerQuoteSeq;
+		String^ AskOrderRef;
+		String^ BidOrderRef;
+		String^ ForQuoteSysID;
+		String^ BranchID;
+		String^ InvestUnitID;
+		String^ AccountID;
+		String^ CurrencyID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }
