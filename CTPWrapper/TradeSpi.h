@@ -2398,6 +2398,40 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryParkedOrder(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryParkedOrderAction(CThostFtdcParkedOrderActionField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcParkedOrderActionFieldWrapper^ csharpData = gcnew CThostFtdcParkedOrderActionFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			csharpData->OrderActionRef = cppData->OrderActionRef;
+			COPY_UNMANAGED_STRING(csharpData->OrderRef, cppData->OrderRef);
+			csharpData->RequestID = cppData->RequestID;
+			csharpData->FrontID = cppData->FrontID;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->OrderSysID, cppData->OrderSysID);
+			csharpData->ActionFlag = cppData->ActionFlag;
+			csharpData->LimitPrice = cppData->LimitPrice;
+			csharpData->VolumeChange = cppData->VolumeChange;
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ParkedOrderActionID, cppData->ParkedOrderActionID);
+			csharpData->UserType = cppData->UserType;
+			csharpData->Status = cppData->Status;
+			csharpData->ErrorID = cppData->ErrorID;
+			COPY_UNMANAGED_STRING(csharpData->ErrorMsg, cppData->ErrorMsg);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryParkedOrderAction(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
+
 
 
 	private:
