@@ -487,6 +487,26 @@ namespace CTPWrapper {
 			return api_->ReqQuoteAction(&req, nRequestID);
 		}
 
+		int ReqBatchOrderAction(CThostFtdcInputBatchOrderActionFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcInputBatchOrderActionField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			req.OrderActionRef = csharpData->OrderActionRef;
+			req.RequestID = csharpData->RequestID;
+			req.FrontID = csharpData->FrontID;
+			req.SessionID = csharpData->SessionID;
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			COPY_MANAGED_STRING(req.InvestUnitID, csharpData->InvestUnitID);
+			COPY_MANAGED_STRING(req.IPAddress, csharpData->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, csharpData->MacAddress);
+
+			return api_->ReqBatchOrderAction(&req, nRequestID);
+		}
+
 	private:
 		TradeSpi* spi_;
 		CThostFtdcTraderApi* api_;
