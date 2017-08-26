@@ -2073,6 +2073,25 @@ namespace CTPWrapper {
 			wrapper_->OnErrRtnExecOrderAction(csharpData, csharpError);
 		}
 
+		virtual void OnErrRtnForQuoteInsert(CThostFtdcInputForQuoteField *cppData, CThostFtdcRspInfoField *cppError) override
+		{
+			CThostFtdcInputForQuoteFieldWrapper^ csharpData = gcnew CThostFtdcInputForQuoteFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->ForQuoteRef, cppData->ForQuoteRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnErrRtnForQuoteInsert(csharpData, csharpError);
+		}
 
 
 
