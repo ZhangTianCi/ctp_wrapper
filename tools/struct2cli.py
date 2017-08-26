@@ -24,6 +24,7 @@ def read_struct(filename):
 if __name__ == '__main__':
 	name, attrs = read_struct(sys.argv[1])
 
+	"""
 	print '\tpublic ref struct %sWrapper' % name
 	print '\t{'
 	for (typ, field) in attrs:
@@ -46,6 +47,7 @@ if __name__ == '__main__':
 	print ''
 	print ''
 	print ''
+	"""
 
 	print '\t\t\t%s req;' % name
 	print '\t\t\tmemset(&req, 0, sizeof(req));'
