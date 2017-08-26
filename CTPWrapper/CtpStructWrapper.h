@@ -1001,4 +1001,20 @@ namespace CTPWrapper {
 		double ExchFixedMargin;
 		double ExchMiniMargin;
 	};
+
+	public ref struct CThostFtdcOptionInstrCommRateFieldWrapper
+	{
+		String^ InstrumentID;
+		char InvestorRange;
+		String^ BrokerID;
+		String^ InvestorID;
+		double OpenRatioByMoney;
+		double OpenRatioByVolume;
+		double CloseRatioByMoney;
+		double CloseRatioByVolume;
+		double CloseTodayRatioByMoney;
+		double CloseTodayRatioByVolume;
+		double StrikeRatioByMoney;
+		double StrikeRatioByVolume;
+	};
 }
