@@ -885,4 +885,15 @@ namespace CTPWrapper {
 		double ShortExchOffsetAmount;
 		char HedgeFlag;
 	};
+
+	public ref struct CThostFtdcExchangeMarginRateFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InstrumentID;
+		char HedgeFlag;
+		double LongMarginRatioByMoney;
+		double LongMarginRatioByVolume;
+		double ShortMarginRatioByMoney;
+		double ShortMarginRatioByVolume;
+	};
 }

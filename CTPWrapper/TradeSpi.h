@@ -1156,6 +1156,24 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryInvestorProductGroupMargin(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryExchangeMarginRate(CThostFtdcExchangeMarginRateField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcExchangeMarginRateFieldWrapper^ csharpData = gcnew CThostFtdcExchangeMarginRateFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->LongMarginRatioByMoney = cppData->LongMarginRatioByMoney;
+			csharpData->LongMarginRatioByVolume = cppData->LongMarginRatioByVolume;
+			csharpData->ShortMarginRatioByMoney = cppData->ShortMarginRatioByMoney;
+			csharpData->ShortMarginRatioByVolume = cppData->ShortMarginRatioByVolume;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryExchangeMarginRate(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
