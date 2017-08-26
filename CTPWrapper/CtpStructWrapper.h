@@ -1409,4 +1409,35 @@ namespace CTPWrapper {
 		String^ IPAddress;
 		String^ MacAddress;
 	};
+
+	public ref struct CThostFtdcQuoteActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		int QuoteActionRef;
+		String^ QuoteRef;
+		int RequestID;
+		int FrontID;
+		int SessionID;
+		String^ ExchangeID;
+		String^ QuoteSysID;
+		char ActionFlag;
+		String^ ActionDate;
+		String^ ActionTime;
+		String^ TraderID;
+		int InstallID;
+		String^ QuoteLocalID;
+		String^ ActionLocalID;
+		String^ ParticipantID;
+		String^ ClientID;
+		String^ BusinessUnit;
+		char OrderActionStatus;
+		String^ UserID;
+		String^ StatusMsg;
+		String^ InstrumentID;
+		String^ BranchID;
+		String^ InvestUnitID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }
