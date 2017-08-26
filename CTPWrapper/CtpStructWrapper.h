@@ -1152,4 +1152,36 @@ namespace CTPWrapper {
 		String^ InstrumentID;
 		double GuarantRatio;
 	};
+
+	public ref struct CThostFtdcCombActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ InstrumentID;
+		String^ CombActionRef;
+		String^ UserID;
+		char Direction;
+		int Volume;
+		char CombDirection;
+		char HedgeFlag;
+		String^ ActionLocalID;
+		String^ ExchangeID;
+		String^ ParticipantID;
+		String^ ClientID;
+		String^ ExchangeInstID;
+		String^ TraderID;
+		int InstallID;
+		char ActionStatus;
+		int NotifySequence;
+		String^ TradingDay;
+		int SettlementID;
+		int SequenceNo;
+		int FrontID;
+		int SessionID;
+		String^ UserProductInfo;
+		String^ StatusMsg;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
+
 }

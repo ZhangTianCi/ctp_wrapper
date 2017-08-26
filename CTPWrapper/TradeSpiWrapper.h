@@ -72,6 +72,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryForQuote(CThostFtdcForQuoteFieldWrapper^ pForQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryQuote(CThostFtdcQuoteFieldWrapper^ pQuote, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryCombInstrumentGuard(CThostFtdcCombInstrumentGuardFieldWrapper^ pCombInstrumentGuard, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryCombAction(CThostFtdcCombActionFieldWrapper^ pCombAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 
