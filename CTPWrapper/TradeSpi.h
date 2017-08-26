@@ -1879,6 +1879,79 @@ namespace CTPWrapper {
 			wrapper_->OnRtnTradingNotice(csharpData);
 		}
 
+		virtual void OnRtnErrorConditionalOrder(CThostFtdcErrorConditionalOrderField *cppData) override
+		{
+				CThostFtdcErrorConditionalOrderFieldWrapper^ csharpData = gcnew CThostFtdcErrorConditionalOrderFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->OrderRef, cppData->OrderRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->OrderPriceType = cppData->OrderPriceType;
+			csharpData->Direction = cppData->Direction;
+			COPY_UNMANAGED_STRING(csharpData->CombOffsetFlag, cppData->CombOffsetFlag);
+			COPY_UNMANAGED_STRING(csharpData->CombHedgeFlag, cppData->CombHedgeFlag);
+			csharpData->LimitPrice = cppData->LimitPrice;
+			csharpData->VolumeTotalOriginal = cppData->VolumeTotalOriginal;
+			csharpData->TimeCondition = cppData->TimeCondition;
+			COPY_UNMANAGED_STRING(csharpData->GTDDate, cppData->GTDDate);
+			csharpData->VolumeCondition = cppData->VolumeCondition;
+			csharpData->MinVolume = cppData->MinVolume;
+			csharpData->ContingentCondition = cppData->ContingentCondition;
+			csharpData->StopPrice = cppData->StopPrice;
+			csharpData->ForceCloseReason = cppData->ForceCloseReason;
+			csharpData->IsAutoSuspend = cppData->IsAutoSuspend;
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->RequestID = cppData->RequestID;
+			COPY_UNMANAGED_STRING(csharpData->OrderLocalID, cppData->OrderLocalID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->ParticipantID, cppData->ParticipantID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+			COPY_UNMANAGED_STRING(csharpData->TraderID, cppData->TraderID);
+			csharpData->InstallID = cppData->InstallID;
+			csharpData->OrderSubmitStatus = cppData->OrderSubmitStatus;
+			csharpData->NotifySequence = cppData->NotifySequence;
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			COPY_UNMANAGED_STRING(csharpData->OrderSysID, cppData->OrderSysID);
+			csharpData->OrderSource = cppData->OrderSource;
+			csharpData->OrderStatus = cppData->OrderStatus;
+			csharpData->OrderType = cppData->OrderType;
+			csharpData->VolumeTraded = cppData->VolumeTraded;
+			csharpData->VolumeTotal = cppData->VolumeTotal;
+			COPY_UNMANAGED_STRING(csharpData->InsertDate, cppData->InsertDate);
+			COPY_UNMANAGED_STRING(csharpData->InsertTime, cppData->InsertTime);
+			COPY_UNMANAGED_STRING(csharpData->ActiveTime, cppData->ActiveTime);
+			COPY_UNMANAGED_STRING(csharpData->SuspendTime, cppData->SuspendTime);
+			COPY_UNMANAGED_STRING(csharpData->UpdateTime, cppData->UpdateTime);
+			COPY_UNMANAGED_STRING(csharpData->CancelTime, cppData->CancelTime);
+			COPY_UNMANAGED_STRING(csharpData->ActiveTraderID, cppData->ActiveTraderID);
+			COPY_UNMANAGED_STRING(csharpData->ClearingPartID, cppData->ClearingPartID);
+			csharpData->SequenceNo = cppData->SequenceNo;
+			csharpData->FrontID = cppData->FrontID;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->UserProductInfo, cppData->UserProductInfo);
+			COPY_UNMANAGED_STRING(csharpData->StatusMsg, cppData->StatusMsg);
+			csharpData->UserForceClose = cppData->UserForceClose;
+			COPY_UNMANAGED_STRING(csharpData->ActiveUserID, cppData->ActiveUserID);
+			csharpData->BrokerOrderSeq = cppData->BrokerOrderSeq;
+			COPY_UNMANAGED_STRING(csharpData->RelativeOrderSysID, cppData->RelativeOrderSysID);
+			csharpData->ZCETotalTradedVolume = cppData->ZCETotalTradedVolume;
+			csharpData->ErrorID = cppData->ErrorID;
+			COPY_UNMANAGED_STRING(csharpData->ErrorMsg, cppData->ErrorMsg);
+			csharpData->IsSwapOrder = cppData->IsSwapOrder;
+			COPY_UNMANAGED_STRING(csharpData->BranchID, cppData->BranchID);
+			COPY_UNMANAGED_STRING(csharpData->InvestUnitID, cppData->InvestUnitID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
+			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
+
+			wrapper_->OnRtnErrorConditionalOrder(csharpData);
+		}
+
+
 
 
 

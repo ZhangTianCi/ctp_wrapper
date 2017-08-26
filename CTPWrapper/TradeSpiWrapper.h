@@ -85,6 +85,7 @@ namespace CTPWrapper {
 		virtual void OnRtnInstrumentStatus(CThostFtdcInstrumentStatusFieldWrapper^ pInstrumentStatus) {};
 		virtual void OnRtnBulletin(CThostFtdcBulletinFieldWrapper^ pBulletin) {};
 		virtual void OnRtnTradingNotice(CThostFtdcTradingNoticeInfoFieldWrapper^ pTradingNoticeInfo) {};
+		virtual void OnRtnErrorConditionalOrder(CThostFtdcErrorConditionalOrderFieldWrapper^ pErrorConditionalOrder) {};
 
 
 	};
