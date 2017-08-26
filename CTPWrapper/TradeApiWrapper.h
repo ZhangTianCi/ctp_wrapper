@@ -320,6 +320,19 @@ namespace CTPWrapper {
 			return api_->ReqQueryMaxOrderVolume(&req, nRequestID);
 		}
 
+		virtual int ReqSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcSettlementInfoConfirmField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.ConfirmDate, csharpData->ConfirmDate);
+			COPY_MANAGED_STRING(req.ConfirmTime, csharpData->ConfirmTime);
+
+			return api_->ReqSettlementInfoConfirm(&req, nRequestID);
+		}
+
 
 
 	private:
