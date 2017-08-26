@@ -2485,6 +2485,18 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryBrokerTradingAlgos(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQueryCFMMCTradingAccountToken(CThostFtdcQueryCFMMCTradingAccountTokenField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcQueryCFMMCTradingAccountTokenFieldWrapper^ csharpData = gcnew CThostFtdcQueryCFMMCTradingAccountTokenFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQueryCFMMCTradingAccountToken(csharpData, csharpError, nRequestID, bIsLast);
+		}
 
 
 

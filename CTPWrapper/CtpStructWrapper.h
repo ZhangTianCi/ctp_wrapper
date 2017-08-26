@@ -1515,4 +1515,10 @@ namespace CTPWrapper {
 		char FindMarginRateAlgoID;
 		char HandleTradingAccountAlgoID;
 	};
+
+	public ref struct CThostFtdcQueryCFMMCTradingAccountTokenFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+	};
 }
