@@ -122,6 +122,7 @@ namespace CTPWrapper {
 		virtual void OnRtnRepealFromBankToFutureByFuture(CThostFtdcRspRepealFieldWrapper^ pRspRepeal) {};
 		virtual void OnRtnRepealFromFutureToBankByFuture(CThostFtdcRspRepealFieldWrapper^ pRspRepeal) {};
 		virtual void OnRspFromBankToFutureByFuture(CThostFtdcReqTransferFieldWrapper^ pReqTransfer, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspFromFutureToBankByFuture(CThostFtdcReqTransferFieldWrapper^ pReqTransfer, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 	};
