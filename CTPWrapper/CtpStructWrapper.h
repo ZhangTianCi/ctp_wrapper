@@ -1449,4 +1449,29 @@ namespace CTPWrapper {
 		int KeyID;
 		String^ Token;
 	};
+
+	public ref struct CThostFtdcBatchOrderActionFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		int OrderActionRef;
+		int RequestID;
+		int FrontID;
+		int SessionID;
+		String^ ExchangeID;
+		String^ ActionDate;
+		String^ ActionTime;
+		String^ TraderID;
+		int InstallID;
+		String^ ActionLocalID;
+		String^ ParticipantID;
+		String^ ClientID;
+		String^ BusinessUnit;
+		char OrderActionStatus;
+		String^ UserID;
+		String^ StatusMsg;
+		String^ InvestUnitID;
+		String^ IPAddress;
+		String^ MacAddress;
+	};
 }

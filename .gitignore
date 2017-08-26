@@ -19,3 +19,4 @@ Release
 *.pyc
 *.pyo
 *.txt
+*.db
