@@ -1868,4 +1868,55 @@ namespace CTPWrapper {
 		String^ ErrorMsg;
 		String^ LongCustomerName;
 	};
+
+	public ref struct CThostFtdcCancelAccountFieldWrapper
+	{
+		String^ TradeCode;
+		String^ BankID;
+		String^ BankBranchID;
+		String^ BrokerID;
+		String^ BrokerBranchID;
+		String^ TradeDate;
+		String^ TradeTime;
+		String^ BankSerial;
+		String^ TradingDay;
+		int PlateSerial;
+		char LastFragment;
+		int SessionID;
+		String^ CustomerName;
+		char IdCardType;
+		String^ IdentifiedCardNo;
+		char Gender;
+		String^ CountryCode;
+		char CustType;
+		String^ Address;
+		String^ ZipCode;
+		String^ Telephone;
+		String^ MobilePhone;
+		String^ Fax;
+		String^ EMail;
+		char MoneyAccountStatus;
+		String^ BankAccount;
+		String^ BankPassWord;
+		String^ AccountID;
+		String^ Password;
+		int InstallID;
+		char VerifyCertNoFlag;
+		String^ CurrencyID;
+		char CashExchangeCode;
+		String^ Digest;
+		char BankAccType;
+		String^ DeviceID;
+		char BankSecuAccType;
+		String^ BrokerIDByBank;
+		String^ BankSecuAcc;
+		char BankPwdFlag;
+		char SecuPwdFlag;
+		String^ OperNo;
+		int TID;
+		String^ UserID;
+		int ErrorID;
+		String^ ErrorMsg;
+		String^ LongCustomerName;
+	};
 }

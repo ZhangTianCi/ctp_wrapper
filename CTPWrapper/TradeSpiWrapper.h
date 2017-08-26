@@ -125,6 +125,7 @@ namespace CTPWrapper {
 		virtual void OnRspFromFutureToBankByFuture(CThostFtdcReqTransferFieldWrapper^ pReqTransfer, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountFieldWrapper^ pReqQueryAccount, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRtnOpenAccountByBank(CThostFtdcOpenAccountFieldWrapper^ pOpenAccount) {};
+		virtual void OnRtnCancelAccountByBank(CThostFtdcCancelAccountFieldWrapper^ pCancelAccount) {};
 
 
 	};
