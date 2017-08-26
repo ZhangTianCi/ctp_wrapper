@@ -1866,6 +1866,19 @@ namespace CTPWrapper {
 			wrapper_->OnRtnBulletin(csharpData);
 		}
 
+		virtual void OnRtnTradingNotice(CThostFtdcTradingNoticeInfoField *cppData) override
+		{
+			CThostFtdcTradingNoticeInfoFieldWrapper^ csharpData = gcnew CThostFtdcTradingNoticeInfoFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->SendTime, cppData->SendTime);
+			COPY_UNMANAGED_STRING(csharpData->FieldContent, cppData->FieldContent);
+			csharpData->SequenceSeries = cppData->SequenceSeries;
+			csharpData->SequenceNo = cppData->SequenceNo;
+
+			wrapper_->OnRtnTradingNotice(csharpData);
+		}
+
 
 
 

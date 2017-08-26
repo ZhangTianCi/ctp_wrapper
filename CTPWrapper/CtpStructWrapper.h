@@ -1298,4 +1298,14 @@ namespace CTPWrapper {
 		String^ URLLink;
 		String^ MarketID;
 	};
+
+	public ref struct CThostFtdcTradingNoticeInfoFieldWrapper
+	{
+		String^ BrokerID;
+		String^ InvestorID;
+		String^ SendTime;
+		String^ FieldContent;
+		short SequenceSeries;
+		int SequenceNo;
+	};
 }
