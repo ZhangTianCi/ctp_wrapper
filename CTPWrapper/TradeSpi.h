@@ -1606,6 +1606,35 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryTransferSerial(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryAccountregister(CThostFtdcAccountregisterField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcAccountregisterFieldWrapper^ csharpData = gcnew CThostFtdcAccountregisterFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradeDay, cppData->TradeDay);
+			COPY_UNMANAGED_STRING(csharpData->BankID, cppData->BankID);
+			COPY_UNMANAGED_STRING(csharpData->BankBranchID, cppData->BankBranchID);
+			COPY_UNMANAGED_STRING(csharpData->BankAccount, cppData->BankAccount);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerBranchID, cppData->BrokerBranchID);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			csharpData->IdCardType = cppData->IdCardType;
+			COPY_UNMANAGED_STRING(csharpData->IdentifiedCardNo, cppData->IdentifiedCardNo);
+			COPY_UNMANAGED_STRING(csharpData->CustomerName, cppData->CustomerName);
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			csharpData->OpenOrDestroy = cppData->OpenOrDestroy;
+			COPY_UNMANAGED_STRING(csharpData->RegDate, cppData->RegDate);
+			COPY_UNMANAGED_STRING(csharpData->OutDate, cppData->OutDate);
+			csharpData->TID = cppData->TID;
+			csharpData->CustType = cppData->CustType;
+			csharpData->BankAccType = cppData->BankAccType;
+			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryAccountregister(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 

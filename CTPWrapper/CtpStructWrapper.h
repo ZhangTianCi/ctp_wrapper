@@ -1216,5 +1216,26 @@ namespace CTPWrapper {
 		String^ ErrorMsg;
 	};
 
+	public ref struct CThostFtdcAccountregisterFieldWrapper
+	{
+		String^ TradeDay;
+		String^ BankID;
+		String^ BankBranchID;
+		String^ BankAccount;
+		String^ BrokerID;
+		String^ BrokerBranchID;
+		String^ AccountID;
+		char IdCardType;
+		String^ IdentifiedCardNo;
+		String^ CustomerName;
+		String^ CurrencyID;
+		char OpenOrDestroy;
+		String^ RegDate;
+		String^ OutDate;
+		int TID;
+		char CustType;
+		char BankAccType;
+		String^ LongCustomerName;
+	};
 
 }
