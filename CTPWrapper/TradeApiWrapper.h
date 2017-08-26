@@ -411,6 +411,23 @@ namespace CTPWrapper {
 			return api_->ReqExecOrderAction(&req, nRequestID);
 		}
 
+		int ReqForQuoteInsert(CThostFtdcInputForQuoteFieldWrapper^ csharpData, int nRequestID)
+		{
+			CThostFtdcInputForQuoteField req;
+			memset(&req, 0, sizeof(req));
+
+			COPY_MANAGED_STRING(req.BrokerID, csharpData->BrokerID);
+			COPY_MANAGED_STRING(req.InvestorID, csharpData->InvestorID);
+			COPY_MANAGED_STRING(req.InstrumentID, csharpData->InstrumentID);
+			COPY_MANAGED_STRING(req.ForQuoteRef, csharpData->ForQuoteRef);
+			COPY_MANAGED_STRING(req.UserID, csharpData->UserID);
+			COPY_MANAGED_STRING(req.ExchangeID, csharpData->ExchangeID);
+			COPY_MANAGED_STRING(req.InvestUnitID, csharpData->InvestUnitID);
+			COPY_MANAGED_STRING(req.IPAddress, csharpData->IPAddress);
+			COPY_MANAGED_STRING(req.MacAddress, csharpData->MacAddress);
+
+			return api_->ReqForQuoteInsert(&req, nRequestID);
+		}
 
 	private:
 		TradeSpi* spi_;
