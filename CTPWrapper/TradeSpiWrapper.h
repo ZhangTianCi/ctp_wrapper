@@ -79,6 +79,8 @@ namespace CTPWrapper {
 		virtual void OnRspError(CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {}
 
 		virtual void OnRtnOrder(CThostFtdcOrderFieldWrapper^ pOrder) {};
+		virtual void OnRtnTrade(CThostFtdcTradeFieldWrapper^ pTrade) {};
+
 
 	};
 

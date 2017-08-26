@@ -1714,6 +1714,44 @@ namespace CTPWrapper {
 			wrapper_->OnRtnOrder(csharpData);
 		}
 
+		virtual void OnRtnTrade(CThostFtdcTradeField *cppData) override
+		{
+			CThostFtdcTradeFieldWrapper^ csharpData = gcnew CThostFtdcTradeFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			COPY_UNMANAGED_STRING(csharpData->OrderRef, cppData->OrderRef);
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->TradeID, cppData->TradeID);
+			csharpData->Direction = cppData->Direction;
+			COPY_UNMANAGED_STRING(csharpData->OrderSysID, cppData->OrderSysID);
+			COPY_UNMANAGED_STRING(csharpData->ParticipantID, cppData->ParticipantID);
+			COPY_UNMANAGED_STRING(csharpData->ClientID, cppData->ClientID);
+			csharpData->TradingRole = cppData->TradingRole;
+			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+			csharpData->OffsetFlag = cppData->OffsetFlag;
+			csharpData->HedgeFlag = cppData->HedgeFlag;
+			csharpData->Price = cppData->Price;
+			csharpData->Volume = cppData->Volume;
+			COPY_UNMANAGED_STRING(csharpData->TradeDate, cppData->TradeDate);
+			COPY_UNMANAGED_STRING(csharpData->TradeTime, cppData->TradeTime);
+			csharpData->TradeType = cppData->TradeType;
+			csharpData->PriceSource = cppData->PriceSource;
+			COPY_UNMANAGED_STRING(csharpData->TraderID, cppData->TraderID);
+			COPY_UNMANAGED_STRING(csharpData->OrderLocalID, cppData->OrderLocalID);
+			COPY_UNMANAGED_STRING(csharpData->ClearingPartID, cppData->ClearingPartID);
+			COPY_UNMANAGED_STRING(csharpData->BusinessUnit, cppData->BusinessUnit);
+			csharpData->SequenceNo = cppData->SequenceNo;
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->SettlementID = cppData->SettlementID;
+			csharpData->BrokerOrderSeq = cppData->BrokerOrderSeq;
+			csharpData->TradeSource = cppData->TradeSource;
+
+			wrapper_->OnRtnTrade(csharpData);
+		}
+
+
 	private:
 		msclr::auto_gcroot<TradeSpiWrapper^> wrapper_;
 	};
