@@ -1282,4 +1282,20 @@ namespace CTPWrapper {
 		String^ EnterTime;
 		char EnterReason;
 	};
+
+	public ref struct CThostFtdcBulletinFieldWrapper
+	{
+		String^ ExchangeID;
+		String^ TradingDay;
+		int BulletinID;
+		int SequenceNo;
+		String^ NewsType;
+		char NewsUrgency;
+		String^ SendTime;
+		String^ Abstract;
+		String^ ComeFrom;
+		String^ Content;
+		String^ URLLink;
+		String^ MarketID;
+	};
 }

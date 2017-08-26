@@ -1847,6 +1847,26 @@ namespace CTPWrapper {
 			wrapper_->OnRtnInstrumentStatus(csharpData);
 		}
 
+		virtual void OnRtnBulletin(CThostFtdcBulletinField *cppData) override
+		{
+			CThostFtdcBulletinFieldWrapper^ csharpData = gcnew CThostFtdcBulletinFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->BulletinID = cppData->BulletinID;
+			csharpData->SequenceNo = cppData->SequenceNo;
+			COPY_UNMANAGED_STRING(csharpData->NewsType, cppData->NewsType);
+			csharpData->NewsUrgency = cppData->NewsUrgency;
+			COPY_UNMANAGED_STRING(csharpData->SendTime, cppData->SendTime);
+			COPY_UNMANAGED_STRING(csharpData->Abstract, cppData->Abstract);
+			COPY_UNMANAGED_STRING(csharpData->ComeFrom, cppData->ComeFrom);
+			COPY_UNMANAGED_STRING(csharpData->Content, cppData->Content);
+			COPY_UNMANAGED_STRING(csharpData->URLLink, cppData->URLLink);
+			COPY_UNMANAGED_STRING(csharpData->MarketID, cppData->MarketID);
+
+			wrapper_->OnRtnBulletin(csharpData);
+		}
+
+
 
 
 	private:
