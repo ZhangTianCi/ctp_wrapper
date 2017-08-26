@@ -1505,4 +1505,14 @@ namespace CTPWrapper {
 		String^ CurrencyID;
 		char OptionRoyaltyPriceType;
 	};
+
+	public ref struct CThostFtdcBrokerTradingAlgosFieldWrapper
+	{
+		String^ BrokerID;
+		String^ ExchangeID;
+		String^ InstrumentID;
+		char HandlePositionAlgoID;
+		char FindMarginRateAlgoID;
+		char HandleTradingAccountAlgoID;
+	};
 }

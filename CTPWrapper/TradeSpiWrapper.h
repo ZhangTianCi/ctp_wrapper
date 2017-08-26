@@ -103,6 +103,7 @@ namespace CTPWrapper {
 		virtual void OnRspQryParkedOrderAction(CThostFtdcParkedOrderActionFieldWrapper^ pParkedOrderAction, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryTradingNotice(CThostFtdcTradingNoticeFieldWrapper^ pTradingNotice, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 		virtual void OnRspQryBrokerTradingParams(CThostFtdcBrokerTradingParamsFieldWrapper^ pBrokerTradingParams, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
+		virtual void OnRspQryBrokerTradingAlgos(CThostFtdcBrokerTradingAlgosFieldWrapper^ pBrokerTradingAlgos, CThostFtdcRspInfoFieldWrapper^ pRspInfo, int nRequestID, bool bIsLast) {};
 
 
 	};

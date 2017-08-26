@@ -2468,6 +2468,23 @@ namespace CTPWrapper {
 			wrapper_->OnRspQryBrokerTradingParams(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
+		virtual void OnRspQryBrokerTradingAlgos(CThostFtdcBrokerTradingAlgosField *cppData, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		{
+			CThostFtdcBrokerTradingAlgosFieldWrapper^ csharpData = gcnew CThostFtdcBrokerTradingAlgosFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			csharpData->HandlePositionAlgoID = cppData->HandlePositionAlgoID;
+			csharpData->FindMarginRateAlgoID = cppData->FindMarginRateAlgoID;
+			csharpData->HandleTradingAccountAlgoID = cppData->HandleTradingAccountAlgoID;
+
+			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
+			csharpError->ErrorID = cppError->ErrorID;
+			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+
+			wrapper_->OnRspQryBrokerTradingAlgos(csharpData, csharpError, nRequestID, bIsLast);
+		}
+
 
 
 
