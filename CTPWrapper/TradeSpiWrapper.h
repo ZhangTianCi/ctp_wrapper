@@ -120,6 +120,7 @@ namespace CTPWrapper {
 		virtual void OnErrRtnRepealFutureToBankByFutureManual(CThostFtdcReqRepealFieldWrapper^ pReqRepeal, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnErrRtnQueryBankBalanceByFuture(CThostFtdcReqQueryAccountFieldWrapper^ pReqQueryAccount, CThostFtdcRspInfoFieldWrapper^ pRspInfo) {};
 		virtual void OnRtnRepealFromBankToFutureByFuture(CThostFtdcRspRepealFieldWrapper^ pRspRepeal) {};
+		virtual void OnRtnRepealFromFutureToBankByFuture(CThostFtdcRspRepealFieldWrapper^ pRspRepeal) {};
 
 
 	};
