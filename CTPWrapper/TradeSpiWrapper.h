@@ -110,6 +110,7 @@ namespace CTPWrapper {
 		virtual void OnRtnRepealFromBankToFutureByBank(CThostFtdcRspRepealFieldWrapper^ pRspRepeal) {};
 		virtual void OnRtnRepealFromFutureToBankByBank(CThostFtdcRspRepealFieldWrapper^ pRspRepeal) {};
 		virtual void OnRtnFromBankToFutureByFuture(CThostFtdcRspTransferFieldWrapper^ pRspTransfer) {};
+		virtual void OnRtnFromFutureToBankByFuture(CThostFtdcRspTransferFieldWrapper^ pRspTransfer) {};
 
 
 	};
