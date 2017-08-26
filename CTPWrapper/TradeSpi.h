@@ -2724,6 +2724,60 @@ namespace CTPWrapper {
 			wrapper_->OnRtnRepealFromFutureToBankByBank(csharpData);
 		}
 
+		virtual void OnRtnFromBankToFutureByFuture(CThostFtdcRspTransferField *cppData) override
+		{
+			CThostFtdcRspTransferFieldWrapper^ csharpData = gcnew CThostFtdcRspTransferFieldWrapper();
+			COPY_UNMANAGED_STRING(csharpData->TradeCode, cppData->TradeCode);
+			COPY_UNMANAGED_STRING(csharpData->BankID, cppData->BankID);
+			COPY_UNMANAGED_STRING(csharpData->BankBranchID, cppData->BankBranchID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+			COPY_UNMANAGED_STRING(csharpData->BrokerBranchID, cppData->BrokerBranchID);
+			COPY_UNMANAGED_STRING(csharpData->TradeDate, cppData->TradeDate);
+			COPY_UNMANAGED_STRING(csharpData->TradeTime, cppData->TradeTime);
+			COPY_UNMANAGED_STRING(csharpData->BankSerial, cppData->BankSerial);
+			COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+			csharpData->PlateSerial = cppData->PlateSerial;
+			csharpData->LastFragment = cppData->LastFragment;
+			csharpData->SessionID = cppData->SessionID;
+			COPY_UNMANAGED_STRING(csharpData->CustomerName, cppData->CustomerName);
+			csharpData->IdCardType = cppData->IdCardType;
+			COPY_UNMANAGED_STRING(csharpData->IdentifiedCardNo, cppData->IdentifiedCardNo);
+			csharpData->CustType = cppData->CustType;
+			COPY_UNMANAGED_STRING(csharpData->BankAccount, cppData->BankAccount);
+			COPY_UNMANAGED_STRING(csharpData->BankPassWord, cppData->BankPassWord);
+			COPY_UNMANAGED_STRING(csharpData->AccountID, cppData->AccountID);
+			COPY_UNMANAGED_STRING(csharpData->Password, cppData->Password);
+			csharpData->InstallID = cppData->InstallID;
+			csharpData->FutureSerial = cppData->FutureSerial;
+			COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			csharpData->VerifyCertNoFlag = cppData->VerifyCertNoFlag;
+			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
+			csharpData->TradeAmount = cppData->TradeAmount;
+			csharpData->FutureFetchAmount = cppData->FutureFetchAmount;
+			csharpData->FeePayFlag = cppData->FeePayFlag;
+			csharpData->CustFee = cppData->CustFee;
+			csharpData->BrokerFee = cppData->BrokerFee;
+			COPY_UNMANAGED_STRING(csharpData->Message, cppData->Message);
+			COPY_UNMANAGED_STRING(csharpData->Digest, cppData->Digest);
+			csharpData->BankAccType = cppData->BankAccType;
+			COPY_UNMANAGED_STRING(csharpData->DeviceID, cppData->DeviceID);
+			csharpData->BankSecuAccType = cppData->BankSecuAccType;
+			COPY_UNMANAGED_STRING(csharpData->BrokerIDByBank, cppData->BrokerIDByBank);
+			COPY_UNMANAGED_STRING(csharpData->BankSecuAcc, cppData->BankSecuAcc);
+			csharpData->BankPwdFlag = cppData->BankPwdFlag;
+			csharpData->SecuPwdFlag = cppData->SecuPwdFlag;
+			COPY_UNMANAGED_STRING(csharpData->OperNo, cppData->OperNo);
+			csharpData->RequestID = cppData->RequestID;
+			csharpData->TID = cppData->TID;
+			csharpData->TransferStatus = cppData->TransferStatus;
+			csharpData->ErrorID = cppData->ErrorID;
+			COPY_UNMANAGED_STRING(csharpData->ErrorMsg, cppData->ErrorMsg);
+			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
+
+			wrapper_->OnRtnFromBankToFutureByFuture(csharpData);
+		}
+
+
 
 	private:
 		msclr::auto_gcroot<TradeSpiWrapper^> wrapper_;
