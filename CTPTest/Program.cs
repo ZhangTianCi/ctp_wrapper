@@ -202,8 +202,8 @@ namespace CTPTest
 
         static void Main(string[] args)
         {
-            TradeApiTest();
-            // MarketApiTest();
+            // TradeApiTest();
+            MarketApiTest();
         }
     }
 }
