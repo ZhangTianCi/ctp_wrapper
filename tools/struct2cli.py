@@ -31,7 +31,6 @@ if __name__ == '__main__':
 	print '\t};'
 
 	print ''
-	"""
 	print ''
 	print ''
 	print ''
@@ -57,5 +56,4 @@ if __name__ == '__main__':
 		else:
 			print '\t\t\treq.%s = csharpData->%s;' % (field, field)
 	print ''
-	"""
 
