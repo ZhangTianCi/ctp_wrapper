@@ -8,16 +8,12 @@
 namespace CTPWrapper {
 
 #define COPY_ERROR_CODE \
-	CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper(); \
+	CThostFtdcRspInfoFieldWrapper^ csharpError = nullptr; \
 	if (cppError) \
 	{ \
+		csharpError = gcnew CThostFtdcRspInfoFieldWrapper(); \
 		csharpError->ErrorID = cppError->ErrorID; \
 		COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg); \
-	} \
-	else \
-	{ \
-		csharpError->ErrorID = 0; \
-		COPY_UNMANAGED_STRING(csharpError->ErrorMsg, ""); \
 	}
 
 	class MarketSpi : public CThostFtdcMdSpi
