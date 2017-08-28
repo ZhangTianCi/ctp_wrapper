@@ -7,6 +7,19 @@
 
 namespace CTPWrapper {
 
+#define COPY_ERROR_CODE \
+	CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper(); \
+	if (cppError) \
+	{ \
+		csharpError->ErrorID = cppError->ErrorID; \
+		COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg); \
+	} \
+	else \
+	{ \
+		csharpError->ErrorID = 0; \
+		COPY_UNMANAGED_STRING(csharpError->ErrorMsg, ""); \
+	}
+
 	class TradeSpi : public CThostFtdcTraderSpi
 	{
 	public:
@@ -36,14 +49,12 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpAuth->UserID, cppAuth->UserID);
 			COPY_UNMANAGED_STRING(csharpAuth->UserProductInfo, cppAuth->UserProductInfo);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspAuthenticate(csharpAuth, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcRspUserLoginFieldWrapper^ rspUserLogin = gcnew CThostFtdcRspUserLoginFieldWrapper();
 			
@@ -61,22 +72,18 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(rspUserLogin->FFEXTime, pRspUserLogin->FFEXTime);
 			COPY_UNMANAGED_STRING(rspUserLogin->INETime, pRspUserLogin->INETime);
 
-			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
-			rspInfo->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
-			wrapper_->OnRspUserLogin(rspUserLogin, rspInfo, nRequestID, bIsLast);
+			wrapper_->OnRspUserLogin(rspUserLogin, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcUserLogoutFieldWrapper^ csharpUserLogout = gcnew CThostFtdcUserLogoutFieldWrapper();
 			COPY_UNMANAGED_STRING(csharpUserLogout->BrokerID, pUserLogout->BrokerID);
 			COPY_UNMANAGED_STRING(csharpUserLogout->UserID, pUserLogout->UserID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspUserLogout(csharpUserLogout, csharpError, nRequestID, bIsLast);
 		}
@@ -89,9 +96,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpPassword->OldPassword, cppPassword->OldPassword);
 			COPY_UNMANAGED_STRING(csharpPassword->NewPassword, cppPassword->NewPassword);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspUserPasswordUpdate(csharpPassword, csharpError, nRequestID, bIsLast);
 		}
@@ -105,9 +110,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpPassword->NewPassword, cppPassword->NewPassword);
 			COPY_UNMANAGED_STRING(csharpPassword->CurrencyID, cppPassword->CurrencyID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspTradingAccountPasswordUpdate(csharpPassword, csharpError, nRequestID, bIsLast);
 		}
@@ -146,9 +149,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspOrderInsert(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -192,9 +193,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspParkedOrderInsert(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -225,9 +224,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspParkedOrderAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -253,9 +250,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpAction->IPAddress, cppAction->IPAddress);
 			COPY_UNMANAGED_STRING(csharpAction->MacAddress, cppAction->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspOrderAction(csharpAction, csharpError, nRequestID, bIsLast);
 		}
@@ -271,9 +266,7 @@ namespace CTPWrapper {
 			csharpData->HedgeFlag = cppData->HedgeFlag;
 			csharpData->MaxVolume = cppData->MaxVolume;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQueryMaxOrderVolume(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -286,9 +279,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->ConfirmDate, cppData->ConfirmDate);
 			COPY_UNMANAGED_STRING(csharpData->ConfirmTime, cppData->ConfirmTime);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspSettlementInfoConfirm(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -300,9 +291,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
 			COPY_UNMANAGED_STRING(csharpData->ParkedOrderID, cppData->ParkedOrderID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspRemoveParkedOrder(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -314,9 +303,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
 			COPY_UNMANAGED_STRING(csharpData->ParkedOrderActionID, cppData->ParkedOrderActionID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspRemoveParkedOrderAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -346,9 +333,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspExecOrderInsert(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -372,9 +357,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspExecOrderAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -392,9 +375,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspForQuoteInsert(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -426,9 +407,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQuoteInsert(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -453,9 +432,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQuoteAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -475,9 +452,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspBatchOrderAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -498,9 +473,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspCombActionInsert(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -572,9 +545,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryOrder(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -613,9 +584,7 @@ namespace CTPWrapper {
 			csharpData->BrokerOrderSeq = cppData->BrokerOrderSeq;
 			csharpData->TradeSource = cppData->TradeSource;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryTrade(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -667,9 +636,7 @@ namespace CTPWrapper {
 			csharpData->StrikeFrozenAmount = cppData->StrikeFrozenAmount;
 			csharpData->AbandonFrozen = cppData->AbandonFrozen;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInvestorPosition(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -724,9 +691,7 @@ namespace CTPWrapper {
 			csharpData->SpecProductPositionProfitByAlg = cppData->SpecProductPositionProfitByAlg;
 			csharpData->SpecProductExchangeMargin = cppData->SpecProductExchangeMargin;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryTradingAccount(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -748,9 +713,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->CommModelID, cppData->CommModelID);
 			COPY_UNMANAGED_STRING(csharpData->MarginModelID, cppData->MarginModelID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInvestor(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -765,9 +728,7 @@ namespace CTPWrapper {
 			csharpData->IsActive = cppData->IsActive;
 			csharpData->ClientIDType = cppData->ClientIDType;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryTradingCode(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -786,9 +747,7 @@ namespace CTPWrapper {
 			csharpData->ShortMarginRatioByVolume = cppData->ShortMarginRatioByVolume;
 			csharpData->IsRelative = cppData->IsRelative;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInstrumentMarginRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -808,9 +767,7 @@ namespace CTPWrapper {
 			csharpData->CloseTodayRatioByVolume = cppData->CloseTodayRatioByVolume;
 
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInstrumentCommissionRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -822,9 +779,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->ExchangeName, cppData->ExchangeName);
 			csharpData->ExchangeProperty = cppData->ExchangeProperty;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryExchange(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -850,9 +805,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->ExchangeProductID, cppData->ExchangeProductID);
 			csharpData->UnderlyingMultiple = cppData->UnderlyingMultiple;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryProduct(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -892,9 +845,7 @@ namespace CTPWrapper {
 			csharpData->UnderlyingMultiple = cppData->UnderlyingMultiple;
 			csharpData->CombinationType = cppData->CombinationType;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInstrument(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -947,9 +898,7 @@ namespace CTPWrapper {
 			csharpData->AveragePrice = cppData->AveragePrice;
 			COPY_UNMANAGED_STRING(csharpData->ActionDay, cppData->ActionDay);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryDepthMarketData(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -964,9 +913,7 @@ namespace CTPWrapper {
 			csharpData->SequenceNo = cppData->SequenceNo;
 			COPY_UNMANAGED_STRING(csharpData->Content, cppData->Content);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQrySettlementInfo(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -979,9 +926,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->BankName, cppData->BankName);
 			csharpData->IsActive = cppData->IsActive;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryTransferBank(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1016,9 +961,7 @@ namespace CTPWrapper {
 			csharpData->CloseVolume = cppData->CloseVolume;
 			csharpData->CloseAmount = cppData->CloseAmount;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInvestorPositionDetail(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1030,9 +973,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->Content, cppData->Content);
 			COPY_UNMANAGED_STRING(csharpData->SequenceLabel, cppData->SequenceLabel);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryNotice(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1045,9 +986,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->ConfirmDate, cppData->ConfirmDate);
 			COPY_UNMANAGED_STRING(csharpData->ConfirmTime, cppData->ConfirmTime);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQrySettlementInfoConfirm(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1076,9 +1015,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->CombInstrumentID, cppData->CombInstrumentID);
 			csharpData->TradeGroupID = cppData->TradeGroupID;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInvestorPositionCombineDetail(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1092,9 +1029,7 @@ namespace CTPWrapper {
 			csharpData->KeyID = cppData->KeyID;
 			COPY_UNMANAGED_STRING(csharpData->CurrentKey, cppData->CurrentKey);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryCFMMCTradingAccountKey(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1111,9 +1046,7 @@ namespace CTPWrapper {
 			csharpData->HedgeFlag = cppData->HedgeFlag;
 			csharpData->Volume = cppData->Volume;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryEWarrantOffset(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1149,9 +1082,7 @@ namespace CTPWrapper {
 			csharpData->ShortExchOffsetAmount = cppData->ShortExchOffsetAmount;
 			csharpData->HedgeFlag = cppData->HedgeFlag;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInvestorProductGroupMargin(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1167,9 +1098,7 @@ namespace CTPWrapper {
 			csharpData->ShortMarginRatioByMoney = cppData->ShortMarginRatioByMoney;
 			csharpData->ShortMarginRatioByVolume = cppData->ShortMarginRatioByVolume;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryExchangeMarginRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1193,9 +1122,7 @@ namespace CTPWrapper {
 			csharpData->NoShortMarginRatioByMoney = cppData->NoShortMarginRatioByMoney;
 			csharpData->NoShortMarginRatioByVolume = cppData->NoShortMarginRatioByVolume;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryExchangeMarginRateAdjust(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1209,9 +1136,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->ToCurrencyID, cppData->ToCurrencyID);
 			csharpData->ExchangeRate = cppData->ExchangeRate;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryExchangeRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1225,9 +1150,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
 			COPY_UNMANAGED_STRING(csharpData->BrokerSecAgentID, cppData->BrokerSecAgentID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQrySecAgentACIDMap(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1239,9 +1162,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->QuoteCurrencyID, cppData->QuoteCurrencyID);
 			csharpData->ExchangeRate = cppData->ExchangeRate;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryProductExchRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1253,9 +1174,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
 			COPY_UNMANAGED_STRING(csharpData->ProductGroupID, cppData->ProductGroupID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryProductGroup(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1274,9 +1193,7 @@ namespace CTPWrapper {
 			csharpData->CloseTodayRatioByMoney = cppData->CloseTodayRatioByMoney;
 			csharpData->CloseTodayRatioByVolume = cppData->CloseTodayRatioByVolume;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryMMInstrumentCommissionRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1297,9 +1214,7 @@ namespace CTPWrapper {
 			csharpData->StrikeRatioByMoney = cppData->StrikeRatioByMoney;
 			csharpData->StrikeRatioByVolume = cppData->StrikeRatioByVolume;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryMMOptionInstrCommRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1315,9 +1230,7 @@ namespace CTPWrapper {
 			csharpData->OrderCommByVolume = cppData->OrderCommByVolume;
 			csharpData->OrderActionCommByVolume = cppData->OrderActionCommByVolume;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryInstrumentOrderCommRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1335,9 +1248,7 @@ namespace CTPWrapper {
 			csharpData->ExchFixedMargin = cppData->ExchFixedMargin;
 			csharpData->ExchMiniMargin = cppData->ExchMiniMargin;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryOptionInstrTradeCost(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1358,9 +1269,7 @@ namespace CTPWrapper {
 			csharpData->StrikeRatioByMoney = cppData->StrikeRatioByMoney;
 			csharpData->StrikeRatioByVolume = cppData->StrikeRatioByVolume;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryOptionInstrCommRate(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1413,9 +1322,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryExecOrder(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1447,9 +1354,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryForQuote(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1508,9 +1413,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryQuote(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1522,9 +1425,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
 			csharpData->GuarantRatio = cppData->GuarantRatio;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryCombInstrumentGuard(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1560,9 +1461,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryCombAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1599,9 +1498,7 @@ namespace CTPWrapper {
 			csharpData->ErrorID = cppData->ErrorID;
 			COPY_UNMANAGED_STRING(csharpData->ErrorMsg, cppData->ErrorMsg);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryTransferSerial(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -1628,18 +1525,14 @@ namespace CTPWrapper {
 			csharpData->BankAccType = cppData->BankAccType;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryAccountregister(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+		virtual void OnRspError(CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast)
 		{
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspError(csharpError, nRequestID, bIsLast);
 		}
@@ -1785,9 +1678,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnOrderInsert(csharpData, csharpError);
 		}
@@ -1825,9 +1716,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnOrderAction(csharpData, csharpError);
 		}
@@ -2027,9 +1916,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnExecOrderInsert(csharpData, csharpError);
 		}
@@ -2066,9 +1953,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnExecOrderAction(csharpData, csharpError);
 		}
@@ -2086,9 +1971,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnForQuoteInsert(csharpData, csharpError);
 		}
@@ -2177,9 +2060,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnQuoteInsert(csharpData, csharpError);
 		}
@@ -2215,9 +2096,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnQuoteAction(csharpData, csharpError);
 		}
@@ -2272,9 +2151,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnBatchOrderAction(csharpData, csharpError);
 		}
@@ -2329,9 +2206,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnCombActionInsert(csharpData, csharpError);
 		}
@@ -2344,9 +2219,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->BankBrchID, cppData->BankBrchID);
 			COPY_UNMANAGED_STRING(csharpData->BankName, cppData->BankName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryContractBank(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -2391,9 +2264,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryParkedOrder(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -2424,9 +2295,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->IPAddress, cppData->IPAddress);
 			COPY_UNMANAGED_STRING(csharpData->MacAddress, cppData->MacAddress);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryParkedOrderAction(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -2443,9 +2312,7 @@ namespace CTPWrapper {
 			csharpData->SequenceNo = cppData->SequenceNo;
 			COPY_UNMANAGED_STRING(csharpData->FieldContent, cppData->FieldContent);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryTradingNotice(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -2461,9 +2328,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->CurrencyID, cppData->CurrencyID);
 			csharpData->OptionRoyaltyPriceType = cppData->OptionRoyaltyPriceType;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryBrokerTradingParams(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -2478,9 +2343,7 @@ namespace CTPWrapper {
 			csharpData->FindMarginRateAlgoID = cppData->FindMarginRateAlgoID;
 			csharpData->HandleTradingAccountAlgoID = cppData->HandleTradingAccountAlgoID;
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQryBrokerTradingAlgos(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -2491,9 +2354,7 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
 			COPY_UNMANAGED_STRING(csharpData->InvestorID, cppData->InvestorID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQueryCFMMCTradingAccountToken(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -3046,9 +2907,7 @@ namespace CTPWrapper {
 			csharpData->TransferStatus = cppData->TransferStatus;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnBankToFutureByFuture(csharpData, csharpError);
 		}
@@ -3101,9 +2960,7 @@ namespace CTPWrapper {
 			csharpData->TransferStatus = cppData->TransferStatus;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnFutureToBankByFuture(csharpData, csharpError);
 		}
@@ -3163,9 +3020,7 @@ namespace CTPWrapper {
 			csharpData->TransferStatus = cppData->TransferStatus;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnRepealBankToFutureByFutureManual(csharpData, csharpError);
 		}
@@ -3225,9 +3080,7 @@ namespace CTPWrapper {
 			csharpData->TransferStatus = cppData->TransferStatus;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnRepealFutureToBankByFutureManual(csharpData, csharpError);
 		}
@@ -3273,9 +3126,7 @@ namespace CTPWrapper {
 			csharpData->TID = cppData->TID;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnErrRtnQueryBankBalanceByFuture(csharpData, csharpError);
 		}
@@ -3448,9 +3299,7 @@ namespace CTPWrapper {
 			csharpData->TransferStatus = cppData->TransferStatus;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspFromBankToFutureByFuture(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -3503,9 +3352,7 @@ namespace CTPWrapper {
 			csharpData->TransferStatus = cppData->TransferStatus;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspFromFutureToBankByFuture(csharpData, csharpError, nRequestID, bIsLast);
 		}
@@ -3551,9 +3398,7 @@ namespace CTPWrapper {
 			csharpData->TID = cppData->TID;
 			COPY_UNMANAGED_STRING(csharpData->LongCustomerName, cppData->LongCustomerName);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = cppError->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspQueryBankAccountMoneyByFuture(csharpData, csharpError, nRequestID, bIsLast);
 		}

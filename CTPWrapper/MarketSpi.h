@@ -7,6 +7,19 @@
 
 namespace CTPWrapper {
 
+#define COPY_ERROR_CODE \
+	CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper(); \
+	if (cppError) \
+	{ \
+		csharpError->ErrorID = cppError->ErrorID; \
+		COPY_UNMANAGED_STRING(csharpError->ErrorMsg, cppError->ErrorMsg); \
+	} \
+	else \
+	{ \
+		csharpError->ErrorID = 0; \
+		COPY_UNMANAGED_STRING(csharpError->ErrorMsg, ""); \
+	}
+
 	class MarketSpi : public CThostFtdcMdSpi
 	{
 	public:
@@ -29,7 +42,7 @@ namespace CTPWrapper {
 			wrapper_->OnHeartBeatWarning(nTimeLapse);
 		}
 
-		virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcRspUserLoginFieldWrapper^ rspUserLogin = gcnew CThostFtdcRspUserLoginFieldWrapper();
 			
@@ -47,81 +60,67 @@ namespace CTPWrapper {
 			COPY_UNMANAGED_STRING(rspUserLogin->FFEXTime, pRspUserLogin->FFEXTime);
 			COPY_UNMANAGED_STRING(rspUserLogin->INETime, pRspUserLogin->INETime);
 
-			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
-			rspInfo->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
-			wrapper_->OnRspUserLogin(rspUserLogin, rspInfo, nRequestID, bIsLast);
+			wrapper_->OnRspUserLogin(rspUserLogin, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcUserLogoutFieldWrapper^ csharpUserLogout = gcnew CThostFtdcUserLogoutFieldWrapper();
 			COPY_UNMANAGED_STRING(csharpUserLogout->BrokerID, pUserLogout->BrokerID);
 			COPY_UNMANAGED_STRING(csharpUserLogout->UserID, pUserLogout->UserID);
 
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspUserLogout(csharpUserLogout, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
+		virtual void OnRspError(CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast)
 		{
-			CThostFtdcRspInfoFieldWrapper^ csharpError = gcnew CThostFtdcRspInfoFieldWrapper();
-			csharpError->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(csharpError->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
 			wrapper_->OnRspError(csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
 			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
 
-			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
-			rspInfo->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
-			wrapper_->OnRspSubMarketData(csharpInstrument, rspInfo, nRequestID, bIsLast);
+			wrapper_->OnRspSubMarketData(csharpInstrument, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
 			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
 
-			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
-			rspInfo->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
-			wrapper_->OnRspUnSubMarketData(csharpInstrument, rspInfo, nRequestID, bIsLast);
+			wrapper_->OnRspUnSubMarketData(csharpInstrument, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		virtual void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
 			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
 
-			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
-			rspInfo->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
-			wrapper_->OnRspSubForQuoteRsp(csharpInstrument, rspInfo, nRequestID, bIsLast);
+			wrapper_->OnRspSubForQuoteRsp(csharpInstrument, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) override
+		virtual void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
 		{
 			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
 			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
 
-			CThostFtdcRspInfoFieldWrapper^ rspInfo = gcnew CThostFtdcRspInfoFieldWrapper();
-			rspInfo->ErrorID = pRspInfo->ErrorID;
-			COPY_UNMANAGED_STRING(rspInfo->ErrorMsg, pRspInfo->ErrorMsg);
+			COPY_ERROR_CODE;
 
-			wrapper_->OnRspUnSubForQuoteRsp(csharpInstrument, rspInfo, nRequestID, bIsLast);
+			wrapper_->OnRspUnSubForQuoteRsp(csharpInstrument, csharpError, nRequestID, bIsLast);
 		}
 
 		virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData)
