@@ -23,171 +23,179 @@ namespace CTPWrapper {
 		{
 		}
 
-		virtual void OnFrontConnected() override
+		void OnFrontConnected()
 		{
-			wrapper_->OnFrontConnected();
+			return wrapper_->OnFrontConnected();
 		}
 
 		virtual void OnFrontDisconnected(int nReason) override
 		{
-			wrapper_->OnFrontDisconnected(nReason);
+			return wrapper_->OnFrontDisconnected(nReason);
 		}
-
 		virtual void OnHeartBeatWarning(int nTimeLapse) override
 		{
-			wrapper_->OnHeartBeatWarning(nTimeLapse);
+			return wrapper_->OnHeartBeatWarning(nTimeLapse);
 		}
-
-		virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		void OnRspUserLogin(CThostFtdcRspUserLoginField* cppData, CThostFtdcRspInfoField* cppError, int nRequestID, bool bIsLast)
 		{
-			CThostFtdcRspUserLoginFieldWrapper^ rspUserLogin = gcnew CThostFtdcRspUserLoginFieldWrapper();
-			
-			COPY_UNMANAGED_STRING(rspUserLogin->TradingDay, pRspUserLogin->TradingDay);
-			COPY_UNMANAGED_STRING(rspUserLogin->LoginTime, pRspUserLogin->LoginTime);
-			COPY_UNMANAGED_STRING(rspUserLogin->BrokerID, pRspUserLogin->BrokerID);
-			COPY_UNMANAGED_STRING(rspUserLogin->UserID, pRspUserLogin->UserID);
-			COPY_UNMANAGED_STRING(rspUserLogin->SystemName, pRspUserLogin->SystemName);
-			rspUserLogin->FrontID = pRspUserLogin->FrontID;
-			rspUserLogin->SessionID = pRspUserLogin->SessionID;
-			COPY_UNMANAGED_STRING(rspUserLogin->MaxOrderRef, pRspUserLogin->MaxOrderRef);
-			COPY_UNMANAGED_STRING(rspUserLogin->SHFETime, pRspUserLogin->SHFETime);
-			COPY_UNMANAGED_STRING(rspUserLogin->DCETime, pRspUserLogin->DCETime);
-			COPY_UNMANAGED_STRING(rspUserLogin->CZCETime, pRspUserLogin->CZCETime);
-			COPY_UNMANAGED_STRING(rspUserLogin->FFEXTime, pRspUserLogin->FFEXTime);
-			COPY_UNMANAGED_STRING(rspUserLogin->INETime, pRspUserLogin->INETime);
+			CThostFtdcRspUserLoginFieldWrapper^ csharpData = nullptr;
+			if (cppData) {
+				csharpData = gcnew CThostFtdcRspUserLoginFieldWrapper();
+				COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+				COPY_UNMANAGED_STRING(csharpData->LoginTime, cppData->LoginTime);
+				COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+				COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+				COPY_UNMANAGED_STRING(csharpData->SystemName, cppData->SystemName);
+				csharpData->FrontID = cppData->FrontID;
+				csharpData->SessionID = cppData->SessionID;
+				COPY_UNMANAGED_STRING(csharpData->MaxOrderRef, cppData->MaxOrderRef);
+				COPY_UNMANAGED_STRING(csharpData->SHFETime, cppData->SHFETime);
+				COPY_UNMANAGED_STRING(csharpData->DCETime, cppData->DCETime);
+				COPY_UNMANAGED_STRING(csharpData->CZCETime, cppData->CZCETime);
+				COPY_UNMANAGED_STRING(csharpData->FFEXTime, cppData->FFEXTime);
+				COPY_UNMANAGED_STRING(csharpData->INETime, cppData->INETime);
+			}
+
 
 			COPY_ERROR_CODE;
-
-			wrapper_->OnRspUserLogin(rspUserLogin, csharpError, nRequestID, bIsLast);
+			return wrapper_->OnRspUserLogin(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		void OnRspUserLogout(CThostFtdcUserLogoutField* cppData, CThostFtdcRspInfoField* cppError, int nRequestID, bool bIsLast)
 		{
-			CThostFtdcUserLogoutFieldWrapper^ csharpUserLogout = gcnew CThostFtdcUserLogoutFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpUserLogout->BrokerID, pUserLogout->BrokerID);
-			COPY_UNMANAGED_STRING(csharpUserLogout->UserID, pUserLogout->UserID);
+			CThostFtdcUserLogoutFieldWrapper^ csharpData = nullptr;
+			if (cppData) {
+				csharpData = gcnew CThostFtdcUserLogoutFieldWrapper();
+				COPY_UNMANAGED_STRING(csharpData->BrokerID, cppData->BrokerID);
+				COPY_UNMANAGED_STRING(csharpData->UserID, cppData->UserID);
+			}
+
 
 			COPY_ERROR_CODE;
-
-			wrapper_->OnRspUserLogout(csharpUserLogout, csharpError, nRequestID, bIsLast);
+			return wrapper_->OnRspUserLogout(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspError(CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast)
+		void OnRspSubMarketData(CThostFtdcSpecificInstrumentField* cppData, CThostFtdcRspInfoField* cppError, int nRequestID, bool bIsLast)
 		{
-			COPY_ERROR_CODE;
+			CThostFtdcSpecificInstrumentFieldWrapper^ csharpData = nullptr;
+			if (cppData) {
+				csharpData = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
+				COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			}
 
-			wrapper_->OnRspError(csharpError, nRequestID, bIsLast);
-		}
-
-		virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
-		{
-			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
 
 			COPY_ERROR_CODE;
-
-			wrapper_->OnRspSubMarketData(csharpInstrument, csharpError, nRequestID, bIsLast);
+			return wrapper_->OnRspSubMarketData(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField* cppData, CThostFtdcRspInfoField* cppError, int nRequestID, bool bIsLast)
 		{
-			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
+			CThostFtdcSpecificInstrumentFieldWrapper^ csharpData = nullptr;
+			if (cppData) {
+				csharpData = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
+				COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			}
+
 
 			COPY_ERROR_CODE;
-
-			wrapper_->OnRspUnSubMarketData(csharpInstrument, csharpError, nRequestID, bIsLast);
+			return wrapper_->OnRspUnSubMarketData(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField* cppData, CThostFtdcRspInfoField* cppError, int nRequestID, bool bIsLast)
 		{
-			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
+			CThostFtdcSpecificInstrumentFieldWrapper^ csharpData = nullptr;
+			if (cppData) {
+				csharpData = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
+				COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			}
+
 
 			COPY_ERROR_CODE;
-
-			wrapper_->OnRspSubForQuoteRsp(csharpInstrument, csharpError, nRequestID, bIsLast);
+			return wrapper_->OnRspSubForQuoteRsp(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *cppError, int nRequestID, bool bIsLast) override
+		void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField* cppData, CThostFtdcRspInfoField* cppError, int nRequestID, bool bIsLast)
 		{
-			CThostFtdcSpecificInstrumentFieldWrapper^ csharpInstrument = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpInstrument->InstrumentID, pSpecificInstrument->InstrumentID);
+			CThostFtdcSpecificInstrumentFieldWrapper^ csharpData = nullptr;
+			if (cppData) {
+				csharpData = gcnew CThostFtdcSpecificInstrumentFieldWrapper();
+				COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+			}
+
 
 			COPY_ERROR_CODE;
-
-			wrapper_->OnRspUnSubForQuoteRsp(csharpInstrument, csharpError, nRequestID, bIsLast);
+			return wrapper_->OnRspUnSubForQuoteRsp(csharpData, csharpError, nRequestID, bIsLast);
 		}
 
-		virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData)
+		virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField* cppData) override
 		{
-			CThostFtdcDepthMarketDataFieldWrapper^ csharpData = gcnew CThostFtdcDepthMarketDataFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpData->TradingDay, pDepthMarketData->TradingDay);
-			COPY_UNMANAGED_STRING(csharpData->InstrumentID, pDepthMarketData->InstrumentID);
-			COPY_UNMANAGED_STRING(csharpData->ExchangeID, pDepthMarketData->ExchangeID);
-			COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, pDepthMarketData->ExchangeInstID);
-			csharpData->LastPrice = pDepthMarketData->LastPrice;
-			csharpData->PreSettlementPrice = pDepthMarketData->PreSettlementPrice;
-			csharpData->PreClosePrice = pDepthMarketData->PreClosePrice;
-			csharpData->PreOpenInterest = pDepthMarketData->PreOpenInterest;
-			csharpData->OpenPrice = pDepthMarketData->OpenPrice;
-			csharpData->HighestPrice = pDepthMarketData->HighestPrice;
-			csharpData->LowestPrice = pDepthMarketData->LowestPrice;
-			csharpData->Volume = pDepthMarketData->Volume;
-			csharpData->Turnover = pDepthMarketData->Turnover;
-			csharpData->OpenInterest = pDepthMarketData->OpenInterest;
-			csharpData->ClosePrice = pDepthMarketData->ClosePrice;
-			csharpData->SettlementPrice = pDepthMarketData->SettlementPrice;
-			csharpData->UpperLimitPrice = pDepthMarketData->UpperLimitPrice;
-			csharpData->LowerLimitPrice = pDepthMarketData->LowerLimitPrice;
-			csharpData->PreDelta = pDepthMarketData->PreDelta;
-			csharpData->CurrDelta = pDepthMarketData->CurrDelta;
-			COPY_UNMANAGED_STRING(csharpData->UpdateTime, pDepthMarketData->UpdateTime);
-			csharpData->UpdateMillisec = pDepthMarketData->UpdateMillisec;
+			CThostFtdcDepthMarketDataFieldWrapper^ csharpData = nullptr;
+			if (cppData) {
+				csharpData = gcnew CThostFtdcDepthMarketDataFieldWrapper();
+				COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+				COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+				COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+				COPY_UNMANAGED_STRING(csharpData->ExchangeInstID, cppData->ExchangeInstID);
+				csharpData->LastPrice = cppData->LastPrice;
+				csharpData->PreSettlementPrice = cppData->PreSettlementPrice;
+				csharpData->PreClosePrice = cppData->PreClosePrice;
+				csharpData->PreOpenInterest = cppData->PreOpenInterest;
+				csharpData->OpenPrice = cppData->OpenPrice;
+				csharpData->HighestPrice = cppData->HighestPrice;
+				csharpData->LowestPrice = cppData->LowestPrice;
+				csharpData->Volume = cppData->Volume;
+				csharpData->Turnover = cppData->Turnover;
+				csharpData->OpenInterest = cppData->OpenInterest;
+				csharpData->ClosePrice = cppData->ClosePrice;
+				csharpData->SettlementPrice = cppData->SettlementPrice;
+				csharpData->UpperLimitPrice = cppData->UpperLimitPrice;
+				csharpData->LowerLimitPrice = cppData->LowerLimitPrice;
+				csharpData->PreDelta = cppData->PreDelta;
+				csharpData->CurrDelta = cppData->CurrDelta;
+				COPY_UNMANAGED_STRING(csharpData->UpdateTime, cppData->UpdateTime);
+				csharpData->UpdateMillisec = cppData->UpdateMillisec;
+				csharpData->BidPrice1 = cppData->BidPrice1;
+				csharpData->BidVolume1 = cppData->BidVolume1;
+				csharpData->AskPrice1 = cppData->AskPrice1;
+				csharpData->AskVolume1 = cppData->AskVolume1;
+				csharpData->BidPrice2 = cppData->BidPrice2;
+				csharpData->BidVolume2 = cppData->BidVolume2;
+				csharpData->AskPrice2 = cppData->AskPrice2;
+				csharpData->AskVolume2 = cppData->AskVolume2;
+				csharpData->BidPrice3 = cppData->BidPrice3;
+				csharpData->BidVolume3 = cppData->BidVolume3;
+				csharpData->AskPrice3 = cppData->AskPrice3;
+				csharpData->AskVolume3 = cppData->AskVolume3;
+				csharpData->BidPrice4 = cppData->BidPrice4;
+				csharpData->BidVolume4 = cppData->BidVolume4;
+				csharpData->AskPrice4 = cppData->AskPrice4;
+				csharpData->AskVolume4 = cppData->AskVolume4;
+				csharpData->BidPrice5 = cppData->BidPrice5;
+				csharpData->BidVolume5 = cppData->BidVolume5;
+				csharpData->AskPrice5 = cppData->AskPrice5;
+				csharpData->AskVolume5 = cppData->AskVolume5;
+				csharpData->AveragePrice = cppData->AveragePrice;
+				COPY_UNMANAGED_STRING(csharpData->ActionDay, cppData->ActionDay);
+			}
 
-			csharpData->BidPrice1 = pDepthMarketData->BidPrice1;
-			csharpData->BidVolume1 = pDepthMarketData->BidVolume1;
-			csharpData->AskPrice1 = pDepthMarketData->AskPrice1;
-			csharpData->AskVolume1 = pDepthMarketData->AskVolume1;
-
-			csharpData->BidPrice2 = pDepthMarketData->BidPrice2;
-			csharpData->BidVolume2 = pDepthMarketData->BidVolume2;
-			csharpData->AskPrice2 = pDepthMarketData->AskPrice2;
-			csharpData->AskVolume2 = pDepthMarketData->AskVolume2;
-
-			csharpData->BidPrice3 = pDepthMarketData->BidPrice3;
-			csharpData->BidVolume3 = pDepthMarketData->BidVolume3;
-			csharpData->AskPrice3 = pDepthMarketData->AskPrice3;
-			csharpData->AskVolume3 = pDepthMarketData->AskVolume3;
-
-			csharpData->BidPrice4 = pDepthMarketData->BidPrice4;
-			csharpData->BidVolume4 = pDepthMarketData->BidVolume4;
-			csharpData->AskPrice4 = pDepthMarketData->AskPrice4;
-			csharpData->AskVolume4 = pDepthMarketData->AskVolume4;
-
-			csharpData->BidPrice5 = pDepthMarketData->BidPrice5;
-			csharpData->BidVolume5 = pDepthMarketData->BidVolume5;
-			csharpData->AskPrice5 = pDepthMarketData->AskPrice5;
-			csharpData->AskVolume5 = pDepthMarketData->AskVolume5;
-
-			csharpData->AveragePrice = pDepthMarketData->AveragePrice;
-			COPY_UNMANAGED_STRING(csharpData->ActionDay, pDepthMarketData->ActionDay);
-
-			wrapper_->OnRtnDepthMarketData(csharpData);
+			return wrapper_->OnRtnDepthMarketData(csharpData);
 		}
-
-		virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp)
+		virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField* cppData) override
 		{
-			CThostFtdcForQuoteRspFieldWrapper^ csharpData = gcnew CThostFtdcForQuoteRspFieldWrapper();
-			COPY_UNMANAGED_STRING(csharpData->TradingDay, pForQuoteRsp->TradingDay);
-			COPY_UNMANAGED_STRING(csharpData->InstrumentID, pForQuoteRsp->InstrumentID);
-			COPY_UNMANAGED_STRING(csharpData->ForQuoteSysID, pForQuoteRsp->ForQuoteSysID);
-			COPY_UNMANAGED_STRING(csharpData->ForQuoteTime, pForQuoteRsp->ForQuoteTime);
-			COPY_UNMANAGED_STRING(csharpData->ActionDay, pForQuoteRsp->ActionDay);
-			COPY_UNMANAGED_STRING(csharpData->ExchangeID, pForQuoteRsp->ExchangeID);
+			CThostFtdcForQuoteRspFieldWrapper^ csharpData = nullptr;
+			if (cppData) {
+				csharpData = gcnew CThostFtdcForQuoteRspFieldWrapper();
+				COPY_UNMANAGED_STRING(csharpData->TradingDay, cppData->TradingDay);
+				COPY_UNMANAGED_STRING(csharpData->InstrumentID, cppData->InstrumentID);
+				COPY_UNMANAGED_STRING(csharpData->ForQuoteSysID, cppData->ForQuoteSysID);
+				COPY_UNMANAGED_STRING(csharpData->ForQuoteTime, cppData->ForQuoteTime);
+				COPY_UNMANAGED_STRING(csharpData->ActionDay, cppData->ActionDay);
+				COPY_UNMANAGED_STRING(csharpData->ExchangeID, cppData->ExchangeID);
+			}
 
-			wrapper_->OnRtnForQuoteRsp(csharpData);
+			return wrapper_->OnRtnForQuoteRsp(csharpData);
 		}
+
 
 	private:
 		msclr::auto_gcroot<MarketSpiWrapper^> wrapper_;

@@ -24,6 +24,7 @@ def read_struct(filename):
 if __name__ == '__main__':
 	name, attrs = read_struct(sys.argv[1])
 
+	"""
 	print '\tpublic ref struct %sWrapper' % name
 	print '\t{'
 	for (typ, field) in attrs:
@@ -34,14 +35,19 @@ if __name__ == '__main__':
 	print ''
 	print ''
 	print ''
+	"""
 
-	print '\t\t\t%sWrapper^ csharpData = gcnew %sWrapper();' % (name, name)
+	print '\t\t\t%sWrapper^ csharpData = nullptr;' % name
+	print '\t\t\tif (cppData) {'
+	print '\t\t\t\tcsharpData = gcnew %sWrapper();' % name
 	for (typ, field) in attrs:
 		if CPPTYPES_TO_CSHARPTYPES[typ] == 'String^':
-			print '\t\t\tCOPY_UNMANAGED_STRING(csharpData->%s, cppData->%s);' % (field, field)
+			print '\t\t\t\tCOPY_UNMANAGED_STRING(csharpData->%s, cppData->%s);' % (field, field)
 		else:
-			print '\t\t\tcsharpData->%s = cppData->%s;' % (field, field)
+			print '\t\t\t\tcsharpData->%s = cppData->%s;' % (field, field)
+	print '\t\t\t}'
 
+	"""
 	print ''
 	print ''
 	print ''
@@ -56,4 +62,5 @@ if __name__ == '__main__':
 		else:
 			print '\t\t\treq.%s = csharpData->%s;' % (field, field)
 	print ''
+	"""
 
