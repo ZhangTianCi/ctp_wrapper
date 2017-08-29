@@ -79,6 +79,7 @@ namespace CTPTest
         {
             Console.WriteLine("[OnRtnDepthMarketData] {0}", pForQuoteRsp.InstrumentID);
         }
+
     }
 
 
@@ -151,6 +152,15 @@ namespace CTPTest
                 Console.WriteLine("  尝试修改密码: {0}", ok);
             }
             */
+
+            if (pRspInfo.ErrorID == 0)
+            {
+                CThostFtdcQryInvestorFieldWrapper req = new CThostFtdcQryInvestorFieldWrapper();
+                req.BrokerID = "9999";
+                req.InvestorID = "100753";
+                int ok = api_.ReqQryInvestor(req, GetNextRequestId());
+                Console.WriteLine("  尝试QryInvestor: {0}", ok);
+            }
         }
 
         public override void OnRspAuthenticate(CThostFtdcRspAuthenticateFieldWrapper pRspAuthenticateField, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
@@ -168,6 +178,17 @@ namespace CTPTest
             Console.WriteLine("  ErrorID: {0}", pRspInfo.ErrorID);
             Console.WriteLine("  ErrorMsg: {0}", pRspInfo.ErrorMsg);
         }
+
+        public override void OnRspQryInvestor(CThostFtdcInvestorFieldWrapper pInvestor, CThostFtdcRspInfoFieldWrapper pRspInfo, int nRequestID, bool bIsLast)
+        {
+            Console.WriteLine("[Trade][OnRspQryInvestor] nRequestID:{0}, bIsLast:{1}", nRequestID, bIsLast);
+            if (pRspInfo != null)
+            {
+                Console.WriteLine("  ErrorID: {0}", pRspInfo.ErrorID);
+                Console.WriteLine("  ErrorMsg: {0}", pRspInfo.ErrorMsg);
+            }
+        }
+
     }
 
     class Program
@@ -202,8 +223,8 @@ namespace CTPTest
 
         static void Main(string[] args)
         {
-            // TradeApiTest();
-            MarketApiTest();
+            TradeApiTest();
+            // MarketApiTest();
         }
     }
 }
